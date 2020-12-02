@@ -33,6 +33,7 @@
    * Footer
      * Displays developer info
 7. Stretch Goals
+   * Dynamic Currency
    * Ability to follow other users
    * Tags
    * Edit cover image and profile image for profile
