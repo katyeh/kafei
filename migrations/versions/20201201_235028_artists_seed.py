@@ -34,7 +34,7 @@ def upgrade():
     [
         {
             'fullName': 'Kathleen Yeh',
-            'username': 'katyeh',
+            'username': 'hellokat',
             'email': 'kat@yeh.com',
             'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
             'profile_image_url': '',
@@ -93,9 +93,9 @@ def upgrade():
             'wallet': 20
         },
         {
-            'fullName': 'Benjamin Suter',
-            'username': 'naturephotography',
-            'email': 'ben@suter.com',
+            'fullName': 'Joel Mott',
+            'username': 'healthyblogger',
+            'email': 'joel@mott.com',
             'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
             'profile_image_url': '',
             'cover_image_url': '',
@@ -115,7 +115,7 @@ def upgrade():
         {
             'fullName': 'Courtney Cook',
             'username': 'courtneycooks',
-            'email': 'ben@suter.com',
+            'email': 'court@cook.com',
             'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
             'profile_image_url': '',
             'cover_image_url': '',
