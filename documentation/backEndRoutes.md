@@ -8,7 +8,7 @@
   * POST /users => create a new user
   * PUT /users/:id/profile_pic => update profile photo
   * PUT /users/:id/cover_pic => update cover photo
-  * DELETE /user/:id => delete a user
+  * DELETE /users/:id => delete a user
 
 * posts
 
@@ -42,7 +42,7 @@
 * tips
 
   * PUT /users/:id/tips => tip a user
-  
+
 * followers
 
   * GET /users/:id/followers => gets all followers for a user

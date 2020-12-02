@@ -9,14 +9,17 @@
    * Ability to edit your own page/profile
    * Ability to customize bio, intro, and currency name (i.e. Buy me a ....)
    * Displays posts
-3. Posts
-   * Can write posts
-4. Tips
+      * Can like & comment on posts
+   * Displays gallery of photos
+      * Can like photos
+3. Tips
    * Ability to tip creators in increments of $3.
-5. Feed
+4. Feed & Posts
    * Ability to post on your own feed
    * Ability to leave comments/tips on other users' feeds
-6. UI Design
+   * Can create posts on your own page
+   * Can like other users' posts
+5. UI Design
    * Landing Page
      * User login/registration
    * Homepage/Main Page
@@ -32,10 +35,11 @@
      * Tip/Comment
    * Footer
      * Displays developer info
-7. Stretch Goals
+6. Stretch Goals
    * Dynamic Currency
    * Ability to follow other users
    * Tags
    * Edit cover image and profile image for profile
    * Add gallery on profile to showcase work
    * Page views display
+   * Drag & Drop to gallery

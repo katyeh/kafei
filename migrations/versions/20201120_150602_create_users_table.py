@@ -62,6 +62,7 @@ def upgrade():
     sa.Column('sender_id', sa.Integer(), nullable=False),
     sa.Column('recipient_id', sa.Integer(), nullable=False),
     sa.Column('transaction_id', sa.Integer(), nullable=True),
+    sa.Column('post_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['sender_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['recipient_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['transaction_id'], ['transactions.id']),

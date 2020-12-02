@@ -1,6 +1,6 @@
 # Kafei
 
-Kafei is a friendly online platform that encourages fans to support their favorite content creators for the price of a ka-fei (coffee).
+Kafei is a friendly online platform that encourages fans to support their favorite content creators for the price of a ka-fei (coffee). Inspired by buymeacoffee.
 
 Check out the app: [Live Demo](https://)
 
