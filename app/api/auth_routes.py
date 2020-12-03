@@ -81,3 +81,43 @@ def unauthorized():
     Returns unauthorized JSON when flask-login authentication fails
     """
     return {'errors': ['Unauthorized']}, 401
+
+
+@user_routes.route('/<int:id>/profile_pic', methods=["PUT"])
+@login_required
+def profile_pic(id):
+    try:
+        user = User.query.get(id)
+        profile_image_url = request.json["profile_image_url"]
+        user.profile_image_url = profile_image_url
+
+        db.session.commit()
+        return "Profile picture was successfully updated."
+    except:
+        return "Error updating profile picture."
+
+
+@user_routes.route('/<int:id>/cover_pic', methods=["PUT"])
+@login_required
+def cover_pic(id):
+    try:
+        user = User.query.get(id)
+        cover_image_url = request.json["cover_image_url"]
+        user.cover_image_url = cover_image_url
+
+        db.session.commit()
+        return "Cover image was successfully updated."
+    except:
+        return "Error updating cover image."
+
+
+@user_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_user():
+    try:
+        user = User.query.get(id)
+        db.session.delete(user)
+        db.session.commit()
+        return "User was successfully deleted."
+    except:
+        return jsonify(errors = f"Error deleting the user.")
