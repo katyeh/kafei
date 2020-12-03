@@ -55,6 +55,7 @@ def upgrade():
     sa.Column('followed_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['followed_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['follower_id'], ['users.id'], ),
+    sa.UniqueConstraint('follower_id', 'followed_id'),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('comments',
@@ -83,6 +84,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['post_id'], ['posts.id'], ),
     sa.ForeignKeyConstraint(['photo_id'], ['photos.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.UniqueConstraint('post_id', 'user_id'),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('tags',

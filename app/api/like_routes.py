@@ -5,7 +5,7 @@ from app.models import db, Like
 like_routes = Blueprint('likes', __name__)
 
 @like_routes.route('/<int:id>', methods=["DELETE"])
-def delete_like():
+def delete_like(id):
     try:
         like = Like.query.get(id)
         db.session.delete(like)

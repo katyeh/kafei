@@ -4,12 +4,12 @@ import json
 
 follower_routes = Blueprint('followers', __name__)
 
-@follower_routes.route('/<int:id>/delete', methods=["DELETE"])
-def unfollow():
-    try:
-        follow = Follow.query.get(id)
-        db.session.delete(follow)
-        db.session.commit()
-        return jsonify(message=f"Successfully unfollowed.")
-    except:
-        return jsonify(message=f"Error unfollowing.")
+# @follower_routes.route('/followers/<int:follower_id>', methods=["DELETE"])
+# def unfollow(user_id, follower_id):
+#     follower_data = Follower.query.filter(Follower.follower_id == follower_id, Follower.followed_id == user_id)
+#     try:
+#         db.session.delete(follower_data)
+#         db.session.commit()
+#         return jsonify(message=f"Unfollowed user with the id of {user_id}.")
+#     except:
+#         return jsonify(message=f"Error unfollowing user with the id of {user.id}.")

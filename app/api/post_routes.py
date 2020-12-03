@@ -1,15 +1,27 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import db, Post, Like
+from app.models import db, Post, Like, Comment
+from sqlalchemy.orm import relationship, sessionmaker, joinedload
 
 post_routes = Blueprint('posts', __name__)
 
+
 @post_routes.route('/<int:id>')
-def post():
+def post(id):
     post = Post.query.get(id)
     if not post:
         return {'errors': 'Could not find post.'}, 400
     return post.to_dict()
+
+
+@post_routes.route('/<int:id>/comments')
+def get_comments(id):
+    try:
+        comments = Comment.query.filter(Comment.post_id == id).all()
+        return jsonify(comments = [comment.to_dict() for comment in comments])
+    except:
+        return {'errors': 'Could not find comments.'}, 400
+
 
 @post_routes.route('/<int:id>', methods=["PUT"])
 def update_post(id):
@@ -17,8 +29,10 @@ def update_post(id):
         post = Post.query.get(id)
         body = request.json['body']
 
+        post.body = body
+
         db.session.commit()
-        return jsonify(message='Post was successfully updated')
+        return jsonify(post.to_dict())
     except:
         return jsonify(error='Post update unsuccessful.')
 
@@ -40,31 +54,32 @@ def likes(post_id):
 
 @post_routes.route('/<int:post_id>/likes', methods=["POST"])
 def new_like(post_id):
-    data = json.loads(request.data)
-    post = Post.query.get(post_id)
-    user_id = post.user_id
-    like = Like()
-    like.post_id = post_id
-    like.user_id = user_id
-
     try:
-        db.session.add(like)
+        post_id = post_id
+        user_id = request.json['user_id']
+
+        new_like = Like(post_id=post_id, user_id=user_id)
+
+        db.session.add(new_like)
         db.session.commit()
-        return jsonify(message=f"Liked a post with the id of {id}."), 201
+
+        like = Like.query.get(new_like)
+        return jsonify(message=f"Success!")
     except:
-        return jsonify(error=f"Error liking a post with the id of {id}."), 404
+        return jsonify(error=f"Error liking a post with the id of {post_id}."), 404
 
 @post_routes.route('/<int:id>/comments', methods=["POST"])
 def new_post_comment(id):
-    data = json.loads(request.data)
-    comment = Comment()
-    comment.body = data['body']
-    comment.sender_id = request.json['sender_id']
-    comment.post_id = id
+    body = request.json['body']
+    sender_id = request.json['sender_id']
+    post_id = id
+
+    new_comment = Comment(body=body, sender_id=sender_id, post_id=post_id)
+
     try:
-        db.session.add(comment)
-        db.session.commit
-        return jsonify(message='Comment successful on post with id of {id}.')
+        db.session.add(new_comment)
+        db.session.commit()
+        comment = Comment.query.get(new_comment.id)
+        return comment.to_dict()
     except:
         return jsonify(error='Error posting comment.')
-

@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy.orm import relationship
 
 
 class User(db.Model, UserMixin):
@@ -17,6 +18,7 @@ class User(db.Model, UserMixin):
   tips = db.Column(db.Integer, nullable=False)
   wallet = db.Column(db.Integer, nullable=False)
 
+  # transactions = db.relationship("Transaction", cascade='all, delete', backref='user')
 
   @property
   def password(self):

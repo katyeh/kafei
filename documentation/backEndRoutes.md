@@ -22,9 +22,8 @@
 
 * comments
 
-  * GET /users/:id/comments => gets all comments from a single user
+  * GET /posts/:id/comments => gets all comments for a single post
   * POST /posts/:id/comments => create a new comment
-  * POST /photos/:id/comments => create a new comment
   * DELETE /comments/:id => delete a comment
 
 * likes
@@ -41,16 +40,21 @@
   * POST /users/:id/photos => post a new photo
   * DELETE photos/:id => delete a photo
 
-* tips
 
+* transactions
+
+  * GET /users/:id/transactions => gets all tips and corresponding comments for a single user
   * PUT /users/:id/tips => tip a user
+  * POST /users/:id/tips => tip a user
+
 
 * followers
 
   * GET /users/:id/followers => gets all followers for a user
-  * GET /users/:id/followings => gets all users a single user is following
-  * POST /users/:id/followers => follow a user
-  * DELETE /followers/:id/delete => unfollow a user
+  * GET /users/:id/following => gets all users a single user is following
+  * POST /users/:id/following => follow a user
+  * DELETE /users/:id/followers/:id => unfollow a user
+
 
 * search
 

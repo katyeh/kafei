@@ -11,9 +11,12 @@ class Comment(db.Model):
     transaction_id = Column(Integer, ForeignKey("transactions.id"), nullable=True)
     post_id = Column(Integer, ForeignKey("posts.id"), nullable=True)
 
+    transaction = db.relationship("Transaction", backref="comments", foreign_keys=[transaction_id])
+
     def to_dict(self):
         return {
             "id": self.id,
+            "body": self.body,
             "sender_id": self.sender_id,
             "transaction_id": self.transaction_id,
             "post_id": self.post_id

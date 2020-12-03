@@ -1,6 +1,6 @@
 from .db import db
 from sqlalchemy.types import Integer, String
-from sqlalchemy.schema import Column, ForeignKey
+from sqlalchemy.schema import Column, ForeignKey, UniqueConstraint
 
 class Like(db.Model):
   __tablename__ = 'likes'
@@ -9,6 +9,8 @@ class Like(db.Model):
   post_id = Column(Integer, ForeignKey("posts.id"), nullable=True)
   photo_id = Column(Integer, ForeignKey("photos.id"), nullable=True)
   user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+  __table_args__ = (UniqueConstraint('post_id', 'user_id', name='_post_user_uc'),)
+
 
   def to_dict(self):
     return {
