@@ -63,10 +63,10 @@ def new_like(post_id):
         db.session.add(new_like)
         db.session.commit()
 
-        like = Like.query.get(new_like)
-        return jsonify(message=f"Success!")
-    except:
-        return jsonify(error=f"Error liking a post with the id of {post_id}."), 404
+        like = Like.query.get(new_like.id)
+        return jsonify(like.to_dict())
+    except Exception as error:
+        return jsonify(error=repr(error))
 
 @post_routes.route('/<int:id>/comments', methods=["POST"])
 def new_post_comment(id):

@@ -11,6 +11,7 @@ class Post(db.Model):
   user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
 
   likes = db.relationship('Like', cascade='all, delete', backref='post')
+  comments = db.relationship('Comment', cascade='all, delete', backref='post')
   # comments = db.relationship('Like', cascade='all, delete', backref='post')
 
 

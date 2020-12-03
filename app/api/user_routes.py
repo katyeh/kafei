@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from flask_cors import cross_origin
 from sqlalchemy.orm import relationship, sessionmaker, joinedload
-from sqlalchemy import func, select
+from sqlalchemy import func, select, or_
 from app.models import db, User, Post, Photo, Comment, Like, Transaction, Follower
 
 import json
@@ -33,6 +33,7 @@ def following(id):
 @user_routes.route('/<int:id>/home')
 # @login_required
 def user_home(id):
+
     liked_posts_ids = Like.query.filter(
         Like.user_id == id).options(joinedload(Like.post)).all()
     liked_photos_ids = Like.query.filter(
@@ -43,8 +44,7 @@ def user_home(id):
     suggested_creators = [User.query.get(
         creator_id) for creator_id in creator_ids]
 
-    # following = Follower.query.filter(Follower.follower_id == id).all()
-    # following = User.query.filter(User.id == followed_ids).all()
+    following = Follower.query.filter(Follower.follower_id == id).all()
 
     featured_creators = User.query.order_by(
         func.random()).filter(User.id != id).limit(6).all()
@@ -53,7 +53,7 @@ def user_home(id):
     try:
         return jsonify(users={
             "based_on_likes": [user.to_dict() for user in set(suggested_creators)],
-            # "creators_you_follow": [followers.to_dict() for follower in set(following)],
+            "creators_you_follow": [follower.to_dict() for follower in set(following)],
             "featured_creators": [user.to_dict() for user in featured_creators]
         })
     except:
