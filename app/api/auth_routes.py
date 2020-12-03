@@ -100,7 +100,7 @@ def sign_up():
     if request.files:
         if "profileImage" in key_list:
             profile_image_data = request.files["profileImage"] # what we are uploading
-            profile_image_key = f"images/{profile_image_data.filename}_{uuid.uuid4()}" # name of key
+            profile_image_key = f"images/{uuid.uuid4()}_{profile_image_data.filename}" # name of key
             client.put_object(Body=profile_image_data, Bucket="kafei", Key=profile_image_key, ContentType=profile_image_data.mimetype, ACL="public-read")
 
         if "coverImage" in key_list:
