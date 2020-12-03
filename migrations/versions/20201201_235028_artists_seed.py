@@ -23,6 +23,7 @@ def upgrade():
         sa.Column('fullName', sa.String()),
         sa.Column('username', sa.String()),
         sa.Column('email', sa.String()),
+        sa.Column('bio', sa.String()),
         sa.Column('hashed_password', sa.String()),
         sa.Column('profile_image_url', sa.String()),
         sa.Column('cover_image_url', sa.String()),

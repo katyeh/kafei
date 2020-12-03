@@ -23,6 +23,7 @@ def upgrade():
     sa.Column('fullName', sa.String(length=55), nullable=False),
     sa.Column('username', sa.String(length=55), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
+    sa.Column('bio', sa.String(length=255), nullable=True),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('profile_image_url', sa.String(length=255), nullable=True),
     sa.Column('cover_image_url', sa.String(length=255), nullable=True),
@@ -60,12 +61,11 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('body', sa.String(length=255), nullable=True),
     sa.Column('sender_id', sa.Integer(), nullable=False),
-    sa.Column('recipient_id', sa.Integer(), nullable=False),
     sa.Column('transaction_id', sa.Integer(), nullable=True),
     sa.Column('post_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['sender_id'], ['users.id'], ),
-    sa.ForeignKeyConstraint(['recipient_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['transaction_id'], ['transactions.id']),
+    sa.ForeignKeyConstraint(['post_id'], ['posts.id']),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('photos',

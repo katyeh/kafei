@@ -1,6 +1,9 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import db, User, Post, Photo, Comment, Like, Tip, Follower
+from flask_cors import cross_origin
+from sqlalchemy.orm import relationship, sessionmaker, joinedload
+from sqlalchemy import func, select
+from app.models import db, User, Post, Photo, Comment, Like, Transaction, Follower
 
 import json
 
@@ -8,7 +11,7 @@ user_routes = Blueprint('users', __name__)
 
 
 @user_routes.route('/')
-@login_required
+# @login_required
 def users():
     users = User.query.all()
     return {"users": [user.to_dict() for user in users]}
@@ -22,15 +25,15 @@ def user(id):
 
 
 @user_routes.route('/<int:id>/home')
-@login_required
+# @login_required
 def user_home(id):
-    liked_posts_ids = Like.query.filter(Like.user_id == id).options(joinedload(Like.Post)).all()
-    liked_photos_ids = Like.query.filter(Like.user_id == id).options(joinedload(Like.Photo)).all()
-    creator_ids = [liked_post_id.post.user_id for liked_post_id in liked_post_ids]
+    liked_posts_ids = Like.query.filter(Like.user_id == id).options(joinedload(Like.post)).all()
+    liked_photos_ids = Like.query.filter(Like.user_id == id).options(joinedload(Like.photo)).all()
+    creator_ids = [liked_post_id.post.user_id for liked_post_id in liked_posts_ids]
     suggested_creators = [User.query.get(creator_id) for creator_id in creator_ids]
 
     followed_ids = Follower.query.filter(Follower.follower_id == id).all()
-    followed_creators = User.query.get(Follower.followed_ids).all()
+    followed_creators = Follower.query.filter(Follower.followed_id == followed_ids).all()
 
     featured_creators = User.query.order_by(func.random()).filter(User.id != id).limit(6).all()
     featured_creators = set(featured_creators) - set(suggested_creators)
@@ -42,7 +45,7 @@ def posts():
     return jsonify(posts=[post.to_dict() for post in posts])
 
 
-@user_routes.route('/<int:id>/posts', method=["POST"])
+@user_routes.route('/<int:id>/posts', methods=["POST"])
 def new_post(id):
     data = json.loads(request.data)
     post = Post()
@@ -112,9 +115,9 @@ def follow(id):
     follower.follower_id = followerId
     follower.followed_id = id
 
-  try:
-    db.session.add(follower)
-    db.session.commit()
-    return jsonify(message = f"Followed artist with the id of {artistId}."), 201
-  except:
-    return jsonify(error = f"Error following artist with the id of {artistId}."), 404
+    try:
+        db.session.add(follower)
+        db.session.commit()
+        return jsonify(message = f"Followed artist with the id of {artistId}."), 201
+    except:
+        return jsonify(error = f"Error following artist with the id of {artistId}."), 404

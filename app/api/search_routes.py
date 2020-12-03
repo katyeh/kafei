@@ -1,5 +1,5 @@
 from flask import Blueprint, redirect, jsonify, request
-from app.models import db, Track, Album, Artist
+from app.models import db, User
 
 search_routes = Blueprint("search", __name__)
 
@@ -10,6 +10,6 @@ def search():
     userresults = User.query.filter(User.fullName.ilike(f"%{keyword}%") |
                                     User.username.ilike(f"%{keyword}%") |
                                     User.email.ilike(f"%{keyword}%")
-                                    )).all()
+                                    ).all()
 
     return jsonify(userresults = [{'id': userresult.id, 'name': userresult.name, 'username': userresult.username, 'email': userresult.email} for userresult in userresults])

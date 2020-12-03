@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify
 from flask_login import login_required
 from app.models import db, Post
 
-post_routes = Blueprint('comments', __name__)
+comment_routes = Blueprint('comments', __name__)
 
 @comment_routes.route('/<int:id>', methods=["DELETE"])
 def delete_comment(id):

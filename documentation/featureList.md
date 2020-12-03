@@ -37,6 +37,8 @@
      * Displays developer info
 6. Stretch Goals
    * Dynamic Currency
+   * Displays weather
+   * Dark mode
    * Ability to follow other users
    * Tags
    * Edit cover image and profile image for profile

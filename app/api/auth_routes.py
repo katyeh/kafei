@@ -63,10 +63,17 @@ def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        key_list = request.files.keys()
+
         user = User(
+            fullName=form.data['fullName'],
             username=form.data['username'],
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
+            profile_image_url=form.data['profile_image_url']
+                if "profileImage" in key_list else "../images/kafei-logo.png",
+            cover_image_url=form.data['cover_image_url'],
+            tips=0,
         )
         db.session.add(user)
         db.session.commit()
@@ -83,7 +90,7 @@ def unauthorized():
     return {'errors': ['Unauthorized']}, 401
 
 
-@user_routes.route('/<int:id>/profile_pic', methods=["PUT"])
+@auth_routes.route('/<int:id>/profile_pic', methods=["PUT"])
 @login_required
 def profile_pic(id):
     try:
@@ -97,7 +104,7 @@ def profile_pic(id):
         return "Error updating profile picture."
 
 
-@user_routes.route('/<int:id>/cover_pic', methods=["PUT"])
+@auth_routes.route('/<int:id>/cover_pic', methods=["PUT"])
 @login_required
 def cover_pic(id):
     try:
@@ -111,9 +118,9 @@ def cover_pic(id):
         return "Error updating cover image."
 
 
-@user_routes.route('/<int:id>', methods=["DELETE"])
-@login_required
-def delete_user():
+@auth_routes.route('/<int:id>', methods=["DELETE"])
+# @login_required
+def delete_user(id):
     try:
         user = User.query.get(id)
         db.session.delete(user)

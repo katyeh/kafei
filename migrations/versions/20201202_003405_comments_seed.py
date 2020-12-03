@@ -30,25 +30,21 @@ def upgrade():
         {
             'body': 'I love your work!!',
             'sender_id': 1,
-            'recipient_id': 2,
             'transaction_id': 1
         },
         {
             'body': 'You are amazing!',
             'sender_id': 4,
-            'recipient_id': 2,
             'transaction_id': 2
         },
         {
             'body': 'Just wanted to show my support',
             'sender_id': 6,
-            'recipient_id': 1,
             'transaction_id': 3
         },
         {
             'body': 'I\'m a huge fan. Keep it up!',
             'sender_id': 8,
-            'recipient_id': 6,
             'transaction_id': 4
         },
     ])
