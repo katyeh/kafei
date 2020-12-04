@@ -1,4 +1,6 @@
 import React from 'react';
+import NavBar from '../NavBar';
+import SideMenu from './SideMenu';
 
 const Home = () => {
   return (
@@ -12,4 +14,12 @@ const Home = () => {
   )
 }
 
-export default Home;
+const HomeContainer = ({setAuthenticated={setAuthenticated}}) => {
+  return (
+    <div>
+      <NavBar setAuthenticated={setAuthenticated} />
+      <Home />
+    </div>
+  )
+}
+export default HomeContainer;

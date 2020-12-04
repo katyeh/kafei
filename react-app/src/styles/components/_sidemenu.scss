@@ -1,0 +1,89 @@
+.sidemenu {
+    position: fixed;
+    height: 100%;
+    width: 35rem;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    padding-top: 2rem;
+    padding-left: 5rem;
+    padding-right: 2rem;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    box-shadow: -10px 0px 10px 1px #c4c3c3;
+
+    &__close {
+        float: right;
+        cursor: pointer;
+    }
+    &__container {
+        display: flex;
+        flex-direction: column;
+        padding: 8rem 5rem 0 5rem;
+        position: relative;
+        right: 4rem;
+    }
+    &__pic {
+        border-radius: 50%;
+        height: 12rem;
+        width: 12rem;
+    }
+    &__info {
+        padding: 2rem 0;
+        h3 {
+            font-size: 3rem;
+            display: inline-block;
+            white-space: nowrap;
+            padding-bottom: 1rem;
+
+        }
+        p {
+            font-size: 2rem;
+        }
+    }
+    &__stats {
+        display: flex;
+        flex-direction: column;
+    }
+    &__stats-container {
+        position: relative;
+        display: flex;
+        padding: 2rem 0;
+
+    }
+    &__stats-container-bottom {
+        padding-bottom: 5rem;
+    }
+    &__stats-label {
+        font-size: 2rem;
+    }
+    &__stat {
+        font-size: 2rem;
+        position: absolute;
+        left: 10rem;
+    }
+    &__links {
+        display: flex;
+        li {
+            list-style: none;
+            padding: 1rem 0;
+            display: flex;
+            align-items: center;
+
+            p {
+                position: relative;
+                left: 2rem;
+            }
+        }
+    }
+    &__link {
+        width: 30rem;
+        cursor: pointer;
+        img {
+            height: 3.5rem;
+            width: 3.5rem;
+            border-radius: 50%;
+        }
+    }
+}

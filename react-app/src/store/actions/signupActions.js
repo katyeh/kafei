@@ -28,14 +28,13 @@ export const signupUser = (user) => {
 }
 
 export const loadUser = (id) => async (dispatch) => {
-  console.log('id:', id)
   const res = await fetch(`/api/users/${id}`)
 
   if (res.ok) {
     const data = await res.json();
     dispatch({
       type: LOAD_USER,
-      ...data.user[0]
+      ...data.id
     });
   }
 }

@@ -1,0 +1,30 @@
+.homenav {
+    &__links {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        li {
+            padding: 1rem;
+            list-style: none;
+            cursor: pointer;
+        }
+    }
+    &__btn {
+        display: block;
+        padding: .2rem 1.5rem;
+        height: 3.5rem;
+        color: #fff;
+        font-weight: 600;
+        font-size: 1.6rem;
+        background-color: transparent;
+        border-radius: 4rem;
+        border: none;
+        background-color: $color-accent-dark;
+        cursor: pointer;
+
+          &:focus {
+            outline: none;
+          }
+    }
+}

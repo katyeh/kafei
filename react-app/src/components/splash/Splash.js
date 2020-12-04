@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 import img from '../../images/ka-fei-dark.png';
 import StartModal from './StartModal';
 import GitHubIcon from '@material-ui/icons/GitHub';
@@ -21,7 +20,7 @@ const Splash = ({ authenticated, setAuthenticated }) => {
       <div className="splash__main">
         <div className="splash__header">
           <div className="splash__header-logo">
-            <img className="splash__header-img" src={img}></img>
+            <img className="splash__header-img" alt="" src={img}></img>
           </div>
           <div className="splash__intro">
             <p>Kafei was created to bridge the gap between content creators and fans.</p>
@@ -46,7 +45,7 @@ const Splash = ({ authenticated, setAuthenticated }) => {
             <div className="splash__featured-item">
               <div className="splash__featured-header"></div>
               <a className="splash__img-container" href="#">
-                <img className="splash__featured-img" src={kathleenimg}></img>
+                <img className="splash__featured-img" alt="" src={kathleenimg}></img>
               </a>
               <div className="splash__featured-info">
                 <h2 className="splash__featured-name">Kathleen Yeh</h2>
@@ -57,7 +56,7 @@ const Splash = ({ authenticated, setAuthenticated }) => {
             <div className="splash__featured-item">
               <div className="splash__featured-header"></div>
               <a className="splash__img-container" href="#">
-                <img className="splash__featured-img" src={kathleenimg}></img>
+                <img className="splash__featured-img" alt="" src={kathleenimg}></img>
               </a>
               <div className="splash__featured-info">
                 <h2 className="splash__featured-name">Kathleen Yeh</h2>
@@ -68,7 +67,7 @@ const Splash = ({ authenticated, setAuthenticated }) => {
             <div className="splash__featured-item">
               <div className="splash__featured-header"></div>
               <a className="splash__img-container" href="#">
-                <img className="splash__featured-img" src={kathleenimg}></img>
+                <img className="splash__featured-img" alt="" src={kathleenimg}></img>
               </a>
               <div className="splash__featured-info">
                 <h2 className="splash__featured-name">Kathleen Yeh</h2>

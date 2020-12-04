@@ -11,7 +11,8 @@ import { authenticate } from "./services/auth";
 import { loadUser } from "./store/actions/signupActions";
 import SplashNav from "./components/splash/SplashNav";
 import Splash from "./components/splash/Splash";
-import Home from "./components/home/Home";
+import HomeContainer from "./components/home/Home";
+import Profile from './components/profile/Profile';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -53,15 +54,22 @@ function App() {
           exact={true}
           authenticated={authenticated}
         >
-          <NavBar setAuthenticated={setAuthenticated} />
-          <Home
+          {/* <NavBar setAuthenticated={setAuthenticated} /> */}
+          <HomeContainer
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
         </ProtectedRoute>
+
+        <ProtectedRoute
+          path="/users/:id"
+          exact={true}
+          authenticated={authenticated}
+        >
+          <Profile />
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
-
 
     // <BrowserRouter>
     //   <NavBar setAuthenticated={setAuthenticated} />
