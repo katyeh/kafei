@@ -1,0 +1,11 @@
+.home {
+  height: auto;
+
+  &__contents {
+    display: flex;
+  }
+
+  &__main {
+    width: 70%;
+  }
+}
