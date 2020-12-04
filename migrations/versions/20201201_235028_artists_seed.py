@@ -34,6 +34,16 @@ def upgrade():
     op.bulk_insert(user,
     [
         {
+            'name': 'Demo User',
+            'username': 'demouser',
+            'email': 'demo@user.com',
+            'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
+            'profile_image_url': '',
+            'cover_image_url': '',
+            'tips': 30,
+            'wallet': 20
+        },
+        {
             'name': 'Kathleen Yeh',
             'username': 'hellokat',
             'email': 'kat@yeh.com',
