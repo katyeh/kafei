@@ -4,11 +4,13 @@ import userReducer from './user';
 import currentUserReducer from './currentUser';
 import errors from './errorReducer';
 import followers from './followerReducer';
+import following from './followingReducer';
 
 const rootReducer = combineReducers({
   user,
   errors,
   followers,
+  following,
   users: userReducer,
   currentUser: currentUserReducer,
 });

@@ -12,4 +12,4 @@ export const getFollowers = (id) => {
       console.log(e);
     }
   };
-}
+};

@@ -18,13 +18,18 @@ class Follower(db.Model):
 
     def to_dict(self):
         return {
-            "id": self.id,
-            "follower_id": self.follower_id,
-            "followed_id": self.followed_id,
-            "user": {
-                "id": self.user.id,
-                "name": self.user.name,
-                "username": self.user.username
-            },
-            "followed_users": self.following.to_dict()
+            # "id": self.id,
+            # "follower_id": self.follower_id,
+            # "followed_id": self.followed_id,
+            # "user": {
+            #     "id": self.user.id,
+            #     "name": self.user.name,
+            #     "username": self.user.username
+            # },
+            "follower": self.follower.to_dict(),
+        }
+
+    def following_to_dict(self):
+        return {
+            "user": self.following.to_dict()
         }

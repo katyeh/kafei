@@ -39,7 +39,7 @@ def update_bio(id):
 @user_routes.route('/<int:id>/following')
 def following(id):
     following = Follower.query.filter(Follower.follower_id == id).all()
-    return jsonify(following=[follower.to_dict() for follower in following])
+    return jsonify(following=[follower.following_to_dict() for follower in following])
 
 
 @user_routes.route('/<int:id>/home')
