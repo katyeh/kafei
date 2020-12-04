@@ -1,13 +1,25 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import img from '../../images/kafei-logo.png'
 import HomeIcon from '@material-ui/icons/Home';
 import CloseIcon from '@material-ui/icons/Close';
 import { useHistory } from 'react-router-dom';
+import { getFollowers } from "../../store/actions/followersActions";
+
 
 const SideMenu = ({ sidebar, setSidebar }) => {
   const history = useHistory();
   const user = useSelector(state => state.user);
+  const dispatch = useDispatch();
+  const followers = useSelector(state => state.followers)
+
+  useEffect(() => {
+    (async () => {
+      await dispatch(getFollowers(user.id));
+    })()
+  }, []);
+  console.log('followers:', followers)
+
   return (
     <div className="sidemenu">
       <div className="sidemenu__close">
