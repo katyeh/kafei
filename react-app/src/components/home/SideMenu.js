@@ -42,8 +42,8 @@ const SideMenu = ({ sidebar, setSidebar }) => {
             <div className="sidemenu__stat">{user.tips}</div>
           </div>
           <div className="sidemenu__stats-container sidemenu__stats-container-bottom">
-            <div className="sidemenu__stats-label">Following</div>
-            <div className="sidemenu__stat">0</div>
+            <div className="sidemenu__stats-label">Followers</div>
+            <div className="sidemenu__stat">{followers.length}</div>
           </div>
         </div>
         <div className="sidemenu__links">
