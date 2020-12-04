@@ -13,8 +13,6 @@ const Splash = ({ authenticated, setAuthenticated }) => {
     setName(e.target.value);
   }
 
-  console.log(name)
-
   return (
     <div className="splash">
       <div className="splash__main">

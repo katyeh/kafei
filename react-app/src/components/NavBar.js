@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
+// import LogoutButton from './auth/LogoutButton';
 import logo1 from "../images/kafei-logo.png";
 import logo2 from "../images/kafei-dark.png";
 import HomeIcon from '@material-ui/icons/Home';

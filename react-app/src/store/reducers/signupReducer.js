@@ -9,9 +9,9 @@ const userReducer = (state = {}, action) => {
         name: action.name,
         username: action.username,
         email: action.email,
-        // bio: action.bio,
-        // profileImageUrl: action.profile_image_url,
-        // coverImageUrl: action.cover_image_url,
+        bio: action.bio,
+        profileImageUrl: action.profile_image_url,
+        coverImageUrl: action.cover_image_url,
         wallet: action.wallet,
         tips: action.tips
       }

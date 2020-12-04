@@ -1,6 +1,5 @@
 import React from 'react';
 import NavBar from '../NavBar';
-import SideMenu from './SideMenu';
 
 const Home = () => {
   return (
@@ -14,7 +13,7 @@ const Home = () => {
   )
 }
 
-const HomeContainer = ({setAuthenticated={setAuthenticated}}) => {
+const HomeContainer = ( {setAuthenticated={setAuthenticated}} ) => {
   return (
     <div>
       <NavBar setAuthenticated={setAuthenticated} />

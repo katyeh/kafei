@@ -30,7 +30,6 @@ const SignupModal = ({authenticated, setAuthenticated}) => {
       user.append('email', email);
       user.append('password', password);
       user = await dispatch(signupUser(user));
-      console.log(user)
       if (user && !user.errors) {
         debugger
         setAuthenticated(true);

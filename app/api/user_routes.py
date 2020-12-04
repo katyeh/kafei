@@ -21,7 +21,7 @@ def users():
 @login_required
 def user(id):
     user = User.query.get(id)
-    return jsonify(user.to_dict())
+    return jsonify(user=[user.to_dict()])
 
 
 @user_routes.route('/<int:id>', methods=["PUT"])
@@ -68,8 +68,8 @@ def user_home(id):
             "creators_you_follow": [follower.to_dict() for follower in set(following)],
             "featured_creators": [user.to_dict() for user in featured_creators]
         })
-    except:
-        return {'errors': 'There are no users available.'}, 400
+    except Exception as error:
+        return jsonify(error=repr(error))
 
 
 @user_routes.route('/<int:id>/posts')
@@ -91,8 +91,8 @@ def new_post(id):
 
         post = Post.query.get(new_post.id)
         return post.to_dict()
-    except:
-        return jsonify(error='Post unsuccessful.')
+    except Exception as error:
+        return jsonify(error=repr(error))
 
 
 @user_routes.route('/<int:id>/photos')
@@ -198,5 +198,5 @@ def unfollow(user_id, follower_id):
         db.session.delete(follower_data)
         db.session.commit()
         return jsonify(message=f"Unfollowed user with the id of {user_id}.")
-    except:
-        return jsonify(message=f"Error unfollowing user with the id of {user_id}.")
+    except Exception as error:
+        return jsonify(error=repr(error))

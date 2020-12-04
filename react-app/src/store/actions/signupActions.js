@@ -22,7 +22,7 @@ export const signupUser = (user) => {
 
       return await res.json();
     } catch(e) {
-      console.log(e);
+      // console.log(e);
     }
   }
 }
@@ -32,9 +32,10 @@ export const loadUser = (id) => async (dispatch) => {
 
   if (res.ok) {
     const data = await res.json();
+    // console.log("DATA:", data)
     dispatch({
       type: LOAD_USER,
-      ...data.id
+      ...data.user[0]
     });
   }
 }
