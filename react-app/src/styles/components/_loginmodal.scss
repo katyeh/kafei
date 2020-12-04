@@ -1,0 +1,116 @@
+// Login Button Styles
+.login__btn {
+    display: block;
+    padding: .2rem 1.5rem;
+    height: 3.5rem;
+    color: #000;
+    font-weight: 600;
+    font-size: 1.6rem;
+    background-color: transparent;
+    border-radius: 4rem;
+    border: none;
+    cursor: pointer;
+}
+
+// .homelogin__btn {
+//   background-color: rgba(255, 255, 255, .2);
+//   border: none;
+//   border-radius: 3px;
+//   font-size: 1rem;
+//   color: $color-grey2;
+//   font-size: 1.5rem;
+//   max-width: 8rem;
+//   padding: 1rem;
+//   text-align: center;
+//   cursor: pointer;
+//   transition: background-color .2s ease-in;
+
+//   &:hover {
+//     background-color: $color-accent;
+//   }
+// }
+
+// Login Modal Styles
+.login-modal {
+    display: grid;
+    grid-template-rows: 10rem 10rem;
+    position: absolute;
+    top: 8rem;
+    left: 50rem;
+    right: 50rem;
+    bottom: 60rem;
+    background-color: white;
+    padding: 3rem;
+    outline: none;
+    height: 35rem;
+    border-radius: 1rem;
+    width: 55rem;
+    margin: 0 auto;
+}
+
+.login-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 2rem;
+}
+
+.close-btn {
+    padding: .3rem;
+    background-color: white;
+}
+
+.login-btn__div {
+    padding-top: 2rem;
+}
+
+.login-btn {
+    padding: .8rem;
+    border-radius: 4rem;
+    color: #fff;
+    background-color: $color-accent-dark;
+    width: 40rem;
+    height: 4.5rem;
+    cursor: pointer;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.login-content {
+    padding-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: -6rem;
+
+    input {
+      border: 2px solid rgba(62,6358,.2);
+      transition: border .3s ease-in-out;
+      border-radius: 8px;
+      width: 40rem;
+      display: inline-block;
+      height: 46px;
+      padding: 8px 16px;
+      position: relative;
+      left: 5rem;
+      font-family: $font-main;
+      font-size: 1.6rem;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    outline: none;
+    background-color: rgba(153, 153, 153, 0.8);
+    z-index: 2;
+  }

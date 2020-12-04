@@ -61,8 +61,10 @@ const SignupModal = ({authenticated, setAuthenticated}) => {
   };
 
   return (
-    <div>
-      <button className="signup__btn" onClick={() => setIsOpen(true)}>Sign Up</button>
+    <div className="signupModal">
+      <div className="signup-btn__div">
+        <button className="signup__btn" onClick={() => setIsOpen(true)}>Sign Up</button>
+      </div>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setIsOpen(false)}
@@ -76,65 +78,60 @@ const SignupModal = ({authenticated, setAuthenticated}) => {
           <button className="close-btn" onClick={() => setIsOpen(false)}>X</button>
         </div>
 
-        <form onSubmit={onSignUp}>
+        <form className="signup-form" onSubmit={onSignUp}>
 
           <div className="login-content">
-            <label>Name</label>
             <input
               type="text"
               name="name"
+              placeholder="Display Name"
               onChange={updateName}
               value={name}
+              required
             ></input>
           </div>
           <div className="login-content">
-            <label>Username</label>
             <input
               type="text"
               name="username"
+              placeholder="Username"
               onChange={updateUsername}
               value={username}
+              required
             ></input>
           </div>
           <div className="login-content">
-            <label>Email</label>
             <input
               type="text"
               name="email"
+              placeholder="Email Address"
               onChange={updateEmail}
               value={email}
+              required
             ></input>
           </div>
           <div className="login-content">
-            <label>Bio</label>
-            <input
-              type="text"
-              name="bio"
-              onChange={updateBio}
-              value={bio}
-            ></input>
-          </div>
-          <div className="login-content">
-            <label>Password</label>
             <input
               type="password"
               name="password"
+              placeholder="Choose a Password"
               onChange={updatePassword}
               value={password}
+              required
             ></input>
           </div>
           <div className="login-content">
-            <label>Confirm Password</label>
             <input
               type="password"
               name="repeat_password"
+              placeholder="Confirm Password"
               onChange={updateRepeatPassword}
               value={repeatPassword}
               required={true}
             ></input>
           </div>
-          <div className="login-content">
-            <button className="login-btn" type="submit">Sign Up</button>
+          <div className="login-btn__div">
+            <button className="login-btn" type="submit">Create Account</button>
           </div>
         </form>
       </Modal>

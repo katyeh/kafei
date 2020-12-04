@@ -48,34 +48,34 @@ const LoginModal = ({ authenticated, setAuthenticated }) => {
           <button className="close-btn" onClick={() => setIsOpen(false)}>X</button>
         </div>
 
-        <form onSubmit={onLogin}>
+        <form className="login-form" onSubmit={onLogin}>
           <div>
             {errors.map((error) => (
               <div>{error}</div>
             ))}
           </div>
           <div className="login-content">
-            <label htmlFor="email">Email</label>
             <input
               name="email"
               type="text"
               placeholder="Email"
               value={email}
               onChange={updateEmail}
+              required
             />
           </div>
           <div className="login-content">
-            <label htmlFor="password">Password</label>
             <input
               name="password"
               type="password"
               placeholder="Password"
               value={password}
               onChange={updatePassword}
+              required
             />
-          <div className="login-content">
-            <button type="submit">Login</button>
           </div>
+          <div className="login-btn__div">
+            <button className="login-btn" type="submit">Login</button>
           </div>
         </form>
       </Modal>
