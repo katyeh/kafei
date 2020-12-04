@@ -21,7 +21,19 @@ def users():
 @login_required
 def user(id):
     user = User.query.get(id)
-    return user.to_dict()
+    return jsonify(user.to_dict())
+
+
+@user_routes.route('/<int:id>', methods=["PUT"])
+def update_bio(id):
+    try:
+        user = User.query.get(id)
+        user.bio = request.json['bio']
+
+        db.session.commit()
+        return jsonify(user.to_dict())
+    except Exception as error:
+        return jsonify(error=repr(error))
 
 
 @user_routes.route('/<int:id>/following')

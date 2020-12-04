@@ -5,16 +5,13 @@ import StartModal from './StartModal';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import EmailIcon from '@material-ui/icons/Email';
+import kathleenimg from '../../images/kathleen.jpg';
 
 const Splash = ({ authenticated, setAuthenticated }) => {
   const [name, setName] = useState("");
 
   const updateName = (e) => {
     setName(e.target.value);
-  }
-
-  const startPage = () => {
-
   }
 
   console.log(name)
@@ -35,7 +32,7 @@ const Splash = ({ authenticated, setAuthenticated }) => {
 
         <div className="splash__signup-div">
           <h6>Make an Income Doing What You Love</h6>
-          <subtitle>Get paid from people who love what you do. No pressure to stick to a schedule.</subtitle>
+          <p>Get paid from people who love what you do. No pressure to stick to a schedule.</p>
           <div className="splash__signup">
             <input onChange={updateName} value={name} placeholder="yourname"></input>
             <StartModal name={name}/>
@@ -45,12 +42,40 @@ const Splash = ({ authenticated, setAuthenticated }) => {
         <div className="splash__featured-container">
           <h1 className="featured-creators">Featured creators</h1>
           <div className="featured__section">
+
             <div className="splash__featured-item">
               <div className="splash__featured-header"></div>
-              <a href="#">Image</a>
+              <a className="splash__img-container" href="#">
+                <img className="splash__featured-img" src={kathleenimg}></img>
+              </a>
+              <div className="splash__featured-info">
+                <h2 className="splash__featured-name">Kathleen Yeh</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem nesciunt, debitis consequuntur iure iste facil...</p>
+              </div>
             </div>
-            <div className="splash__featured-item">Person 2</div>
-            <div className="splash__featured-item">Person 3</div>
+
+            <div className="splash__featured-item">
+              <div className="splash__featured-header"></div>
+              <a className="splash__img-container" href="#">
+                <img className="splash__featured-img" src={kathleenimg}></img>
+              </a>
+              <div className="splash__featured-info">
+                <h2 className="splash__featured-name">Kathleen Yeh</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem nesciunt, debitis consequuntur iure iste facil...</p>
+              </div>
+            </div>
+
+            <div className="splash__featured-item">
+              <div className="splash__featured-header"></div>
+              <a className="splash__img-container" href="#">
+                <img className="splash__featured-img" src={kathleenimg}></img>
+              </a>
+              <div className="splash__featured-info">
+                <h2 className="splash__featured-name">Kathleen Yeh</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem nesciunt, debitis consequuntur iure iste facil...</p>
+              </div>
+            </div>
+
           </div>
           <div className="splash__featured-div">
             <h1>Give your audience an easy way to say thanks.</h1>
@@ -62,7 +87,7 @@ const Splash = ({ authenticated, setAuthenticated }) => {
           <div>Image here</div>
           <div className="tag__container">
             <h1>All Kinds of Creators Use Kafei</h1>
-            <subtitle>Join hundreds of creators funding their passions on Kafei!</subtitle>
+            <p>Join hundreds of creators funding their passions on Kafei!</p>
             <div className="tag__grid">
               <div className="tag__item">Artists</div>
               <div className="tag__item">Food & Drink</div>
@@ -73,24 +98,24 @@ const Splash = ({ authenticated, setAuthenticated }) => {
           </div>
         </div>
 
-        <footer class="footer">
+        <footer className="footer">
           <div className="footer__name">
             <h1>Kathleen Yeh</h1>
           </div>
-          <div class="social-links">
-            <ul class="social-list">
-              <li class="social-list__item">
-                <a class="social-list__link" href="https://github.com/katyeh">
+          <div className="social-links">
+            <ul className="social-list">
+              <li className="social-list__item">
+                <a className="social-list__link" href="https://github.com/katyeh">
                   <GitHubIcon style={{ fontSize: 30 }}/>
                 </a>
               </li>
-              <li class="social-list__item">
-                <a class="social-list__link" href="mailto:kathleenyeh1@gmail.com">
+              <li className="social-list__item">
+                <a className="social-list__link" href="mailto:kathleenyeh1@gmail.com">
                   <LinkedInIcon style={{ fontSize: 30 }}/>
                 </a>
               </li>
-              <li class="social-list__item">
-                <a class="social-list__link" href="tel:206-604-2354">
+              <li className="social-list__item">
+                <a className="social-list__link" href="mailto:kathleenyeh1@gmail.com">
                   <EmailIcon style={{ fontSize: 30 }}/>
                 </a>
               </li>

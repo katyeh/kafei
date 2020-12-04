@@ -1,4 +1,7 @@
 .splash {
+    p {
+        padding: 2rem 0;
+    }
 
     &__main {
         // width: 70%;
@@ -109,9 +112,45 @@
         border-radius: 1rem;
     }
 
-    &____featured-header {
-        
+    &__featured-header {
+        background-color: $color-accent-dark;
+        height: 12rem;
+
     }
+
+    &__img-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__featured-img {
+        border-radius: 50%;
+        width: 12rem;
+        height: 12rem;
+        position: relative;
+        top: -8rem;
+        border: .8rem solid white;
+    }
+
+    &__featured-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        top: -5rem;
+
+        subtitle {
+            padding: 0 3rem;
+        }
+    }
+
+    &__featured-name {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        top: -2rem;
+    }
+
 
     &__featured-div {
         padding-top: 8rem;
@@ -136,7 +175,7 @@
         // flex-direction: column;
         justify-content: center;
         grid-gap: 5rem;
-        padding-top: 10rem;
+        padding: 10rem 0;
         // flex-direction: row;
     }
 
@@ -145,9 +184,6 @@
         flex-direction: column;
         // align-items: center;
 
-        subtitle {
-            padding: 2rem 0;
-        }
     }
     .tag__grid {
         display: grid;
@@ -165,6 +201,7 @@
         background-color: #f7f7f7;
         color: #434b57;
         padding: 1rem;
+        cursor: pointer;
     }
 
     .tag__item:hover {

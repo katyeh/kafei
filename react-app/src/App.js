@@ -26,11 +26,12 @@ function App() {
       }
       const userId = localStorage.getItem("user_id");
       (async () => {
+        console.log(userId)
         await dispatch(loadUser(userId));
         setLoaded(true);
       })()
     })();
-  }, [dispatch]);
+  }, []);
 
   if (!loaded) {
     return null;

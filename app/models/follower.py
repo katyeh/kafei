@@ -23,7 +23,7 @@ class Follower(db.Model):
             "followed_id": self.followed_id,
             "user": {
                 "id": self.user.id,
-                "fullName": self.user.fullName,
+                "name": self.user.name,
                 "username": self.user.username
             },
             "followed_users": self.following.to_dict()

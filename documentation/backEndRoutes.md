@@ -10,6 +10,7 @@
 
   * GET /users => gets all users
   * GET /users/:id => get a single users info
+  * PUT /users/:id => update user bio
   * GET /users/:id/home => gets featured and suggested creators for homepage
 
 * posts

@@ -61,18 +61,19 @@ def sign_up():
     Creates a new user and logs them in
     """
     form = SignUpForm()
+    print(f"!!!!")
+    print(request.cookies)
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        key_list = request.files.keys()
-
+        # key_list = request.files.keys()
         user = User(
-            fullName=form.data['fullName'],
+            name=form.data['name'],
             username=form.data['username'],
             email=form.data['email'],
             password=form.data['password'],
-            profile_image_url=form.data['profile_image_url']
-                if "profileImage" in key_list else "../images/kafei-logo.png",
-            cover_image_url=form.data['cover_image_url'],
+            # profile_image_url=form.data['profile_image_url']
+                # if "profileImage" in key_list else "../images/kafei-logo.png",
+            # cover_image_url=form.data['cover_image_url'],
             tips=0,
         )
         db.session.add(user)

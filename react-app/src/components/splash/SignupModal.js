@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signupUser } from '../../store/actions/signupActions';
+// import { signUp } from '../../services/auth';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
@@ -12,7 +13,7 @@ const SignupModal = ({authenticated, setAuthenticated}) => {
 
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
-  const [bio, setBio] = useState("");
+  // const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -21,15 +22,17 @@ const SignupModal = ({authenticated, setAuthenticated}) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
+      debugger
       let user = new FormData();
       user.append('name', name);
       user.append('username', username);
-      user.append('bio', bio);
+      // user.append('bio', bio);
       user.append('email', email);
       user.append('password', password);
       user = await dispatch(signupUser(user));
-
+      console.log(user)
       if (user && !user.errors) {
+        debugger
         setAuthenticated(true);
         history.push("/home")
       }
@@ -44,9 +47,9 @@ const SignupModal = ({authenticated, setAuthenticated}) => {
     setUsername(e.target.value);
   };
 
-  const updateBio = (e) => {
-    setBio(e.target.value);
-  };
+  // const updateBio = (e) => {
+  //   setBio(e.target.value);
+  // };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
