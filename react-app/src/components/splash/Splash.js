@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import img from '../../images/ka-fei-dark.png';
 import StartModal from './StartModal';
 import GitHubIcon from '@material-ui/icons/GitHub';
@@ -35,7 +35,7 @@ const Splash = ({ authenticated, setAuthenticated }) => {
           <p>Get paid from people who love what you do. No pressure to stick to a schedule.</p>
           <div className="splash__signup">
             <input onChange={updateName} value={name} placeholder="yourname"></input>
-            <StartModal name={name}/>
+            <StartModal name={name} authenticated={authenticated} setAuthenticated={setAuthenticated}/>
           </div>
         </div>
 

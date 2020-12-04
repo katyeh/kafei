@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import LoginForm from "./components/auth/LoginForm";
-import SignUpForm from "./components/auth/SignUpForm";
+// import LoginForm from "./components/auth/LoginForm";
+// import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
+// import UsersList from "./components/UsersList";
+// import User from "./components/User";
 import { authenticate } from "./services/auth";
 import { loadUser } from "./store/actions/signupActions";
 import SplashNav from "./components/splash/SplashNav";
@@ -26,12 +26,11 @@ function App() {
       }
       const userId = localStorage.getItem("user_id");
       (async () => {
-        console.log(userId)
         await dispatch(loadUser(userId));
         setLoaded(true);
       })()
     })();
-  }, []);
+  }, [dispatch]);
 
   if (!loaded) {
     return null;
@@ -49,13 +48,17 @@ function App() {
           </div>
         </Route>
 
-        <Route path="/">
+        <ProtectedRoute
+          path="/"
+          exact={true}
+          authenticated={authenticated}
+        >
           <NavBar setAuthenticated={setAuthenticated} />
           <Home
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
-        </Route>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
 
