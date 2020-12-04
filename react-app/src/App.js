@@ -41,8 +41,8 @@ function App() {
       <Switch>
         <Route path="/splash" exact={true}>
           <div className="splash__container">
+            <SplashNav authenticated={authenticated} setAuthenticated={setAuthenticated} />
             <div className="splash__main">
-              <SplashNav authenticated={authenticated} setAuthenticated={setAuthenticated} />
               <Splash>Splash</Splash>
             </div>
           </div>

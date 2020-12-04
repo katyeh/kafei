@@ -1,0 +1,34 @@
+footer {
+    // position: fixed;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    bottom: 0;
+    background-color: $color-accent-light;
+    padding-top: 5rem;
+
+    &__name {
+        text-transform: uppercase;
+    }
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // position: fixed;
+}
+
+.social-links ul {
+    display: flex;
+}
+
+.social-list__item {
+    list-style: none;
+}
+
+.social-list__link {
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    color: #000;
+}
