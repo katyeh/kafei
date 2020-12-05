@@ -13,6 +13,54 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__tags {
+    display: flex;
+    padding: 5rem;
+  }
+  &__tag {
+    display: flex;
+    padding: 0 1rem;
+    margin: 0 1rem;
+    border-radius: 4rem;
+    height: 6rem;
+    width: 14rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.8rem;
+  }
+  &__tag:hover {
+    filter: brightness(85%);
   }
 
+}
+.tag1 {
+  background-color: $color-pink;
+}
+.tag2 {
+  background-color: $color-accent-light;
+}
+.tag3 {
+  background-color: $color-accent;
+  width: 18rem;
+}
+.tag4 {
+  background-color: #F3E5F5;
+
+}
+.tag5 {
+  background-color: #D6F3E9;
+  width: 18rem;
+}
+.tag6 {
+  background-color: #FDE2FF;
+}
+.tag7 {
+  background-color: #FFDFDF;
+  width: 18rem;
 }
