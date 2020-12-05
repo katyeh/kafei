@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../services/auth";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const LogoutButton = ({setAuthenticated}) => {
   const history = useHistory();
@@ -10,7 +11,12 @@ const LogoutButton = ({setAuthenticated}) => {
     history.push("/splash");
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return (
+    <>
+      <ExitToAppIcon onClick={onLogout} style={{ fontSize: 40 }} />
+      <p onClick={onLogout}>Log Out</p>
+    </>
+  )
 };
 
 export default LogoutButton;

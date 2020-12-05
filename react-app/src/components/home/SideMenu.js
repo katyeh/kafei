@@ -6,9 +6,9 @@ import CloseIcon from '@material-ui/icons/Close';
 import { useHistory } from 'react-router-dom';
 import { getFollowers } from "../../store/actions/followActions";
 import { getFollowing } from "../../store/actions/followingActions";
+import LogoutButton from '../auth/LogoutButton';
 
-
-const SideMenu = ({ sidebar, setSidebar }) => {
+const SideMenu = ({ sidebar, setSidebar, setAuthenticated }) => {
   const history = useHistory();
   const user = useSelector(state => state.user);
   const dispatch = useDispatch();
@@ -56,11 +56,14 @@ const SideMenu = ({ sidebar, setSidebar }) => {
           <ul>
             <li className="sidemenu__link">
               <HomeIcon onClick={() => history.push("/")} style={{ fontSize: 40 }} />
-              <p>Home</p>
+              <p onClick={() => history.push("/")}>Home</p>
             </li>
             <li className="sidemenu__link">
               <img onClick={() => history.push(`/users/${user.id}`)} className="sidemenu__yourpage" src={img} alt=""></img>
               <p onClick={() => history.push(`/users/${user.id}`)}>Your Page</p>
+            </li>
+            <li className="sidemenu__link">
+              <LogoutButton setAuthenticated={setAuthenticated} />
             </li>
           </ul>
         </div>

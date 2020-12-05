@@ -2,7 +2,6 @@ import { LOAD_USER } from '../reducers/signupReducer';
 
 export const signupUser = (user) => {
   return async dispatch => {
-    debugger
     try {
       const res = await fetch(`/api/auth/signup`, {
         method: 'POST',

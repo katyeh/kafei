@@ -1,24 +1,16 @@
 import React from 'react';
-import NavBar from '../NavBar';
+import Search from './Search';
 
 const Home = () => {
   return (
     <div className="home">
       <div className="home__contents">
-        <main className="home__main">
-          <h1>Home</h1>
-        </main>
+        <div className="home__main">
+          <Search />
+        </div>
       </div>
     </div>
   )
-}
+};
 
-const HomeContainer = ( {setAuthenticated={setAuthenticated}} ) => {
-  return (
-    <div>
-      <NavBar setAuthenticated={setAuthenticated} />
-      <Home />
-    </div>
-  )
-}
-export default HomeContainer;
+export default Home;

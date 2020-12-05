@@ -22,7 +22,6 @@ const SignupModal = ({authenticated, setAuthenticated}) => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      debugger
       let user = new FormData();
       user.append('name', name);
       user.append('username', username);
@@ -31,7 +30,6 @@ const SignupModal = ({authenticated, setAuthenticated}) => {
       user.append('password', password);
       user = await dispatch(signupUser(user));
       if (user && !user.errors) {
-        debugger
         setAuthenticated(true);
         history.push("/home")
       }

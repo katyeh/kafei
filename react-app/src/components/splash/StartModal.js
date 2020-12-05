@@ -31,7 +31,7 @@ const StartModal = ({authenticated, setAuthenticated}) => {
 
       if (user && !user.errors) {
         setAuthenticated(true);
-        history.push("/home")
+        history.push("/")
       }
     }
   };

@@ -10,8 +10,10 @@ import { authenticate } from "./services/auth";
 import { loadUser } from "./store/actions/signupActions";
 import SplashNav from "./components/splash/SplashNav";
 import Splash from "./components/splash/Splash";
-import HomeContainer from "./components/home/Home";
+import Home from "./components/home/Home";
 import Profile from './components/profile/Profile';
+import NavBar from './components/NavBar';
+import AppContainer from './AppContainer';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -25,6 +27,7 @@ function App() {
         setAuthenticated(true);
       }
       const userId = localStorage.getItem("user_id");
+      console.log('THIS', userId);
       (async () => {
         await dispatch(loadUser(userId));
         setLoaded(true);
@@ -47,26 +50,12 @@ function App() {
             </div>
           </div>
         </Route>
-
-        <ProtectedRoute
-          path="/"
-          exact={true}
-          authenticated={authenticated}
-        >
-          {/* <NavBar setAuthenticated={setAuthenticated} /> */}
-          <HomeContainer
+        <Route path="/">
+          <AppContainer
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
-        </ProtectedRoute>
-
-        <ProtectedRoute
-          path="/users/:id"
-          exact={true}
-          authenticated={authenticated}
-        >
-          <Profile />
-        </ProtectedRoute>
+        </Route>
       </Switch>
     </BrowserRouter>
 

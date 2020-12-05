@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 // import LogoutButton from './auth/LogoutButton';
 import logo1 from "../images/kafei-logo.png";
 import logo2 from "../images/kafei-dark.png";
 import HomeIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
 import SideMenu from './home/SideMenu';
+import { useSelector } from 'react-redux';
 
 const NavBar = ({ setAuthenticated }) => {
   const [sidebar, setSidebar] = useState(false)
+  const history = useHistory();
+  const user = useSelector(state => state.user);
 
   const showSidebar = () => {
     setSidebar(!sidebar);
@@ -18,7 +21,7 @@ const NavBar = ({ setAuthenticated }) => {
     <div >
       <div className="splashnav">
         <div className="splashnav-logo__container">
-          <img className="logo1" alt="" src={logo1}></img>
+          <img onClick={() => history.push("/")} className="logo1" alt="" src={logo1}></img>
           <img className="logo2" alt="" src={logo2}></img>
         </div>
         <ul className="homenav__links">
@@ -41,7 +44,7 @@ const NavBar = ({ setAuthenticated }) => {
             </ul>
       </div>
       <div>
-        { sidebar ? <SideMenu sidebar={sidebar} setSidebar={setSidebar}/> : null }
+        { sidebar ? <SideMenu sidebar={sidebar} setSidebar={setSidebar} setAuthenticated={setAuthenticated} /> : null }
       </div>
     </div>
 
