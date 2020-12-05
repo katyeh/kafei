@@ -3,6 +3,7 @@
   max-width: 100%;
   // margin: auto;
   // overflow-x: hidden;
+  // background-color:red;
 
   &__contents {
     display: flex;
@@ -19,6 +20,7 @@
   &__tags {
     display: flex;
     padding: 5rem;
+    padding-bottom: 10rem;
   }
   &__tag {
     display: flex;
@@ -26,7 +28,7 @@
     margin: 0 1rem;
     border-radius: 4rem;
     height: 6rem;
-    width: 14rem;
+    width: 10rem;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -36,6 +38,10 @@
   }
   &__tag:hover {
     filter: brightness(85%);
+  }
+
+  &__section-title {
+    padding-bottom: 2rem;
   }
 
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Search from './Search';
+import Section from './ImageSlider';
 
 const Home = () => {
   return (
@@ -15,6 +16,12 @@ const Home = () => {
             <div className="home__tag tag5">#Food & Drink</div>
             <div className="home__tag tag6">#Lifestyle</div>
             <div className="home__tag tag7">#Photography</div>
+          </div>
+          <div>
+            <div>
+              <h1 className="home__section-title">Featured Creators</h1>
+            </div>
+            <Section />
           </div>
         </div>
       </div>
