@@ -12,15 +12,12 @@ export const getAllUsers = () => async (dispatch) => {
 };
 
 export const getUsers = (id) => async (dispatch) => {
-  if (!id) {
-    const res = await fetch(`/api/users/${id}/home`);
-
-    if (res.ok) {
-      const { users } = await res.json();
-      dispatch({
-        type: LOAD_USERS_HOME,
-        users: users
-      });
-    }
-  }
-}
+  const res = await fetch(`/api/users/${id}/home`)
+  if (res.ok) {
+    const { users } = await res.json();
+    dispatch({
+      type: LOAD_USERS_HOME,
+      users: users
+    });
+  };
+};
