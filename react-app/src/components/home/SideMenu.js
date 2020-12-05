@@ -20,9 +20,8 @@ const SideMenu = ({ sidebar, setSidebar }) => {
       await dispatch(getFollowers(user.id));
       await dispatch(getFollowing(user.id));
     })()
-  }, []);
-  console.log('followers:', followers)
-  console.log('following:', following)
+  }, [dispatch, user.id]);
+
   return (
     <div className="sidemenu">
       <div className="sidemenu__close">
@@ -44,9 +43,13 @@ const SideMenu = ({ sidebar, setSidebar }) => {
             <div className="sidemenu__stats-label">Coffees</div>
             <div className="sidemenu__stat">{user.tips}</div>
           </div>
-          <div className="sidemenu__stats-container sidemenu__stats-container-bottom">
+          <div className="sidemenu__stats-container">
             <div className="sidemenu__stats-label">Followers</div>
             <div className="sidemenu__stat">{followers.length}</div>
+          </div>
+          <div className="sidemenu__stats-container sidemenu__stats-container-bottom">
+            <div className="sidemenu__stats-label">Following</div>
+            <div className="sidemenu__stat">{following.length}</div>
           </div>
         </div>
         <div className="sidemenu__links">
@@ -56,8 +59,8 @@ const SideMenu = ({ sidebar, setSidebar }) => {
               <p>Home</p>
             </li>
             <li className="sidemenu__link">
-              <img onClick={() => history.push("/users/:id")} className="sidemenu__yourpage" src={img} alt=""></img>
-              <p onClick={() => history.push("/users/:id")}>Your Page</p>
+              <img onClick={() => history.push(`/users/${user.id}`)} className="sidemenu__yourpage" src={img} alt=""></img>
+              <p onClick={() => history.push(`/users/${user.id}`)}>Your Page</p>
             </li>
           </ul>
         </div>

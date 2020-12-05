@@ -6,7 +6,6 @@ export const getFollowing = (id) => {
       const response = await fetch(`/api/users/${id}/following`)
       const following = await response.json();
       if (response.ok) {
-        console.log("FOLLOWING", following)
         return dispatch({type: GET_FOLLOWING, ...following});
       }
     } catch(e) {
