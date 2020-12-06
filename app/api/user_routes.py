@@ -170,13 +170,12 @@ def get_followers(id):
 #     return jsonify(followed_creators = [followed_creator.to_dict() for followed_creator in followed_creators])
 
 
-@user_routes.route('/<int:id>/following', methods=["POST"])
+@user_routes.route('/<int:id>/follow', methods=["POST"])
 def follow(id):
-
-    follower_id = request.json['follower_id']
-    followed_id = id
-
-    new_follower = Follower(follower_id=follower_id, followed_id=id)
+    data = json.loads(request.data)
+    new_follower = Follower()
+    new_follower.follower_id = data["follower_id"]
+    new_follower.followed_id = id
 
     db.session.add(new_follower)
     db.session.commit()
