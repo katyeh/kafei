@@ -9,16 +9,6 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { getUsers } from "../../store/actions/users";
 
 const ImageSlider = () => {
-  const user = useSelector(state => state.user);
-  const users = useSelector(state => state.users)
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    (async () => {
-      await dispatch(getUsers(user.id));
-    })()
-  }, []);
-
   let settings = {
     dots: true,
     infinite: true,
@@ -41,68 +31,38 @@ const ImageSlider = () => {
       </div>
     )
   };
-console.log("USERs:", users)
+  const user = useSelector(state => state.user);
+  const users = useSelector(state => state.users)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    (async () => {
+      if (user.id) {
+        await dispatch(getUsers(user.id));
+      }
+    })()
+  }, []);
+
   return (
     <div className="slider__container">
-      {/* {users.map(user => (
-        <div>{user.name}</div>
-      ))} */}
       <Slider {...settings}>
-        <div className="card-wrapper">
-          <div className="card">
-            <div className="card__header">
-              <div className="card__image">
-                <img className="slider__img" src={img} alt=""></img>
+      {users.featured_creators && users.featured_creators.map(user => {
+        return(
+          <div className="card-wrapper">
+            <div className="card">
+              <div className="card__header">
+                <div className="card__image">
+                  <img className="slider__img" src={user.profile_image_url} alt=""></img>
+                </div>
+              </div>
+              <div className="card__details">
+                <h2>{user.name}</h2>
+                <h5>{user.username}</h5>
               </div>
             </div>
-            <div className="card__details">
-              <h2>John Doe</h2>
-              <h5>johnny</h5>
-            </div>
           </div>
-        </div>
-
-        <div className="card-wrapper">
-          <div className="card">
-            <div className="card__header">
-              <div className="card__image">
-                <img className="slider__img" src={img} alt=""></img>
-              </div>
-            </div>
-            <div className="card__details">
-              <h2>John Doe</h2>
-              <h5>johnny</h5>
-            </div>
-          </div>
-        </div>
-
-        <div className="card-wrapper">
-          <div className="card">
-            <div className="card__header">
-              <div className="card__image">
-                <img className="slider__img" src={img} alt=""></img>
-              </div>
-            </div>
-            <div className="card__details">
-              <h2>John Doe</h2>
-              <h5>johnny</h5>
-            </div>
-          </div>
-        </div>
-
-        <div className="card-wrapper">
-          <div className="card">
-            <div className="card__header">
-              <div className="card__image">
-                <img className="slider__img" src={img} alt=""></img>
-              </div>
-            </div>
-            <div className="card__details">
-              <h2>John Doe</h2>
-              <h5>johnny</h5>
-            </div>
-          </div>
-        </div>
+        );
+      })}
       </Slider>
     </div>
   )
