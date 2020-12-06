@@ -123,30 +123,34 @@ def photos(id):
 
 @user_routes.route('/<int:id>/photos', methods=["POST"])
 def new_photo(id):
-    # try:
-    form = UploadPhotoForm()
-    if form.validate_on_submit():
-        key_list = request.files.keys()
-        print(f"!!!!!!!!!!!!!!")
-        print(request.files)
-        if "newImageUrl" in key_list:
-            new_image_data = request.files["newImageUrl"]
-            new_image_key = f"photos/{uuid.uuid4()}_{new_image_data.filename}"
-            client.put_object(Body=new_image_data, Bucket="kafei", key=new_image_key,
-                              ContentType=new_image_data.mimetype, ACL="public-read")
-        photo = Photo(
-            pic_url=f"https://kafei.s3-us-west-1.amazonaws.com/{new_image_key}",
-            user_id=id
-        )
-        db.session.add(photo)
-        db.session.commit()
-        print(f"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        print(photo.to_dict())
-        return photo.to_dict()
-    return ""
+    try:
+        form = UploadPhotoForm()
+        print(f"!!!!")
+        print(request.cookies)
+        form['csrf_token'].data = request.cookies['csrf_token']
 
-    """ except Exception as error:
-        return jsonify(error=repr(error)) """
+
+        if form.validate_on_submit():
+            key_list = request.files.keys()
+            print(f"?????????")
+            print(request.files.keys())
+
+            if request.files:
+                if "pic_url" in key_list:
+                    new_image_data = request.files["newImageUrl"]
+                    new_image_key = f"photos/{uuid.uuid4()}_{new_image_data.filename}"
+                    client.put_object(Body=new_image_data, Bucket="kafei", Key=new_image_key,
+                                      ContentType=new_image_data.mimetype, ACL="public-read")
+
+            photo = Photo(
+                pic_url=f"https://kafei.s3-us-west-1.amazonaws.com/{new_image_key}",
+                user_id=id
+            )
+            db.session.add(photo)
+            db.session.commit()
+            return photo.to_dict()
+    except Exception as error:
+        return jsonify(error=repr(error))
 
 # @user_routes.route('/<int:id>/tips', methods=["PUT"])
 # def new_tip(id):
