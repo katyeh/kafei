@@ -1,0 +1,48 @@
+.about {
+
+    &__container {
+        display: flex;
+        justify-content: center;
+        grid-gap: 2rem;
+        min-height: 100vh;
+        max-width: 110rem;
+        margin: auto;
+    }
+    &__left-container {
+        display: block;
+        border: 1px solid lightgray;
+        min-width: 28rem;
+        width: 40rem;
+        // width: 40rem;
+        height: 50rem;
+    }
+    &__right-container {
+        border: 1px solid black;
+        min-width: 28rem;
+        max-width: 55rem;
+        width: 100vw;
+    }
+    &__bio-container {
+        padding: 2rem;
+        border: 1px solid black;
+        border-radius: 1.4rem;
+        // margin: 5rem;
+    }
+    &__bio-content {
+        padding: 2rem 0;
+    }
+    &__bio-received {
+        display: inline-flex;
+        text-align: center;
+        align-items: center;
+    }
+    &__logo {
+        height: 5rem;
+        width: 5rem;
+    }
+    &__received {
+        padding-left: 1rem;
+        position: relative;
+        top: .5rem;
+    }
+}
