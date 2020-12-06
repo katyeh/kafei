@@ -91,32 +91,21 @@ def sign_up():
     Creates a new user and logs them in
     """
     form = SignUpForm()
+    print(f"!!!!")
+    print(request.cookies)
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        key_list = request.files.keys()
-
-    if request.files:
-        if "profileImage" in key_list:
-            profile_image_data = request.files["profileImage"] # what we are uploading
-            profile_image_key = f"images/{uuid.uuid4()}_{profile_image_data.filename}" # name of key
-            client.put_object(Body=profile_image_data, Bucket="kafei", Key=profile_image_key, ContentType=profile_image_data.mimetype, ACL="public-read")
-
-        if "coverImage" in key_list:
-          cover_image_data = request.files["coverImage"]
-          cover_image_key = f"coverimage/{cover_image_data.filename}_{uuid.uuid4()}"
-          client.put_object(Body=cover_image_data, Bucket="busker2", Key=cover_image_key, ContentType=cover_image_data.mimetype, ACL="public-read")
-
+        # key_list = request.files.keys()
         user = User(
-            fullName=form.data['fullName'],
+            name=form.data['name'],
             username=form.data['username'],
             email=form.data['email'],
             password=form.data['password'],
-            profile_image_url=f"https://kafei.s3.amazonaws.com/{profile_image_key}" \
-                                if "profileImage" in key_list else "",
-            cover_image_url=f"https://kafei.s3.amazonaws.com/{cover_image_key}" \
-                                if "coverImage" in key_list else "",
-            tips=0
+            # profile_image_url=form.data['profile_image_url']
+                # if "profileImage" in key_list else "../images/kafei-logo.png",
+            # cover_image_url=form.data['cover_image_url'],
+            tips=0,
         )
         db.session.add(user)
         db.session.commit()
@@ -131,3 +120,43 @@ def unauthorized():
     Returns unauthorized JSON when flask-login authentication fails
     """
     return {'errors': ['Unauthorized']}, 401
+
+
+@auth_routes.route('/<int:id>/profile_pic', methods=["PUT"])
+@login_required
+def profile_pic(id):
+    try:
+        user = User.query.get(id)
+        profile_image_url = request.json["profile_image_url"]
+        user.profile_image_url = profile_image_url
+
+        db.session.commit()
+        return "Profile picture was successfully updated."
+    except:
+        return "Error updating profile picture."
+
+
+@auth_routes.route('/<int:id>/cover_pic', methods=["PUT"])
+@login_required
+def cover_pic(id):
+    try:
+        user = User.query.get(id)
+        cover_image_url = request.json["cover_image_url"]
+        user.cover_image_url = cover_image_url
+
+        db.session.commit()
+        return "Cover image was successfully updated."
+    except:
+        return "Error updating cover image."
+
+
+@auth_routes.route('/<int:id>', methods=["DELETE"])
+# @login_required
+def delete_user(id):
+    try:
+        user = User.query.get(id)
+        db.session.delete(user)
+        db.session.commit()
+        return "User was successfully deleted."
+    except:
+        return jsonify(errors = f"Error deleting the user.")

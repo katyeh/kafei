@@ -1,0 +1,33 @@
+.splashnav {
+    display: flex;
+    justify-content: space-around;
+    height: 6rem;
+    width: auto;
+    padding: 1rem 0;
+    box-shadow: 0 5px 8px #00098000, 0 5px 16px rgba(0,9,128,0.2);
+
+    &-logo__container {
+        display: flex;
+        align-items: center;
+        position: relative;
+        top: -3rem;
+        // right: 2rem;
+        height: 10rem;
+
+        img {
+            height: 6rem;
+            padding-right: .5rem;
+        }
+
+        .logo1 {
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+}

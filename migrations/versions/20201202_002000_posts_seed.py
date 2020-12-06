@@ -32,7 +32,7 @@ def upgrade():
         },
         {
             'body': 'Thanks for all the support. New content coming soon, so keep your eyes peeled!',
-            'user_id': 2
+            'user_id': 3
         },
     ])
 

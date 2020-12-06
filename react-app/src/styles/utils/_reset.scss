@@ -1,0 +1,30 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  color: #000;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  opacity: 1;
+  transition: opacity .2s ease-in;
+
+  p {
+    &:hover {
+      opacity: .8;
+    }
+  }
+}

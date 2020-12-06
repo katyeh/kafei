@@ -1,0 +1,128 @@
+.profile {
+    &__main {
+        max-width: 150rem;
+        margin: auto;
+    }
+    &__cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        // margin: auto;
+    }
+    &__header-img {
+        display: block;
+        width: 100%;
+        height: 30rem;
+    }
+    &__header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    &__user {
+        display: flex;
+        padding: 4rem 0;
+    }
+    &__user-img {
+        width: 12rem;
+        height: 12rem;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+    &__info {
+        display: flex;
+        flex-direction: column;
+        padding-left: 2rem;
+        padding-top: 1rem;
+
+        h2, p {
+            padding-top: .8rem;
+        }
+    }
+    &__btns {
+        display: flex;
+    }
+    &__logo-img {
+        position: relative;
+        width: 3.5rem;
+        height: 3.5rem;
+        object-fit: cover;
+        bottom: .5rem;
+        margin-right: .8rem;
+    }
+    .support-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 22rem;
+        padding: 2.3rem;
+        height: 3.5rem;
+        color: #fff;
+        font-weight: 600;
+        font-size: 1.6rem;
+        background-color: transparent;
+        border-radius: 4rem;
+        border: none;
+        background-color: $color-accent-dark;
+        cursor: pointer;
+        margin-right: 2rem;
+
+        &:hover {
+            filter: brightness(85%);
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+    .follow-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 10rem;
+        height: 2rem;
+        padding: 2.1rem;
+        font-weight: 600;
+        font-size: 1.6rem;
+        border-radius: 4rem;
+        border: 2px solid black;
+        background-color: #fff;
+        cursor: pointer;
+
+        &:hover {
+            filter: brightness(85%);
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+    &__tabs-container {
+        border-bottom: 3px solid #f8f8f9;
+        margin-bottom: 2.4rem;
+    }
+    &__tabs {
+        display: flex;
+        max-width: 110rem;
+        margin: auto;
+        box-sizing: border-box;
+    }
+    &__tab {
+        display: inline-flex;
+        align-items: center;
+        text-align: center;
+        padding: 2rem;
+        font-weight: 600;
+        font-size: 2rem;
+        cursor: pointer;
+        padding-bottom: 2rem;
+
+        &__tab:hover {
+            color: #FF5F5F;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+    .selected {
+        border-bottom: 3px solid #FF5F5F;
+    }
+}

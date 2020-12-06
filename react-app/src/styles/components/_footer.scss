@@ -1,0 +1,40 @@
+.footer {
+    // position: fixed;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    bottom: 0;
+    background-color: $color-accent-light;
+    padding: 2rem;
+    &__name-div {
+        display: flex;
+        align-items: center;
+    }
+    &__name {
+        text-transform: uppercase;
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // position: fixed;
+}
+
+.social-links ul {
+    display: flex;
+}
+
+.social-list__item {
+    list-style: none;
+}
+
+.social-list__link {
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    color: #000;
+}

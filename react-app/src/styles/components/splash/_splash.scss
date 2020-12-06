@@ -1,0 +1,210 @@
+.splash {
+    p {
+        padding: 2rem 0;
+    }
+
+    &__main {
+        // width: 70%;
+        // margin: 0 auto;
+
+        .featured-creators {
+            display: flex;
+            justify-content: center;
+            padding: 5rem;
+        }
+    }
+
+    &__header {
+        display: flex;
+        justify-content: center;
+        // align-items: center;
+
+        .splash__header-img {
+            height: 25rem;
+            position: relative;
+            top: -3rem;
+            padding-right: 2rem;
+        }
+    }
+    &__intro {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 45rem;
+        font-size: 2rem;
+        line-height: 4rem;
+        font-weight: 600;
+        margin-top: 8rem;
+    }
+
+    &__signup-div {
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        align-items: center;
+        padding: 6rem;
+
+        h6 {
+            font-size: 3rem;
+            padding: 1.4rem;
+        }
+
+        subtitle {
+            padding-bottom: 1.4rem;
+        }
+
+        input {
+            border: .2rem solid black;
+            border-radius: 2rem;
+            width: 40rem;
+            display: inline-block;
+            height: 6rem;
+            padding: .8rem 1.6rem;
+            position: relative;
+            font-family: $font-main;
+            font-size: 2.4rem;
+            font-weight: 500;
+        }
+    }
+
+
+    &__startbtn {
+        border: .2rem solid black;
+        border-radius: 2rem;
+        // width: 40rem;
+        background-color: $color-accent-dark;
+        display: inline-block;
+        height: 6rem;
+        padding: .8rem 1.6rem;
+        position: relative;
+        font-family: $font-main;
+        font-size: 2.4rem;
+        font-weight: 600;
+    }
+
+    &__signup {
+        display: flex;
+        grid-gap: 1rem;
+    }
+
+    &__featured-container {
+        display: flex;
+        flex-direction: column;
+        background-color: $color-accent-light;
+        height: 90rem;
+
+        .featured__section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-gap: 1rem;
+        }
+
+    }
+
+    &__featured-item {
+        margin-top: 5rem;
+        border: 1px solid black;
+        height: 33.9rem;
+        width: 30rem;
+        cursor: pointer;
+        box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+        border-radius: 1rem;
+    }
+
+    &__featured-header {
+        background-color: $color-accent-dark;
+        height: 12rem;
+
+    }
+
+    &__img-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__featured-img {
+        border-radius: 50%;
+        width: 12rem;
+        height: 12rem;
+        position: relative;
+        top: -8rem;
+        border: .8rem solid white;
+    }
+
+    &__featured-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        top: -5rem;
+
+        subtitle {
+            padding: 0 3rem;
+        }
+    }
+
+    &__featured-name {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        top: -2rem;
+    }
+
+
+    &__featured-div {
+        padding-top: 8rem;
+        height: 20rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+
+        h1 {
+            font-size: 4rem;
+        }
+        p {
+            width: 70rem;
+            font-size: 2rem;
+            font-weight: 500;
+        }
+    }
+
+    &__tag-section {
+        display: flex;
+        // flex-direction: column;
+        justify-content: center;
+        grid-gap: 5rem;
+        padding: 10rem 0;
+        // flex-direction: row;
+    }
+
+    .tag__container {
+        display: flex;
+        flex-direction: column;
+        // align-items: center;
+
+    }
+    .tag__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+        padding: 1rem;
+    }
+    .tag__item {
+        display:flex;
+        border-radius: 4rem;
+        height: 6rem;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        background-color: #f7f7f7;
+        color: #434b57;
+        padding: 1rem;
+        cursor: pointer;
+    }
+
+    .tag__item:hover {
+        background-color: darkgray;
+    }
+}

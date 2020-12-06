@@ -18,7 +18,12 @@ export const login = async (email, password) => {
       password
     })
   });
-  return await response.json();
+
+  const data = await response.json();
+  if (response.ok) {
+    localStorage.setItem("user_id", data.id)
+  }
+  return data;
 }
 
 export const logout = async () => {
@@ -27,6 +32,7 @@ export const logout = async () => {
       "Content-Type": "application/json",
     }
   });
+  localStorage.removeItem("user_id");
   return await response.json();
 };
 
