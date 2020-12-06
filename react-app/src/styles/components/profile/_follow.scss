@@ -1,0 +1,21 @@
+.following__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6rem;
+    height: 2rem;
+    padding: 2.1rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+    border-radius: 4rem;
+    border: 2px solid black;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+        filter: brightness(85%);
+    }
+    &:focus {
+        outline: none;
+    }
+}

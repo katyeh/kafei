@@ -21,7 +21,7 @@ export const signupUser = (user) => {
 
       return await res.json();
     } catch(e) {
-      // console.log(e);
+      console.log(e);
     }
   }
 }

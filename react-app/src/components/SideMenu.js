@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import img from '../../images/kafei-logo.png'
+import img from '../images/kafei-logo.png'
 import HomeIcon from '@material-ui/icons/Home';
 import CloseIcon from '@material-ui/icons/Close';
 import { useHistory } from 'react-router-dom';
-import { getFollowers } from "../../store/actions/followActions";
-import { getFollowing } from "../../store/actions/followingActions";
-import LogoutButton from '../auth/LogoutButton';
+import { getFollowers } from "../store/actions/followActions";
+import { getFollowing } from "../store/actions/followingActions";
+import LogoutButton from './auth/LogoutButton';
 
 const SideMenu = ({ sidebar, setSidebar, setAuthenticated }) => {
   const history = useHistory();

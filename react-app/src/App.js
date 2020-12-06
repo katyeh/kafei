@@ -10,8 +10,6 @@ import { authenticate } from "./services/auth";
 import { loadUser } from "./store/actions/signupActions";
 import SplashNav from "./components/splash/SplashNav";
 import Splash from "./components/splash/Splash";
-import Home from "./components/home/Home";
-import Profile from './components/profile/Profile';
 import NavBar from './components/NavBar';
 import AppContainer from './AppContainer';
 

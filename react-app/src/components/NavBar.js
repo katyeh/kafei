@@ -5,7 +5,7 @@ import logo1 from "../images/kafei-logo.png";
 import logo2 from "../images/kafei-dark.png";
 import HomeIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
-import SideMenu from './home/SideMenu';
+import SideMenu from './SideMenu';
 import { useSelector } from 'react-redux';
 
 const NavBar = ({ setAuthenticated }) => {

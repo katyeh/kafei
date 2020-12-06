@@ -23,8 +23,11 @@
         background-color: $color-accent-dark;
         cursor: pointer;
 
-          &:focus {
-            outline: none;
-          }
+        &:hover {
+            filter: brightness(85%);
+        }
+        &:focus {
+          outline: none;
+        }
     }
 }

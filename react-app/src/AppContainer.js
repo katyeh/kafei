@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from "./components/home/Home";
-import Profile from './components/profile/Profile';
+import ProfileContainer from './components/profile/Profile';
 import NavBar from './components/NavBar';
 import { Switch } from 'react-router-dom';
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -25,7 +25,7 @@ function AppContainer({authenticated, setAuthenticated}) {
           exact={true}
           authenticated={authenticated}
         >
-          <Profile />
+          <ProfileContainer />
         </ProtectedRoute>
       </Switch>
     </>
