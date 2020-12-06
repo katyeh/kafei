@@ -1,14 +1,25 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from flask_cors import cross_origin
+from flask_cors import cross_origin,CORS
 from sqlalchemy.orm import relationship, sessionmaker, joinedload
 from sqlalchemy import func, select, or_
+from app.forms import UploadPhotoForm
 from app.models import db, User, Post, Photo, Comment, Like, Transaction, Follower
-
 import json
+
+import binascii
+import os
+import boto3
+from botocore.exceptions import ClientError
+import uuid
 
 user_routes = Blueprint('users', __name__)
 
+s3 = boto3.resource('s3')
+client = boto3.client('s3',
+                      aws_access_key_id=os.environ.get('AWS_ACCESS_KEY'),
+                      aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY')
+)
 
 @user_routes.route('/')
 # @login_required
@@ -112,10 +123,30 @@ def photos(id):
 
 @user_routes.route('/<int:id>/photos', methods=["POST"])
 def new_photo(id):
-    data = json.loads(request.data)
-    photo = Photo()
-    photo.pic_url = data["pic_url"]
-    photo.user_id = id
+    # try:
+    form = UploadPhotoForm()
+    if form.validate_on_submit():
+        key_list = request.files.keys()
+        print(f"!!!!!!!!!!!!!!")
+        print(request.files)
+        if "newImageUrl" in key_list:
+            new_image_data = request.files["newImageUrl"]
+            new_image_key = f"photos/{uuid.uuid4()}_{new_image_data.filename}"
+            client.put_object(Body=new_image_data, Bucket="kafei", key=new_image_key,
+                              ContentType=new_image_data.mimetype, ACL="public-read")
+        photo = Photo(
+            pic_url=f"https://kafei.s3-us-west-1.amazonaws.com/{new_image_key}",
+            user_id=id
+        )
+        db.session.add(photo)
+        db.session.commit()
+        print(f"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        print(photo.to_dict())
+        return photo.to_dict()
+    return ""
+
+    """ except Exception as error:
+        return jsonify(error=repr(error)) """
 
 # @user_routes.route('/<int:id>/tips', methods=["PUT"])
 # def new_tip(id):
