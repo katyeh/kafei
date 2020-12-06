@@ -1,4 +1,4 @@
-footer {
+.footer {
     // position: fixed;
     display: flex;
     justify-content: space-around;
@@ -6,9 +6,15 @@ footer {
     bottom: 0;
     background-color: $color-accent-light;
     padding: 2rem;
-
+    &__name-div {
+        display: flex;
+        align-items: center;
+    }
     &__name {
         text-transform: uppercase;
+        display: block;
+        font-size: 2rem;
+        cursor: pointer;
     }
 }
 

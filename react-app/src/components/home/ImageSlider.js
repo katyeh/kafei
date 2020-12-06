@@ -9,6 +9,18 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { getUsers } from "../../store/actions/users";
 
 const ImageSlider = () => {
+  const user = useSelector(state => state.user);
+  const users = useSelector(state => state.users)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    (async () => {
+      if (user.id) {
+        await dispatch(getUsers(user.id));
+      }
+    })()
+  }, [dispatch]);
+
   let settings = {
     dots: true,
     infinite: true,
@@ -31,17 +43,6 @@ const ImageSlider = () => {
       </div>
     )
   };
-  const user = useSelector(state => state.user);
-  const users = useSelector(state => state.users)
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    (async () => {
-      if (user.id) {
-        await dispatch(getUsers(user.id));
-      }
-    })()
-  }, []);
 
   return (
     <div className="slider__container">

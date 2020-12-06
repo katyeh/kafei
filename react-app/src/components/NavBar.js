@@ -26,9 +26,7 @@ const NavBar = ({ setAuthenticated }) => {
         </div>
         <ul className="homenav__links">
           <li>
-            <NavLink to="/users/:id" exact={true} activeClassName="active">
-              <button className="homenav__btn">My Page</button>
-            </NavLink>
+            <button onClick={() => history.push(`/users/${user.id}`)} className="homenav__btn">My Page</button>
           </li>
           <li>
             <NavLink to="/" exact={true} activeClassName="active">

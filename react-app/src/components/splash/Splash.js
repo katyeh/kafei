@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import img from '../../images/ka-fei-dark.png';
 import StartModal from './StartModal';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import EmailIcon from '@material-ui/icons/Email';
 import kathleenimg from '../../images/kathleen.jpg';
-import { useSelector } from 'react-redux';
+import { getUsersSplash } from '../../store/actions/users';
+import { useHistory } from 'react-router-dom';
 
 const Splash = ({ authenticated, setAuthenticated }) => {
   const [name, setName] = useState("");
+  const users = useSelector(state => state.users);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    (async () => {
+      await dispatch(getUsersSplash())
+    })()
+  }, []);
 
   const updateName = (e) => {
     setName(e.target.value);
@@ -40,39 +51,20 @@ const Splash = ({ authenticated, setAuthenticated }) => {
         <div className="splash__featured-container">
           <h1 className="featured-creators">Featured creators</h1>
           <div className="featured__section">
-
-            <div className="splash__featured-item">
-              <div className="splash__featured-header"></div>
-              <a className="splash__img-container" href="#">
-                <img className="splash__featured-img" alt="" src={kathleenimg}></img>
-              </a>
-              <div className="splash__featured-info">
-                <h2 className="splash__featured-name">Kathleen Yeh</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem nesciunt, debitis consequuntur iure iste facil...</p>
+          {users[0] && users.map(user => {
+            return(
+              <div className="splash__featured-item">
+                <div className="splash__featured-header"></div>
+                <a className="splash__img-container" href="#">
+                  <img className="splash__featured-img" alt="" src={user.profile_image_url}></img>
+                </a>
+                <div className="splash__featured-info">
+                  <h2 className="splash__featured-name">{user.name}</h2>
+                  <p>{user.bio}...</p>
+                </div>
               </div>
-            </div>
-
-            <div className="splash__featured-item">
-              <div className="splash__featured-header"></div>
-              <a className="splash__img-container" href="#">
-                <img className="splash__featured-img" alt="" src={kathleenimg}></img>
-              </a>
-              <div className="splash__featured-info">
-                <h2 className="splash__featured-name">Kathleen Yeh</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem nesciunt, debitis consequuntur iure iste facil...</p>
-              </div>
-            </div>
-
-            <div className="splash__featured-item">
-              <div className="splash__featured-header"></div>
-              <a className="splash__img-container" href="#">
-                <img className="splash__featured-img" alt="" src={kathleenimg}></img>
-              </a>
-              <div className="splash__featured-info">
-                <h2 className="splash__featured-name">Kathleen Yeh</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem nesciunt, debitis consequuntur iure iste facil...</p>
-              </div>
-            </div>
+            )
+          })}
 
           </div>
           <div className="splash__featured-div">
@@ -97,8 +89,8 @@ const Splash = ({ authenticated, setAuthenticated }) => {
         </div>
 
         <footer className="footer">
-          <div className="footer__name">
-            <h1>Kathleen Yeh</h1>
+          <div className="footer__name-div">
+            <h1 /* onClick={() => history.push("www.hellokat.io")} */ className="footer__name">Kathleen Yeh</h1>
           </div>
           <div className="social-links">
             <ul className="social-list">

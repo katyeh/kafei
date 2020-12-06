@@ -27,7 +27,6 @@ function App() {
         setAuthenticated(true);
       }
       const userId = localStorage.getItem("user_id");
-      console.log('THIS', userId);
       (async () => {
         await dispatch(loadUser(userId));
         setLoaded(true);

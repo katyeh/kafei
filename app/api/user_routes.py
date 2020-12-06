@@ -45,14 +45,13 @@ def following(id):
 @user_routes.route('/<int:id>/home')
 # @login_required
 def user_home(id):
-
     liked_posts_ids = Like.query.filter(
         Like.user_id == id).options(joinedload(Like.post)).all()
     liked_photos_ids = Like.query.filter(
         Like.user_id == id).options(joinedload(Like.photo)).all()
     creator_ids = [
         liked_post_id.post.user_id for liked_post_id in liked_posts_ids]
-    # creator_ids_photo = [liked_photo_id.photo.user_id for liked_photo_id in liked_photos_ids]
+
     suggested_creators = [User.query.get(
         creator_id) for creator_id in creator_ids]
 
@@ -68,6 +67,16 @@ def user_home(id):
             "creators_you_follow": [follower.to_dict() for follower in set(following)],
             "featured_creators": [user.to_dict() for user in featured_creators]
         })
+    except Exception as error:
+        return jsonify(error=repr(error))
+
+
+@user_routes.route('/splash')
+def splash():
+    featured_creators = User.query.order_by(
+        func.random()).limit(3).all()
+    try:
+        return jsonify(users=[user.to_dict() for user in featured_creators])
     except Exception as error:
         return jsonify(error=repr(error))
 

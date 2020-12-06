@@ -1,5 +1,5 @@
 import merge from "lodash/merge";
-import { LOAD_USERS, LOAD_USERS_HOME } from "../actions/users";
+import { LOAD_USERS, LOAD_USERS_HOME, LOAD_USERS_SPLASH } from "../actions/users";
 
 const userReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -13,6 +13,8 @@ const userReducer = (state = {}, action) => {
       return {
         ...action.users
       }
+    case LOAD_USERS_SPLASH:
+      return action.users
     default:
       return state
   };
