@@ -4,6 +4,8 @@ import ProfileContainer from './components/profile/Profile';
 import NavBar from './components/NavBar';
 import { Switch } from 'react-router-dom';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import UploadPhotoForm from "./components/UploadPhotoForm";
+
 
 function AppContainer({authenticated, setAuthenticated}) {
   return (
@@ -27,6 +29,11 @@ function AppContainer({authenticated, setAuthenticated}) {
         >
           <ProfileContainer />
         </ProtectedRoute>
+
+        <ProtectedRoute path="/uploadphoto" exact={true} authenticated={authenticated}>
+          <UploadPhotoForm />
+        </ProtectedRoute>
+
       </Switch>
     </>
   )

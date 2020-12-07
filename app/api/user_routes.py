@@ -1,13 +1,85 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from flask_cors import cross_origin
+from flask_cors import cross_origin,CORS
 from sqlalchemy.orm import relationship, sessionmaker, joinedload
 from sqlalchemy import func, select, or_
+from app.forms import UploadPhotoForm
 from app.models import db, User, Post, Photo, Comment, Like, Transaction, Follower
-
 import json
 
+import binascii
+import os
+import boto3
+from botocore.exceptions import ClientError
+import uuid
+
 user_routes = Blueprint('users', __name__)
+
+s3 = boto3.resource('s3')
+client = boto3.client('s3',
+                      aws_access_key_id=os.environ.get('AWS_ACCESS_KEY'),
+                      aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY')
+)
+# print(f"ITS A SECRET!!!!!!!!!!!!")
+# print(os.environ.get("AWS_SECRET_ACCESS_KEY"))
+
+@user_routes.route('/<int:id>/photos', methods=["POST"])
+def new_photo(id):
+    try:
+        form = UploadPhotoForm()
+
+        form['csrf_token'].data = request.cookies['csrf_token']
+
+        if form.validate_on_submit():
+            key_list = request.files.keys()
+            # print(f'??????????????????????')
+            # print(key_list)
+            if request.files:
+                if "pic_url" in key_list:
+                    new_image_data = request.files["pic_url"]
+                    new_image_key = f"photos/{uuid.uuid4()}_{new_image_data.filename}"
+                    client.put_object(Body=new_image_data, Bucket="kafei", Key=new_image_key,
+                                      ContentType=new_image_data.mimetype, ACL="public-read")
+
+            photo = Photo(
+                pic_url=f"https://kafei.s3-us-west-1.amazonaws.com/{new_image_key}",
+                user_id=id
+            )
+            db.session.add(photo)
+            db.session.commit()
+            return photo.to_dict()
+    except Exception as error:
+        return jsonify(error=repr(error))
+
+
+    # credentials = {
+    #     'aws_access_key_id': os.environ.get('AWS_ACCESS_KEY'),
+    #     'aws_secret_access_key': os.environ.get('AWS_SECRET_ACCESS_KEY')
+    # }
+    # user_id = id
+    # file = request.files['pic_url']
+
+    # filename=file.filename
+    # newFilename = filename.replace(" ", "")
+
+    # print("New filename: ", newFilename)
+    # client  = boto3.client('s3', 'us-west-1', **credentials)
+    # bucket = 'kafei'
+    # key = '%s-%s' % (date.today(), newFilename)
+    # properties = {'ACL': 'public-read', 'Body': request.files['pic_url'],
+    #               'Bucket': bucket,
+    #               'Key': key,
+    #               'ContentType': request.files['pic_url'].mimetype}
+    # retVal = client.put_object(**properties)
+    # status = retVal['ResponseMetadata']
+    # ['HTTPStatusCode']
+
+    # if (status != 200):
+    #     return status
+    # else:
+    #     pic_url = 'https://kafei.s3-us-west-1.amazonaws.com/%s'% (key)
+    #     updatePhoto(pic_url, user_id)
+    #     return 'ok'
 
 
 @user_routes.route('/')
@@ -109,13 +181,6 @@ def photos(id):
     photos = Photo.query.filter(Photo.user_id == id).all()
     return jsonify(photos=[photo.to_dict() for photo in photos])
 
-
-@user_routes.route('/<int:id>/photos', methods=["POST"])
-def new_photo(id):
-    data = json.loads(request.data)
-    photo = Photo()
-    photo.pic_url = data["pic_url"]
-    photo.user_id = id
 
 # @user_routes.route('/<int:id>/tips', methods=["PUT"])
 # def new_tip(id):

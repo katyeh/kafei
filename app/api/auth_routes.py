@@ -3,8 +3,23 @@ from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
+from datetime import datetime
+
+# import json
+# import binascii
+# import os
+# import boto3
+# from botocore.exceptions import ClientError
+# import uuid
+
 
 auth_routes = Blueprint('auth', __name__)
+
+# s3 = boto3.resource('s3')
+# client = boto3.client('s3',
+#                       aws_access_key_id=os.environ.get('AWS_ACCESS_KEY'),
+#                       aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY')
+# )
 
 
 def validation_errors_to_error_messages(validation_errors):
@@ -16,7 +31,6 @@ def validation_errors_to_error_messages(validation_errors):
         for error in validation_errors[field]:
             errorMessages.append(f"{field} : {error}")
     return errorMessages
-
 
 @auth_routes.route('/')
 def authenticate():
@@ -55,6 +69,22 @@ def logout():
     return {'message': 'User logged out'}
 
 
+@auth_routes.route('/profile_pic/<id>', methods=["PUT"])
+def profile_pic(id):
+    """
+    Edits profile picture
+    """
+    try:
+        artist = Artist.query.get(id)
+        profile_image_url = request.json["profile_image_url"]
+        artist.profile_image_url = profile_image_url
+
+        db.session.commit()
+        return "Profile picture was successfully updated."
+    except:
+        return "Error updating profile picture."
+
+
 @auth_routes.route('/signup', methods=['POST'])
 def sign_up():
     """
@@ -64,6 +94,7 @@ def sign_up():
     print(f"!!!!")
     print(request.cookies)
     form['csrf_token'].data = request.cookies['csrf_token']
+
     if form.validate_on_submit():
         # key_list = request.files.keys()
         user = User(
@@ -91,18 +122,18 @@ def unauthorized():
     return {'errors': ['Unauthorized']}, 401
 
 
-@auth_routes.route('/<int:id>/profile_pic', methods=["PUT"])
-@login_required
-def profile_pic(id):
-    try:
-        user = User.query.get(id)
-        profile_image_url = request.json["profile_image_url"]
-        user.profile_image_url = profile_image_url
+# @auth_routes.route('/<int:id>/profile_pic', methods=["PUT"])
+# @login_required
+# def profile_pic(id):
+#     try:
+#         user = User.query.get(id)
+#         profile_image_url = request.json["profile_image_url"]
+#         user.profile_image_url = profile_image_url
 
-        db.session.commit()
-        return "Profile picture was successfully updated."
-    except:
-        return "Error updating profile picture."
+#         db.session.commit()
+#         return "Profile picture was successfully updated."
+#     except:
+#         return "Error updating profile picture."
 
 
 @auth_routes.route('/<int:id>/cover_pic', methods=["PUT"])
