@@ -14,17 +14,14 @@ const UploadPhotoForm = () => {
   };
 
   const onUpload = async (e) => {
-    debugger
+    // debugger
     e.preventDefault();
     if (user) {
-      let photo = new FormData();
-      photo.append('user_id', user.id);
-      photo.append('pic_url', photoUrl);
-      for (var pair of photo.entries()) {
-        console.log(pair[0]+ ',' + pair[1]);
-      }
-      console.log("!!!!!")
-      await dispatch(uploadPhoto(user.id, photo))
+      let formData = new FormData();
+      formData.append('user_id', user.id);
+      formData.append('pic_url', photoUrl);
+
+      await dispatch(uploadPhoto(formData, user.id))
     }
   }
 

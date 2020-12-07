@@ -20,22 +20,23 @@ client = boto3.client('s3',
                       aws_access_key_id=os.environ.get('AWS_ACCESS_KEY'),
                       aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY')
 )
-
+# print(f"ITS A SECRET!!!!!!!!!!!!")
+# print(os.environ.get("AWS_SECRET_ACCESS_KEY"))
 
 @user_routes.route('/<int:id>/photos', methods=["POST"])
 def new_photo(id):
     try:
         form = UploadPhotoForm()
-        print(f"!!!!")
 
         form['csrf_token'].data = request.cookies['csrf_token']
 
         if form.validate_on_submit():
             key_list = request.files.keys()
-
+            # print(f'??????????????????????')
+            # print(key_list)
             if request.files:
                 if "pic_url" in key_list:
-                    new_image_data = request.files["newImageUrl"]
+                    new_image_data = request.files["pic_url"]
                     new_image_key = f"photos/{uuid.uuid4()}_{new_image_data.filename}"
                     client.put_object(Body=new_image_data, Bucket="kafei", Key=new_image_key,
                                       ContentType=new_image_data.mimetype, ACL="public-read")
