@@ -10,7 +10,7 @@ import CloseIcon from '@material-ui/icons/Close';
 const AddImageBtn = () => {
   const dispatch = useDispatch();
   const [imageUrl, setImageUrl] = useState("");
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [imagePreview, setImagePreview] = useState("");
   const user = useSelector(state => state.user);
 
@@ -86,15 +86,18 @@ const AddImageBtn = () => {
             </div>
 
             <div className="modal__preview-wrap">
-              <img
-                className="modal__preview-img"
-                src={imagePreview}
-                id="imagePreview"
-                alt="Preview Image"
-              />
+              <div class="modal__img-div">
+                <img
+                  className="modal__preview-img"
+                  src={imagePreview}
+                  id="imagePreview"
+                  alt="Preview Image"
+                />
+              </div>
             </div>
-
-            <button type="submit">Post Image</button>
+            <div className="modal__btn-div">
+              <button className="modal__btn" type="submit">Post Image</button>
+            </div>
           </section>
         </div>
         : ""

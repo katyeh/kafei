@@ -63,16 +63,35 @@
         border: 1px dashed #dadada;
         border-radius: .8rem;
         min-height: 10rem;
+        padding: 1rem;
+    }
+    &__preview-img-div {
+        margin: 4px;
+        width: 12rem;
+        min-height: 10rem;
     }
     &__preview-img {
         border-radius: 2rem;
-        height: 20rem;
+        max-height: 20rem;
         padding: .5rem;
         box-shadow: 0 1px 3px 2px #cbdcea;
+        max-width: 20rem;
+        // max-width: 10rem;
+    }
+    &__btn-div {
+        display: block;
+    }
+    &__btn {
+        background-color: $color-accent-dark;
+        color: #fff;
+        outline: none;
+        border-radius: 1rem;
+        border:none;
+        cursor: pointer;
+        width: 100%;
+        font-weight: 600;
+        font-size: 1.6rem;
+        padding: 1.2rem 1.6rem;
+        margin: 4rem 0 2rem 0;
     }
   }
-
-// Preview Styles
-.img {
-
-}

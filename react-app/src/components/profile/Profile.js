@@ -14,8 +14,8 @@ import Posts from './Posts';
 
 const Profile = ({ users }) => {
   const [isProfile, setProfile] = useState(false);
-  const [about, setAbout] = useState(false);
-  const [gallery, setGallery] = useState(true);
+  const [about, setAbout] = useState(true);
+  const [gallery, setGallery] = useState(false);
   const [posts, setPosts] = useState(false);
 
   const user = useSelector(state => state.user)
