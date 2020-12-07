@@ -26,10 +26,11 @@ export const giveTip = (formData, recipient_id) => {
 export const getTips = (id) => {
   return async (dispatch) => {
     try {
-      const res = await fetch(`api/users/{id}/transactions`)
+      // debugger
+      const res = await fetch(`/api/users/${id}/transactions`)
       const tips = await res.json();
       if (res.ok) {
-        return dispatch({ type: GET_TIPS, tips })
+        return dispatch({ type: GET_TIPS, ...tips })
       }
     } catch(e) {
       console.log(e);

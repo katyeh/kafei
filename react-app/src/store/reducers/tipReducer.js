@@ -14,6 +14,10 @@ const tipReducer = (state = [], action) => {
         // transaction_id: action.transaction_id
       }
     case GET_TIPS:
-      return action.tips
+      return action.transactions
+    default:
+      return state;
   }
 }
+
+export default tipReducer;

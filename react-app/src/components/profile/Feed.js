@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from "../../images/kafei-logo.png";
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import TipModal from './TipModal';
+import { useSelector, useDispatch } from 'react-redux';
+import { getTips } from "../../store/actions/tipActions";
 
 const Feed = () => {
+  const user = useSelector(state => state.user);
+  const tips = useSelector(state => state.tips);
+  const dispatch = useDispatch();
+console.log(tips)
+  useEffect(() => {
+    (async () => {
+      await dispatch(getTips(user.id))
+    })()
+  }, []);
+
   return (
     <div className="about__container about__feed-container">
       <div className="about__label about__feed-label">
