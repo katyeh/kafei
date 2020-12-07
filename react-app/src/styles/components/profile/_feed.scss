@@ -1,0 +1,57 @@
+.about {
+    &__feed-label {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__feed-contact {
+        color: $color-accent-dark;
+        font-weight: 700;
+        cursor: pointer;
+    }
+    &__feed-main {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__feed-info {
+        display: flex;
+        align-items: center;
+    }
+    &__feed-pic {
+        height: 5rem;
+        width: 5rem;
+        border-radius: 50%;
+    }
+    &__feed-text {
+        padding-left: 1rem;
+    }
+    &__feed-more {
+        cursor: pointer;
+    }
+    &__feed-msg-container {
+        // padding: 1.6rem;
+        position: relative;
+        padding: .8rem 0;
+        box-sizing: border-box;
+        box-shadow: 0 0 20px 0 rgba(50,56,66,.2);
+        display: inline-block;
+        margin: 2rem 0;
+        padding: 2rem .5rem;
+        border-radius: 1rem;
+        width: 100%;
+    }
+    &__feed-msg-container::after {
+        content: "";
+        position:absolute;
+        margin-top:-6px;
+        // margin-left:-5px;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-bottom: 12px solid #fff;
+        // transform:rotate(-40deg);
+        left: 3rem;
+        top: -.4rem;
+    }
+    &__feed-msg {
+        // font-weight: 500;
+    }
+}

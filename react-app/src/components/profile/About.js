@@ -2,6 +2,7 @@ import React from 'react';
 import logo from "../../images/logo-transparent.png";
 import kathleen from "../../images/kathleen.jpg";
 import TipSection from './TipSection';
+import Feed from './Feed';
 
 const About = () => {
   return (
@@ -42,6 +43,7 @@ const About = () => {
         </div>
         <div className="about__right-container">
           <TipSection />
+          <Feed />
         </div>
       </div>
     </div>

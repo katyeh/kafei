@@ -1,4 +1,5 @@
 export const GIVE_TIP = 'GIVE_TIP';
+export const GET_TIPS = 'GET_TIPS';
 
 const tipReducer = (state = [], action) => {
   switch (action.type) {
@@ -12,5 +13,7 @@ const tipReducer = (state = [], action) => {
         body: action.body,
         // transaction_id: action.transaction_id
       }
+    case GET_TIPS:
+      return action.tips
   }
 }

@@ -1,4 +1,4 @@
-import { GIVE_TIP } from "../reducers/tipReducer";
+import { GIVE_TIP, GET_TIPS } from "../reducers/tipReducer";
 
 export const giveTip = (formData, recipient_id) => {
   return async dispatch => {
@@ -18,6 +18,20 @@ export const giveTip = (formData, recipient_id) => {
       }
       return await res.json();
     } catch (e) {
+      console.log(e);
+    }
+  }
+}
+
+export const getTips = (id) => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(`api/users/{id}/transactions`)
+      const tips = await res.json();
+      if (res.ok) {
+        return dispatch({ type: GET_TIPS, tips })
+      }
+    } catch(e) {
       console.log(e);
     }
   }
