@@ -4,14 +4,22 @@ import AddIcon from '@material-ui/icons/Add';
 import logo from "../../images/logo-transparent.png";
 
 const TipSection = () => {
-  let [total, setTotal] = useState(0)
+  let [coffee, setCoffee] = useState(1)
+  let [total, setTotal] = useState(3)
 
   const decrement = () => {
-    if (total == 0) {
+    if (coffee == 0) {
+      setCoffee(0)
       setTotal(0)
     } else {
-      setTotal(total - 1);
+      setCoffee(coffee - 1);
+      setTotal(total-3)
     }
+  }
+
+  const increment = () => {
+      setCoffee(coffee++);
+      // setTotal()
   }
 
   return (
@@ -22,7 +30,7 @@ const TipSection = () => {
       <div className="about__content about__tip-content">
         <div className="about__tip-content-left">
           <img className="about__tip-logo" src={logo} alt="" />
-          <p className="about__tip-amount">$3 each</p>
+          <p className="about__tip-amount">${total} each</p>
         </div>
         <div className="about__tip-content-right">
           <button
@@ -31,8 +39,14 @@ const TipSection = () => {
             >
             <RemoveIcon />
           </button>
-          <input value={total} type="number" className="about__tip-number"></input>
-          <button onClick={() => setTotal(total + 1)} className="about__tip-add">
+          <input value={coffee} type="number" className="about__tip-number"></input>
+          <button
+            onClick={() => {
+              setCoffee(coffee + 1)
+              setTotal(total+3)
+            }}
+            className="about__tip-add"
+          >
             <AddIcon />
           </button>
         </div>
@@ -40,14 +54,14 @@ const TipSection = () => {
       <div className="about__tip-input-div">
         <div className="about__total-container">
           <span>$</span>
-          <input className="about__tip-total" placeholder="3" />
+          <input className="about__tip-total" placeholder={total} />
         </div>
         <div class="about__tip-message-div">
           <input className="about__tip-message" placeholder="Your message"></input>
         </div>
       </div>
       <div className="about__tip-donate-container">
-        <button className="about__tip-donate">Donate $3</button>
+        <button className="about__tip-donate">Donate ${total}</button>
         <p className="about__tip-policy">Kafei doesn't take a fee!</p>
       </div>
     </div>
