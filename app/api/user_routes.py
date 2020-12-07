@@ -4,6 +4,7 @@ from flask_cors import cross_origin, CORS
 from sqlalchemy.orm import relationship, sessionmaker, joinedload
 from sqlalchemy import func, select, or_
 from app.forms import UploadPhotoForm
+from app.forms import TipForm
 from app.models import db, User, Post, Photo, Comment, Like, Transaction, Follower
 import json
 
@@ -173,36 +174,40 @@ def photos(id):
 @user_routes.route('/<int:id>/tips', methods=["GET", "POST", "PUT"])
 def new_tip(id):
     try:
-        amount = request.json['amount']
-        sender_id = request.json['sender_id']
-        recipient_id = id
-        # increase tips for recipient
-        creator = User.query.filter_by(id=id).first()
-        creator.tips = creator.tips + amount
-        # decrease wallet for sender
-        sender = User.query.filter_by(id=sender_id).first()
-        sender.wallet = sender.wallet - amount
-        #post a new transaction
-        new_transaction = Transaction(
-            amount=amount, sender_id=sender_id, recipient_id=id)
+        form = TipForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
 
-        db.session.add(new_transaction)
-        db.session.commit()
-        transaction = Transaction.query.get(new_transaction.id)
+        if form.validate_on_submit():
 
-        # post a new message
-        if (request.json['body']):
-            body = request.json['body']
-            sender_id = request.json['sender_id']
-            transaction_id = new_transaction.id
-            
-            new_comment = Comment(
-                body=body, sender_id=sender_id, transaction_id=transaction_id
-            )
+            amount = form.data['amount']
+            sender_id = form.data['sender_id']
+            recipient_id = id
+            # increase tips for recipient
+            creator = User.query.filter_by(id=id).first()
+            creator.tips = creator.tips + amount
+            # decrease wallet for sender
+            sender = User.query.filter_by(id=sender_id).first()
+            sender.wallet = sender.wallet - amount
+            #post a new transaction
+            new_transaction = Transaction(
+                amount=amount, sender_id=sender_id, recipient_id=id)
 
-            db.session.add(new_comment)
+            db.session.add(new_transaction)
             db.session.commit()
-        return transaction.to_dict()
+            transaction = Transaction.query.get(new_transaction.id)
+
+            # post a new message
+            if (form.data['body']):
+                body = form.data['body']
+                transaction_id = new_transaction.id
+
+                new_comment = Comment(
+                    body=body, sender_id=sender_id, transaction_id=transaction_id
+                )
+
+                db.session.add(new_comment)
+                db.session.commit()
+            return transaction.to_dict()
     except Exception as error:
         print(error)
         return jsonify(error=repr(error))

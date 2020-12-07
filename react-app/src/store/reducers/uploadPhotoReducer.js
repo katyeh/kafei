@@ -7,7 +7,7 @@ const photoReducer = (state = {}, action) => {
         ...state,
         id: action.id,
         pic_url: action.pic_url,
-        user_id: action.User_id,
+        user_id: action.user_id,
       }
     default:
       return state;
