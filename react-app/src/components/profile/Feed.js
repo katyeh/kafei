@@ -9,12 +9,20 @@ const Feed = () => {
   const user = useSelector(state => state.user);
   const tips = useSelector(state => state.tips);
   const dispatch = useDispatch();
-console.log(tips)
+
   useEffect(() => {
     (async () => {
       await dispatch(getTips(user.id))
     })()
   }, []);
+
+  if (tips) {
+    tips.map(tip => {
+      if (tip.comments[0]) {
+        console.log(tip.comments[0].body)
+      }
+    })
+  }
 
   return (
     <div className="about__container about__feed-container">
@@ -25,20 +33,31 @@ console.log(tips)
       </div>
       <div className="about__content about__feed-content">
         <div className="about__feed-div">
-          <div className="about__feed-item">
-            <div class="about__feed-main">
-              <div className="about__feed-info">
-                <img className="about__feed-pic" src={logo}></img>
-                <h4 className="about__feed-text">Kathleen bought a Coffee for Simz</h4>
+
+          {tips && tips.map(tip => {
+            return (
+              <div className="about__feed-item">
+                <div class="about__feed-main">
+                  <div className="about__feed-info">
+                    <img className="about__feed-pic" src={tip.sender.profile_image_url}></img>
+                    <h4 className="about__feed-sendername about__feed-text">{tip.sender.name}</h4>
+                    <p className="about__feed-txt">bought a Coffee for</p>
+                    <h4 className="about__feed-text">{user.name}</h4>
+                  </div>
+                  <div className="about__feed-more">
+                    <MoreHorizIcon style={{ fontSize: 30 }}/>
+                  </div>
+                </div>
+                {tip.comments[0] ?
+                  <div className="about__feed-msg-container">
+                    <p className="about__feed-msg">{tip.comments[0].body}</p>
+                  </div>
+                : ""
+                }
               </div>
-              <div className="about__feed-more">
-                <MoreHorizIcon style={{ fontSize: 30 }}/>
-              </div>
-            </div>
-            <div className="about__feed-msg-container">
-              <p className="about__feed-msg">This is so pretty! Love your work.</p>
-            </div>
-          </div>
+            )
+          })}
+
         </div>
       </div>
     </div>

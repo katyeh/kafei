@@ -11,6 +11,7 @@
     &__feed-main {
         display: flex;
         justify-content: space-between;
+        padding: 1rem 0;
     }
     &__feed-info {
         display: flex;
@@ -21,8 +22,11 @@
         width: 5rem;
         border-radius: 50%;
     }
-    &__feed-text {
+    &__feed-sendername {
         padding-left: 1rem;
+    }
+    &__feed-text {
+        padding: 0 .5rem;
     }
     &__feed-more {
         cursor: pointer;
