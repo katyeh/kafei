@@ -10,7 +10,6 @@ export const signupUser = (user) => {
 
       if (res.ok) {
         const data = await res.json();
-
         dispatch({
           type: LOAD_USER,
           ...data

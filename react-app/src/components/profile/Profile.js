@@ -85,7 +85,7 @@ const Profile = ({ users }) => {
         <div className="profile__body">
           <div className="profile__grid-container">
             { about ? <About /> : <span></span> }
-            { gallery ? <Gallery /> : <span></span> }
+            { gallery ? <Gallery user={user} /> : <span></span> }
             { posts ? <Posts /> : <span></span> }
           </div>
         </div>

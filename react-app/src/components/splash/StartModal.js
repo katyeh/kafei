@@ -12,7 +12,6 @@ const StartModal = ({authenticated, setAuthenticated}) => {
 
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
-  // const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -24,7 +23,6 @@ const StartModal = ({authenticated, setAuthenticated}) => {
       let user = new FormData();
       user.append('name', name);
       user.append('username', username);
-      // user.append('bio', bio);
       user.append('email', email);
       user.append('password', password);
       user = await dispatch(signupUser(user));
@@ -43,10 +41,6 @@ const StartModal = ({authenticated, setAuthenticated}) => {
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
-
-  // const updateBio = (e) => {
-  //   setBio(e.target.value);
-  // };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);

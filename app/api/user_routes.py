@@ -40,7 +40,7 @@ def new_photo(id):
             if request.files:
                 if "pic_url" in key_list:
                     new_image_data = request.files["pic_url"]
-                    new_image_key = f"photos/{uuid.uuid4()}_{new_image_data.filename}"
+                    new_image_key = f"photos/{id}/{uuid.uuid4()}_{new_image_data.filename}"
                     client.put_object(Body=new_image_data, Bucket="kafei", Key=new_image_key,
                                       ContentType=new_image_data.mimetype, ACL="public-read")
 
@@ -135,7 +135,8 @@ def posts(id):
 @user_routes.route('/<int:id>/posts', methods=["POST"])
 def new_post(id):
     try:
-        body = request.json['body']
+        data = json.loads[request.data]
+        body = data['body']
         user_id = id
 
         new_post = Post(body=body, user_id=user_id)
@@ -151,8 +152,13 @@ def new_post(id):
 
 @user_routes.route('/<int:id>/photos')
 def photos(id):
-    photos = Photo.query.filter(Photo.user_id == id).all()
-    return jsonify(photos=[photo.to_dict() for photo in photos])
+    try:
+        photos = Photo.query.filter(Photo.user_id == id).all()
+        print(f"!!!!!!!!!!!")
+        print(photos)
+        return jsonify(photos=[photo.to_dict() for photo in photos])
+    except Exception as error:
+        return jsonify(error=repr(error))
 
 
 # @user_routes.route('/<int:id>/tips', methods=["PUT"])

@@ -24,12 +24,52 @@ def upgrade():
         sa.Column('user_id', sa.Integer()),
     )
 
-    # op.bulk_insert(follower, [
-    #     {
-    #         'pic_url': ,
-    #         'user_id': 1
-    #     },
-    # ])
+    op.bulk_insert(photo, [
+        {
+            'user_id': 1,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/1/86afadfc-21da-4c8a-bc4d-cf130457f077_debbie-molle-6DSID8Ey9-U-unsplash.jpg',
+        },
+        {
+            'user_id': 1,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/1/256a841b-10bb-4dd2-8267-0e1ec564bb45_edgar-nKC772R_qog-unsplash (1).jpg',
+        },
+        {
+            'user_id': 1,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/1/3d3a4a0f-0b76-47c3-b0b6-f2c51187c818_geran-de-klerk-wYy3rvvgjAU-unsplash.jpg',
+        },
+        {
+            'user_id': 1,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/1/667a1e9f-1a15-4574-9fe6-05d3b28c5f1d_jeremy-zero-0gGHxAbBTGc-unsplash.jpg',
+        },
+        {
+            'user_id': 1,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/1/e13139f4-df22-47e3-a63b-d58aef424ea7_lukasz-juszczak-AWytKm7gQpo-unsplash.jpg',
+        },
+        {
+            'user_id': 1,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/1/marko-blazevic-hcVtC5pgZTY-unsplash.jpg',
+        },
+        {
+            'user_id': 1,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/1/philip-swinburn-Z0tTnl_eOIo-unsplash.jpg',
+        },
+        {
+            'user_id': 1,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/1/priss-enri-cYkTR9_IcSk-unsplash.jpg'
+        },
+        {
+            'user_id': 1,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/1/ralu-gal-G8cB8hY3yvU-unsplash.jpg'
+        },
+        {
+            'user_id': 1,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/1/sam-balye-1aJiV6n-z0c-unsplash.jpg'
+        },
+        # {
+        #     'user_id': 1,
+        #     'pic_url':
+        # },
+    ])
 
 
 def downgrade():

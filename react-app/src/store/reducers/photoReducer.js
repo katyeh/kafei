@@ -1,4 +1,5 @@
 export const UPLOAD_PHOTO = 'UPLOAD_PHOTO'
+export const GET_PHOTOS = 'GET_PHOTOS';
 
 const photoReducer = (state = {}, action) => {
   switch(action.type) {
@@ -9,6 +10,9 @@ const photoReducer = (state = {}, action) => {
         pic_url: action.pic_url,
         user_id: action.user_id,
       }
+      case GET_PHOTOS:
+        // debugger
+      return {...state, photos: action.photos}
     default:
       return state;
   }

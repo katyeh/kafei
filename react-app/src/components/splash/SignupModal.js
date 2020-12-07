@@ -13,7 +13,6 @@ const SignupModal = ({authenticated, setAuthenticated}) => {
 
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
-  // const [bio, setBio] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
@@ -43,10 +42,6 @@ const SignupModal = ({authenticated, setAuthenticated}) => {
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
-
-  // const updateBio = (e) => {
-  //   setBio(e.target.value);
-  // };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
