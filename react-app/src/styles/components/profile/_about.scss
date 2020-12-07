@@ -1,6 +1,6 @@
 .about {
 
-    &__container {
+    &__main-container {
         display: flex;
         justify-content: center;
         grid-gap: 2rem;
@@ -8,9 +8,20 @@
         max-width: 110rem;
         margin: auto;
     }
+    &__container {
+        padding: 1.5rem;
+        padding-top: 2rem;
+        box-shadow: 1px 0 4px rgba(0,2,4,.055), 0 7px 18px rgba(1,1,1,0.5);
+        background-color: #fff;
+        border-radius: 1.4rem;
+        margin-bottom: 2rem;
+    }
+    &__label {
+        // padding-left: 2rem;
+    }
     &__left-container {
         display: block;
-        border: 1px solid lightgray;
+        // border: 1px solid lightgray;
         min-width: 28rem;
         width: 40rem;
         // width: 40rem;
@@ -23,18 +34,29 @@
         width: 100vw;
     }
     &__bio-container {
-        padding: 2rem;
-        border: 1px solid black;
-        border-radius: 1.4rem;
+        // padding: 2rem;
+        // border: 1px solid black;
+        // border-radius: 1.4rem;
         // margin: 5rem;
     }
-    &__bio-content {
+    &__content {
         padding: 2rem 0;
+    }
+    &__bio-tags {
+        display: flex;
+    }
+    &__bio-tag {
+        padding-right: 1rem;
+        border-radius: 2rem;
+        background-color: #f8f8f9;
+        cursor: pointer;
+        padding: 1rem;
     }
     &__bio-received {
         display: inline-flex;
         text-align: center;
         align-items: center;
+        padding-top: 1rem;
     }
     &__logo {
         height: 5rem;
@@ -45,4 +67,28 @@
         position: relative;
         top: .5rem;
     }
+    &__gallery-container {
+        // padding: 0 .5rem;
+    }
+    &__gallery-label {
+        padding-bottom: 2rem;
+    }
+    &__gallery-content {
+        // display: grid;
+        grid-template-columns: repeat(auto-fill,minmax(16rem, 1fr));
+        // justify-content: center;
+        // flex-wrap: wrap;
+        // padding: 2rem .5rem .2rem .5rem;
+    }
+    &__gallery-img {
+        height: 15rem;
+        // width: 15rem;
+        object-fit: cover;
+        flex: 2 48%;
+        border-radius: 2%;
+        border: 2px #ffffff solid;
+        max-width: 100%;
+        cursor: pointer;
+    }
+
 }

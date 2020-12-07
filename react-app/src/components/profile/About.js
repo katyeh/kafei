@@ -1,22 +1,52 @@
 import React from 'react';
-import logo from "../../images/logo-transparent.png"
+import logo from "../../images/logo-transparent.png";
+import kathleen from "../../images/kathleen.jpg";
 
 const About = () => {
   return (
     <div className="about">
-      <div className="about__container">
+      <div className="about__main-container">
         <div className="about__left-container">
 
-          <div className="about__bio-container">
-            <div className="bio-label">
+          <div className="about__container about__bio-container">
+            <div className="about__label">
               <h3>About</h3>
             </div>
-            <div className="about__bio-content">
+            <div className="about__content about__bio-content">
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, molestiae placeat laudantium natus incidunt hic doloremque veniam, facilis quod tenetur ipsa exercitationem. Quod eius sed reiciendis inventore harum fuga earum?</p>
+            </div>
+            <div className="about__bio-tags">
+              <div className="about__bio-tag">Art</div>
+              <div className="about__bio-tag">Photography</div>
+              <div className="about__bio-tag">Art</div>
             </div>
             <div className="about__bio-received">
               <img className="about__logo" src={logo}></img>
               <h3 className="about__received">x 622 Received</h3>
+            </div>
+          </div>
+
+          <div className="about__container about__gallery-container">
+            <div className="about__gallery-label">
+              <h3>Gallery</h3>
+            </div>
+            <div className="about__gallery-content">
+              <img className="about__gallery-img" src={kathleen}></img>
+              <img className="about__gallery-img" src={kathleen}></img>
+              <img className="about__gallery-img" src={kathleen}></img>
+              <img className="about__gallery-img" src={kathleen}></img>
+              {/* <div className="about__gallery-item">
+                <img className="about__gallery-img" src={kathleen}></img>
+              </div>
+              <div className="about__gallery-item">
+                <img className="about__gallery-img"  src={kathleen}></img>
+              </div>
+              <div className="about__gallery-item">
+                <img className="about__gallery-img"  src={kathleen}></img>
+              </div>
+              <div className="about__gallery-item">
+                <img className="about__gallery-img"  src={kathleen}></img>
+              </div> */}
             </div>
           </div>
 
