@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from flask_cors import cross_origin,CORS
+from flask_cors import cross_origin, CORS
 from sqlalchemy.orm import relationship, sessionmaker, joinedload
 from sqlalchemy import func, select, or_
 from app.forms import UploadPhotoForm
@@ -18,10 +18,12 @@ user_routes = Blueprint('users', __name__)
 s3 = boto3.resource('s3')
 client = boto3.client('s3',
                       aws_access_key_id=os.environ.get('AWS_ACCESS_KEY'),
-                      aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY')
-)
+                      aws_secret_access_key=os.environ.get(
+                          'AWS_SECRET_ACCESS_KEY')
+                      )
 # print(f"ITS A SECRET!!!!!!!!!!!!")
 # print(os.environ.get("AWS_SECRET_ACCESS_KEY"))
+
 
 @user_routes.route('/<int:id>/photos', methods=["POST"])
 def new_photo(id):
@@ -50,36 +52,6 @@ def new_photo(id):
             return photo.to_dict()
     except Exception as error:
         return jsonify(error=repr(error))
-
-
-    # credentials = {
-    #     'aws_access_key_id': os.environ.get('AWS_ACCESS_KEY'),
-    #     'aws_secret_access_key': os.environ.get('AWS_SECRET_ACCESS_KEY')
-    # }
-    # user_id = id
-    # file = request.files['pic_url']
-
-    # filename=file.filename
-    # newFilename = filename.replace(" ", "")
-
-    # print("New filename: ", newFilename)
-    # client  = boto3.client('s3', 'us-west-1', **credentials)
-    # bucket = 'kafei'
-    # key = '%s-%s' % (date.today(), newFilename)
-    # properties = {'ACL': 'public-read', 'Body': request.files['pic_url'],
-    #               'Bucket': bucket,
-    #               'Key': key,
-    #               'ContentType': request.files['pic_url'].mimetype}
-    # retVal = client.put_object(**properties)
-    # status = retVal['ResponseMetadata']
-    # ['HTTPStatusCode']
-
-    # if (status != 200):
-    #     return status
-    # else:
-    #     pic_url = 'https://kafei.s3-us-west-1.amazonaws.com/%s'% (key)
-    #     updatePhoto(pic_url, user_id)
-    #     return 'ok'
 
 
 @user_routes.route('/')
@@ -204,18 +176,32 @@ def new_tip(id):
         amount = request.json['amount']
         sender_id = request.json['sender_id']
         recipient_id = id
-
+        # increase tips for recipient
         creator = User.query.filter_by(id=id).first()
         creator.tips = creator.tips + amount
-
+        # decrease wallet for sender
         sender = User.query.filter_by(id=sender_id).first()
         sender.wallet = sender.wallet - amount
-
+        #post a new transaction
         new_transaction = Transaction(
             amount=amount, sender_id=sender_id, recipient_id=id)
+
         db.session.add(new_transaction)
         db.session.commit()
         transaction = Transaction.query.get(new_transaction.id)
+
+        # post a new message
+        if (request.json['body']):
+            body = request.json['body']
+            sender_id = request.json['sender_id']
+            transaction_id = new_transaction.id
+            
+            new_comment = Comment(
+                body=body, sender_id=sender_id, transaction_id=transaction_id
+            )
+
+            db.session.add(new_comment)
+            db.session.commit()
         return transaction.to_dict()
     except Exception as error:
         print(error)

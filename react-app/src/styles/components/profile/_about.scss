@@ -7,9 +7,6 @@
         border-radius: 1.4rem;
         margin-bottom: 2rem;
     }
-    &__label {
-        // padding-left: 2rem;
-    }
     &__left-container {
         display: block;
         // border: 1px solid lightgray;
@@ -23,12 +20,6 @@
         min-width: 28rem;
         max-width: 55rem;
         width: 100vw;
-    }
-    &__bio-container {
-        // padding: 2rem;
-        // border: 1px solid black;
-        // border-radius: 1.4rem;
-        // margin: 5rem;
     }
     &__content {
         padding: 2rem 0;
@@ -58,9 +49,6 @@
         position: relative;
         top: .5rem;
     }
-    &__gallery-container {
-        // padding: 0 .5rem;
-    }
     &__gallery-label {
         padding-bottom: 2rem;
     }
@@ -80,9 +68,6 @@
         border: 2px #ffffff solid;
         max-width: 100%;
         cursor: pointer;
-    }
-    &__right-container {
-
     }
     &__tip-container {
         padding: 2rem 3rem;
@@ -105,15 +90,20 @@
         position: relative;
         top: .6rem;
     }
-    &__tip-content-right {
-
-    }
     &__tip-number {
         border-radius: 4rem;
         width: 6rem;
         min-height: 3.5rem;
         padding: 1rem;
         border: 2px solid $color-gray-light;
+        text-align: center;
+        font-size: 1.8rem;
+        outline: none;
+    }
+    &__tip-number::-webkit-outer-spin-button,
+    &__tip-number::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
     &__tip-subtract, &__tip-add {
         min-height: 3.5rem;
@@ -167,8 +157,6 @@
         font-weight: 600;
         color: rgba(190, 181, 181, 0.487);
     }
-    &__tip-donate-container {
-    }
     &__tip-donate {
         border-radius: 4rem;
         color: #fff;
@@ -184,7 +172,7 @@
         display: flex;
         justify-content: center;
         font-weight: 700;
-        padding: 2rem;
+        padding: 3rem 0 3.5rem 0;
         color: rgb(109, 230, 219);
     }
 }
