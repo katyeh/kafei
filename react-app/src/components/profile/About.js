@@ -5,7 +5,7 @@ import kathleen from "../../images/kathleen.jpg";
 const About = () => {
   return (
     <div className="about">
-      <div className="about__main-container">
+      <div className="profile__main-container">
         <div className="about__left-container">
 
           <div className="about__container about__bio-container">

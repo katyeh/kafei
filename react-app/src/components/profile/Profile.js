@@ -9,11 +9,13 @@ import kathleenimg from '../../images/kathleen.jpg';
 import logo from '../../images/logo-transparent.png';
 import FollowBtn from '../FollowBtn';
 import About from './About';
+import Gallery from './Gallery';
+import Posts from './Posts';
 
 const Profile = ({ users }) => {
   const [isProfile, setProfile] = useState(false);
-  const [about, setAbout] = useState(true);
-  const [gallery, setGallery] = useState(false);
+  const [about, setAbout] = useState(false);
+  const [gallery, setGallery] = useState(true);
   const [posts, setPosts] = useState(false);
 
   const user = useSelector(state => state.user)
@@ -69,7 +71,6 @@ const Profile = ({ users }) => {
               <img className="profile__logo-img" src={logo} alt=""></img>
               <div>Support</div>
             </button>
-            {/* <button className="follow-btn">Follow</button> */}
             <FollowBtn />
           </div>
         </div>
@@ -83,7 +84,9 @@ const Profile = ({ users }) => {
 
         <div className="profile__body">
           <div className="profile__grid-container">
-            <About />
+            { about ? <About /> : <span></span> }
+            { gallery ? <Gallery /> : <span></span> }
+            { posts ? <Posts /> : <span></span> }
           </div>
         </div>
       </div>

@@ -1,4 +1,12 @@
 .profile {
+    &__main-container {
+        display: flex;
+        justify-content: center;
+        grid-gap: 2rem;
+        min-height: 100vh;
+        max-width: 110rem;
+        margin: auto;
+    }
     &__main {
         // max-width: 150rem;
         // margin: auto;
@@ -20,7 +28,7 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-        max-width: 150rem;
+        max-width: 130rem;
         margin: auto;
     }
     &__user {
