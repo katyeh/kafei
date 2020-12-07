@@ -81,5 +81,110 @@
         max-width: 100%;
         cursor: pointer;
     }
+    &__right-container {
 
+    }
+    &__tip-container {
+        padding: 2rem 3rem;
+    }
+    &__tip-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__tip-content-left {
+        display: flex;
+        align-items: center;
+    }
+    &__tip-logo {
+        width: 5rem;
+    }
+    &__tip-amount {
+        font-weight: 500;
+        padding-left: 1rem;
+        position: relative;
+        top: .6rem;
+    }
+    &__tip-content-right {
+
+    }
+    &__tip-number {
+        border-radius: 4rem;
+        width: 6rem;
+        min-height: 3.5rem;
+        padding: 1rem;
+        border: 2px solid $color-gray-light;
+    }
+    &__tip-subtract, &__tip-add {
+        min-height: 3.5rem;
+        min-width: 3.5rem;
+        text-align: center;
+        border-radius: 2rem;
+        color: $color-accent-dark;
+        background-color: $color-accent-medium;
+        padding: 1.2rem;
+        border: none;
+        outline: none;
+        margin: .5rem;
+        border: .1rem solid $color-accent-medium;
+        cursor: pointer;
+    }
+    &__total-container {
+        display: flex;
+        align-items: center;
+        border: 2px solid $color-gray-light;
+        border-radius: 1rem;
+        width: 100%;
+        min-height: 4rem;
+        font-size: 1.5rem;
+        font-weight: 800;
+        padding: 1rem;
+    }
+    &__tip-total {
+        position: relative;
+        top: .1rem;
+        border: none;
+        padding-left: 1rem;
+    }
+    &__tip-total::-webkit-input-placeholder {
+        font-weight: 800;
+        font-size: 1.5rem;
+    }
+    &__tip-message-div {
+        padding: 2rem 0;
+    }
+    &__tip-message {
+        border: 2px solid $color-gray-light;
+        border-radius: 1rem;
+        width: 100%;
+        font-weight: 600;
+        min-height: 8rem;
+        font-size: 1.5rem;
+        padding: 1rem;
+        letter-spacing: .2rem;
+    }
+    &__tip-message::-webkit-input-placeholder {
+        font-weight: 600;
+        color: rgba(190, 181, 181, 0.487);
+    }
+    &__tip-donate-container {
+    }
+    &__tip-donate {
+        border-radius: 4rem;
+        color: #fff;
+        background-color: $color-accent-dark;
+        border: none;
+        outline: none;
+        padding: 1rem;
+        width: 100%;
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+    &__tip-policy {
+        display: flex;
+        justify-content: center;
+        font-weight: 700;
+        padding: 2rem;
+        color: rgb(109, 230, 219);
+    }
 }
