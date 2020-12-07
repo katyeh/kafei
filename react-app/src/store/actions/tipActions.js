@@ -7,7 +7,15 @@ export const giveTip = (formData, recipient_id) => {
         method: 'POST',
         body: formData
       });
+      if (res.ok) {
+        const data = await res.json()
 
+        dispatch({
+          type: GIVE_TIP,
+          ...data
+        });
+        return data;
+      }
       return await res.json();
     } catch (e) {
       console.log(e);
