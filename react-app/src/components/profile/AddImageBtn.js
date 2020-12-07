@@ -4,7 +4,6 @@ import { uploadPhoto } from "../../store/actions/photoActions";
 import PhotoSizeSelectActualIcon from '@material-ui/icons/PhotoSizeSelectActualOutlined';
 import red from '@material-ui/core/colors/red';
 import blue from '@material-ui/core/colors/blue';
-import ImageModal from './ImageModal';
 import CloseIcon from '@material-ui/icons/Close';
 
 const AddImageBtn = () => {
