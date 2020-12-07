@@ -5,19 +5,28 @@ import PhotoSizeSelectActualIcon from '@material-ui/icons/PhotoSizeSelectActualO
 import red from '@material-ui/core/colors/red';
 import blue from '@material-ui/core/colors/blue';
 import ImageModal from './ImageModal';
+import CloseIcon from '@material-ui/icons/Close';
 
 const AddImageBtn = () => {
   const dispatch = useDispatch();
   const [imageUrl, setImageUrl] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
+  const [imagePreview, setImagePreview] = useState("");
   const user = useSelector(state => state.user);
 
   const updateImageUrl = (e) => {
     setImageUrl(e.target.files[0]);
-    console.log("HEY")
-    debugger
     setIsOpen(true);
-    console.log(isOpen)
+
+    let file = e.target.files[0]
+    console.log(typeof file)
+    if (e.target.files && e.target.files[0]) {
+      let reader = new FileReader();
+      reader.onloadend = (e) => {
+        setImagePreview(e.target.result)
+      }
+      reader.readAsDataURL(e.target.files[0])
+    }
   };
 
   const onUpload = async (e) => {
@@ -41,7 +50,7 @@ const AddImageBtn = () => {
             name="pic_url"
             id="file_input"
             onChange={updateImageUrl}
-            class="hide"
+            className="hide"
           />
           <label for="file_input" className="gallery__add-image-btn">
             <PhotoSizeSelectActualIcon
@@ -61,21 +70,34 @@ const AddImageBtn = () => {
           <span className="gallery__btn-span">Add Image</span>
           </label>
         </div>
-        <div className="img_preview_wrap">
-          <img src="" id="imagePreview" alt="Preview Image" width="200px" class="hide" />
-        </div>
       </div>
 
       {isOpen ?
-          <div className="modal">
-            <section className="modal-main">
-              <button onClick={() => setIsOpen(false)}>close</button>
-              <h1>HEYYYYY</h1>
-              <button type="submit">Post photo</button>
-            </section>
-          </div>
-          :
-          ""
+        <div className="modal">
+          <section className="modal__main">
+            <div className="modal__header">
+              <div className="modal__label">Add Image</div>
+              <div className="modal__close">
+                <CloseIcon
+                  style={{ fontSize: 30 }}
+                  onClick={() => setIsOpen(false)}
+                />
+              </div>
+            </div>
+
+            <div className="modal__preview-wrap">
+              <img
+                className="modal__preview-img"
+                src={imagePreview}
+                id="imagePreview"
+                alt="Preview Image"
+              />
+            </div>
+
+            <button type="submit">Post Image</button>
+          </section>
+        </div>
+        : ""
       }
 
     </form>
