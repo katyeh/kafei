@@ -8,6 +8,7 @@ import coverimg from '../../images/cover.jpg';
 import kathleenimg from '../../images/kathleen.jpg';
 import logo from '../../images/logo-transparent.png';
 import FollowBtn from '../FollowBtn';
+import About from './About';
 
 const Profile = ({ users }) => {
   const [isProfile, setProfile] = useState(false);
@@ -82,7 +83,7 @@ const Profile = ({ users }) => {
 
         <div className="profile__body">
           <div className="profile__grid-container">
-
+            <About />
           </div>
         </div>
       </div>

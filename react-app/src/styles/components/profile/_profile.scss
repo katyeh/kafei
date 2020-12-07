@@ -1,13 +1,15 @@
 .profile {
     &__main {
-        max-width: 150rem;
-        margin: auto;
+        // max-width: 150rem;
+        // margin: auto;
+        height: auto;
     }
     &__cover {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        // margin: auto;
+        max-width: 150rem;
+        margin: auto;
     }
     &__header-img {
         display: block;
@@ -18,6 +20,8 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+        max-width: 150rem;
+        margin: auto;
     }
     &__user {
         display: flex;
@@ -97,11 +101,11 @@
     }
     &__tabs-container {
         border-bottom: 3px solid #f8f8f9;
-        margin-bottom: 2.4rem;
+        // margin-bottom: 2.4rem;
     }
     &__tabs {
         display: flex;
-        max-width: 110rem;
+        max-width: 100rem;
         margin: auto;
         box-sizing: border-box;
     }
@@ -124,5 +128,10 @@
     }
     .selected {
         border-bottom: 3px solid #FF5F5F;
+    }
+    &__body {
+        height: 100%;
+        background: #f8f8f9;
+        padding-top: 5rem;
     }
 }
