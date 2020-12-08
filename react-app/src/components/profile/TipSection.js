@@ -28,13 +28,7 @@ const TipSection = ({ currentUser, isProfile }) => {
     }
   };
 
-  const increment = () => {
-      setCoffee(coffee++);
-      // setTotal()
-  };
-
   const onTip = async (e) => {
-    // debugger
     e.preventDefault();
     if (user) {
       let tip = new FormData();

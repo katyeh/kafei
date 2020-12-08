@@ -1,21 +1,8 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
 import AddImageBtn from './AddImageBtn';
 // import { getPhotos } from '../../store/actions/photoActions';
 
 const Gallery = ({ photos, currentUser, isProfile }) => {
-  const dispatch = useDispatch();
-  // const photos = useSelector(state => state.photos);
-
-  // useEffect(() => {
-  //   debugger
-  //   (async () => {
-  //     await dispatch(getPhotos(currentUser.id))
-  //   })()
-  // }, [dispatch]);
-  debugger
-
-  console.log(currentUser)
 
   return (
     <div className="gallery">
@@ -27,7 +14,7 @@ const Gallery = ({ photos, currentUser, isProfile }) => {
             {photos.photos && photos.photos.map(photo => {
               return (
                 <div key={photo.id} className="gallery__grid-item">
-                <img className="gallery__photo" src={photo.pic_url} />
+                <img alt="" className="gallery__photo" src={photo.pic_url} />
                 </div>
               )
             })}

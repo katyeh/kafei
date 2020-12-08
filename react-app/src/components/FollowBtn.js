@@ -25,7 +25,7 @@ const FollowBtn = () => {
 
   const onFollow = async () => {
     if (!isfollowing && id && user) {
-      const res = dispatch(follow(user.id, id));
+      await dispatch(follow(user.id, id));
     };
   };
 

@@ -14,7 +14,6 @@ const UploadPhotoForm = () => {
   };
 
   const onUpload = async (e) => {
-    // debugger
     e.preventDefault();
     if (user) {
       let formData = new FormData();

@@ -8,18 +8,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 const About = ({ photos, currentUser, isProfile }) => {
-  // const photos = useSelector(state => state.photos.photos);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   debugger
-  //   (async () => {
-  //     if (currentUser && currentUser.id) {
-  //       await dispatch(getPhotos(currentUser.id))
-  //     }
-  //   })()
-  // }, [dispatch]);
-  // debugger
 
   console.log("CURRENT", currentUser)
   return (

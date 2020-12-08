@@ -35,7 +35,7 @@ const Feed = () => {
               <div key={tip.sender.id} className="about__feed-item">
                 <div className="about__feed-main">
                   <div className="about__feed-info">
-                    <img className="about__feed-pic" src={tip.sender.profile_image_url}></img>
+                    <img className="about__feed-pic" alt="" src={tip.sender.profile_image_url}></img>
                     <h4 className="about__feed-sendername about__feed-text">{tip.sender.name}</h4>
                     <p className="about__feed-txt">bought a Coffee for</p>
                     <h4 className="about__feed-text">{user.name}</h4>

@@ -18,6 +18,7 @@ const Profile = ({ getOneUser, user }) => {
   const [about, setAbout] = useState(true);
   const [gallery, setGallery] = useState(false);
   const [posts, setPosts] = useState(false);
+  let [headerClass, setHeaderClass] = useState("")
   const currentUser = useSelector(state => state.currentUser)
   const followers = useSelector(state => state.followers)
   // console.log("FOLLOWERS", followers.length)
@@ -28,31 +29,16 @@ const Profile = ({ getOneUser, user }) => {
 
   const photos = useSelector(state => state.photos);
 
-  // useEffect(() => {
-  //   debugger
-  //   (async () => {
-  //     await dispatch(getPhotos(currentUser.id))
-  //   })()
-  // }, [dispatch]);
-
   useEffect(() => {
-    // debugger
     (async () => {
       await dispatch(getFollowers(userId));
       await dispatch(getPhotos(userId));
       getOneUser(userId);
+      changeClass();
     })()
   }, [userId]);
 
-  // useEffect(() => {
-  //   debugger
-  //   (async () => {
-    // getOneUser(userId);
-  //   })()
-  // }, [userId]);
-
   useEffect(() => {
-    debugger
     profile()
   })
 
@@ -77,10 +63,15 @@ const Profile = ({ getOneUser, user }) => {
     setAbout(false);
     setGallery(false);
   }
-  // console.log(user.id);
-  // console.log(id)
-  // console.log(isProfile);
-debugger
+
+  const changeClass = () => {
+    if (isProfile) {
+      setHeaderClass("profile__header")
+    } else {
+      setHeaderClass("profile__user-header")
+    }
+  }
+
   return (
     <div className="profile">
       <div className="profile__main">
@@ -90,7 +81,7 @@ debugger
         </div>
         : ""}
 
-        <div className="profile__header">
+        <div className={headerClass}>
           <div className="profile__user">
           {currentUser ?
             <div className="profile__img-div">
@@ -105,15 +96,15 @@ debugger
                 </div>
               : ""}
           </div>
-          <div className="profile__btns">
-            { isProfile ? "" :
-              <button className="support-btn">
-                <img className="profile__logo-img" src={logo} alt=""></img>
-                <div>Support</div>
-              </button>
-            }
-            {/* <FollowBtn /> */}
-          </div>
+          { isProfile ? "" :
+            <div className="profile__btns">
+                <button className="support-btn">
+                  <img className="profile__logo-img" src={logo} alt=""></img>
+                  <div>Support</div>
+                </button>
+              <FollowBtn />
+            </div>
+          }
         </div>
         <div className="profile__tabs-container">
           <div className="profile__tabs">
