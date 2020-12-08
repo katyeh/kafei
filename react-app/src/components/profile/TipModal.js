@@ -5,7 +5,6 @@ import logo from "../../images/logo-transparent.png";
 import { useSelector, useDispatch } from 'react-redux';
 import { giveTip } from "../../store/actions/tipActions";
 import { useParams } from 'react-router-dom';
-import TipSection from './TipSection';
 import CloseIcon from '@material-ui/icons/Close';
 import Modal from 'react-modal';
 
@@ -23,7 +22,7 @@ const TipModal = () => {
   }
 
   const decrement = () => {
-    if (coffee == 0) {
+    if (coffee === 0) {
       setCoffee(0)
       setTotal(0)
     } else {

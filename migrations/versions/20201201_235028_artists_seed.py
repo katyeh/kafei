@@ -38,8 +38,8 @@ def upgrade():
             'username': 'demouser',
             'email': 'demo@user.com',
             'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
-            'profile_image_url': '',
-            'cover_image_url': '',
+            'profile_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/profileImages/user-1.jpg',
+            'cover_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/coverImages/patrick-hendry-HYLUskFJkpU-unsplash.jpg',
             'tips': 30,
             'wallet': 20
         },
@@ -48,10 +48,30 @@ def upgrade():
             'username': 'hellokat',
             'email': 'kat@yeh.com',
             'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
-            'profile_image_url': '',
-            'cover_image_url': '',
+            'profile_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/profileImages/sup',
+            'cover_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/coverImages/ian-schneider-TamMbr4okv4-unsplash.jpg',
             'tips': 7,
             'wallet': 10
+        },
+        {
+            'name': 'Annie Leibovitz',
+            'username': 'aleibovitz',
+            'email': 'anniesrecipes@gmail.com',
+            'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
+            'profile_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/profileImages/user-3.jpg',
+            'cover_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/coverImages/matteo-catanese-PI8Hk-3ZcCU-unsplash.jpg',
+            'tips': 24,
+            'wallet': 20
+        },
+        {
+            'name': 'Ben Thompson',
+            'username': 'thompsonarts',
+            'email': 'benjaminarts@dance.com',
+            'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
+            'profile_image_url': '',
+            'cover_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/coverImages/calum-lewis-vA1L1jRTM70-unsplash.jpg',
+            'tips': 26,
+            'wallet': 40
         },
         {
             'name': 'Banksy',
@@ -62,36 +82,6 @@ def upgrade():
             'cover_image_url': '',
             'tips': 60,
             'wallet': 80
-        },
-        {
-            'name': 'Sara Williams',
-            'username': 'theanimalphotographer',
-            'email': 'sara@williams.com',
-            'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
-            'profile_image_url': '',
-            'cover_image_url': '',
-            'tips': 26,
-            'wallet': 40
-        },
-        {
-            'name': 'Zeng Fanzhi',
-            'username': 'fanzhi',
-            'email': 'zeng@fanzhi.com',
-            'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
-            'profile_image_url': '',
-            'cover_image_url': '',
-            'tips': 30,
-            'wallet': 15
-        },
-        {
-            'name': 'Annie Leibovitz',
-            'username': 'aleibovitz',
-            'email': 'annie@leibovitz.com',
-            'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
-            'profile_image_url': '',
-            'cover_image_url': '',
-            'tips': 24,
-            'wallet': 20
         },
         {
             'name': 'Benjamin Suter',

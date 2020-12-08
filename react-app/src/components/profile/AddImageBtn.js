@@ -18,7 +18,7 @@ const AddImageBtn = () => {
     setIsOpen(true);
 
     let file = e.target.files[0]
-    console.log(typeof file)
+    // console.log(typeof file)
     if (e.target.files && e.target.files[0]) {
       let reader = new FileReader();
       reader.onloadend = (e) => {

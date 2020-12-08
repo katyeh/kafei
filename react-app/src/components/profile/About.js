@@ -8,17 +8,19 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 const About = ({ currentUser, isProfile }) => {
-  const user = useSelector(state => state.user);
   const photos = useSelector(state => state.photos.photos);
-
   const dispatch = useDispatch();
-
+  
   useEffect(() => {
     (async () => {
-      await dispatch(getPhotos(user.id))
+      debugger
+      if (currentUser && currentUser.id) {
+        await dispatch(getPhotos(currentUser.id))
+      }
     })()
   }, [dispatch]);
 
+  console.log(photos)
 
   return (
     <div className="about">

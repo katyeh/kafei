@@ -3,18 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import AddImageBtn from './AddImageBtn';
 import { getPhotos } from '../../store/actions/photoActions';
 
-const Gallery = ({ user }) => {
+const Gallery = ({ currentUser, isProfile }) => {
   const dispatch = useDispatch();
   const photos = useSelector(state => state.photos);
 
-  // if (photos.photos) {
-
-  //   console.log("PHOTOS:", photos.photos[0])
-  // }
-
   useEffect(() => {
     (async () => {
-      await dispatch(getPhotos(user.id))
+      await dispatch(getPhotos(currentUser.id))
     })()
   }, [dispatch]);
 

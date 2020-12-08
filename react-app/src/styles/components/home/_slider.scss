@@ -93,7 +93,9 @@
     }
     &__image {
         background-color: #fff;
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: 10rem;
         width: 10rem;
         border-radius: 50%;
@@ -118,9 +120,12 @@
 
 .slider__img {
   height: 10rem;
-  // width: 10rem;
-  padding: 1rem;
+  width: 10rem;
+  border: .5rem solid $color-pink;
+  outline: none;
+  // padding: 1rem;
   border-radius: 50%;
+  object-fit: cover;
   // position: relative;
   // top: 3rem;
 }

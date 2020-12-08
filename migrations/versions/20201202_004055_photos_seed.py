@@ -65,9 +65,81 @@ def upgrade():
             'user_id': 1,
             'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/1/sam-balye-1aJiV6n-z0c-unsplash.jpg'
         },
+        {
+            'user_id': 2,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/2/IMG_0057.png'
+        },
+        {
+            'user_id': 2,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/2/IMG_3689.png'
+        },
+        {
+            'user_id': 2,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/2/Untitled_Artwork+1.png'
+        },
+        {
+            'user_id': 2,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/2/Untitled_Artwork+2.png'
+        },
+        {
+            'user_id': 2,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/2/Untitled_Artwork+3.png'
+        },
+        {
+            'user_id': 2,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/2/Untitled_Artwork+4.png'
+        },
+        {
+            'user_id': 2,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/2/Untitled_Artwork.png'
+        },
+        {
+            'user_id': 3,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/3/anna-pelzer-IGfIGP5ONV0-unsplash.jpg'
+        },
+        {
+            'user_id': 3,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/3/becca-tapert-mDOGXiuVb4M-unsplash.jpg'
+        },
+        {
+            'user_id': 3,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/3/bruna-branco-7r1HxvVC7AY-unsplash.jpg'
+        },
+        {
+            'user_id': 3,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/3/casey-lee-awj7sRviVXo-unsplash.jpg'
+        },
+        {
+            'user_id': 3,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/3/pexels-karolina-grabowska-4033296.jpg'
+        },
+        {
+            'user_id': 3,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/3/pexels-karolina-grabowska-4198139.jpg'
+        },
+        {
+            'user_id': 4,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/4/alex-perez-m_ikwYM7ntI-unsplash.jpg'
+        },
+        {
+            'user_id': 4,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/4/breakreate-tFA3kJcMUco-unsplash.jpg'
+        },
+        {
+            'user_id': 4,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/4/jarylle-adriane-paloma-9A0f66jlWKI-unsplash.jpg'
+        },
+        {
+            'user_id': 4,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/4/liel-anapolsky-OC7lh5GcPzU-unsplash.jpg'
+        },
+        {
+            'user_id': 4,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/4/michael-afonso-z8Tul255kGg-unsplash.jpg'
+        },
         # {
-        #     'user_id': 1,
-        #     'pic_url':
+        #     'user_id': 4,
+        #     'pic_url': ''
         # },
     ])
 

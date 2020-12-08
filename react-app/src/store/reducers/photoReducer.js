@@ -11,7 +11,7 @@ const photoReducer = (state = [], action) => {
         user_id: action.user_id,
       }
       case GET_PHOTOS:
-        // debugger
+        debugger
       return {...state, photos: action.photos}
     default:
       return state;

@@ -13,9 +13,9 @@ import { getFollowers } from '../../store/actions/followActions';
 
 const Profile = ({ getOneUser, user }) => {
   const [isProfile, setProfile] = useState(false);
-  const [about, setAbout] = useState(false);
+  const [about, setAbout] = useState(true);
   const [gallery, setGallery] = useState(false);
-  const [posts, setPosts] = useState(true);
+  const [posts, setPosts] = useState(false);
   const currentUser = useSelector(state => state.currentUser)
   const followers = useSelector(state => state.followers)
   // console.log("FOLLOWERS", followers.length)
@@ -59,22 +59,26 @@ const Profile = ({ getOneUser, user }) => {
     setAbout(false);
     setGallery(false);
   }
-  console.log(user.id);
-  console.log(id)
-  console.log(isProfile);
+  // console.log(user.id);
+  // console.log(id)
+  // console.log(isProfile);
 
   return (
     <div className="profile">
       <div className="profile__main">
+        {currentUser ?
         <div className="profile__cover">
-          <img src={coverimg} alt="" className="profile__header-img"></img>
+          <img src={currentUser.cover_image_url} alt="" className="profile__header-img"></img>
         </div>
+        : ""}
 
         <div className="profile__header">
           <div className="profile__user">
+          {currentUser ?
             <div className="profile__img-div">
-              <img src={kathleenimg} alt="" className="profile__user-img"></img>
+              <img src={currentUser.profile_image_url} alt="" className="profile__user-img"></img>
             </div>
+          : ""}
               {currentUser ?
                 <div className="profile__info">
                   <h3>Buy a Coffee for</h3>
@@ -104,7 +108,7 @@ const Profile = ({ getOneUser, user }) => {
         <div className="profile__body">
           <div className="profile__grid-container">
             { about ? <About currentUser={currentUser} isProfile={isProfile} /> : <span></span> }
-            { gallery ? <Gallery user={user} /> : <span></span> }
+            { gallery ? <Gallery currentUser={currentUser} isProfile={isProfile} /> : <span></span> }
             { posts ? <Posts currentUser={currentUser} isProfile={isProfile} /> : <span></span> }
           </div>
         </div>

@@ -24,6 +24,7 @@ export const uploadPhoto = (formData, id, name) => {
 }
 
 export const getPhotos = (id) => {
+  debugger
   return async (dispatch) => {
     try {
       const res = await fetch(`/api/users/${id}/photos`);

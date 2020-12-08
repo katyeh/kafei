@@ -102,9 +102,8 @@ def sign_up():
             username=form.data['username'],
             email=form.data['email'],
             password=form.data['password'],
-            # profile_image_url=form.data['profile_image_url']
-                # if "profileImage" in key_list else "../images/kafei-logo.png",
-            # cover_image_url=form.data['cover_image_url'],
+            profileImage="https://kafei.s3-us-west-1.amazonaws.com/kafei-logo.png",
+            cover_image_url="https://kafei.s3-us-west-1.amazonaws.com/coverImages/external-content.duckduckgo.jpg",
             tips=0,
         )
         db.session.add(user)

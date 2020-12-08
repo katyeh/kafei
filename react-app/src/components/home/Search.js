@@ -21,7 +21,7 @@ const Search = () => {
       setResults(searchresults);
     }
     // If searchbar is empty then hide options
-    if (query == "") {
+    if (query === "") {
       setDisplay(false);
     }
     if (query !== "") {
@@ -77,11 +77,12 @@ const Search = () => {
                   className="option"
                   key={i}
                   tabIndex="0"
+                  onClick={() => history.push(`/users/${value.id}`)}
                 >
-                  <div>
-                    <img src={value.profile_image_url}></img>
+                  <div className="search__result-info">
+                    <img className="search__result-image" src={value.profile_image_url}></img>
                   </div>
-                  <span>{value.name}</span>
+                  <span className="search__result-name">{value.name}</span>
                 </div>
               )
             })
