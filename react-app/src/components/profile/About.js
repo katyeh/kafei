@@ -7,7 +7,7 @@ import { getPhotos } from '../../store/actions/photoActions';
 import { useDispatch, useSelector } from 'react-redux';
 
 
-const About = ({ currentUser}) => {
+const About = ({ currentUser, isProfile }) => {
   const user = useSelector(state => state.user);
   const photos = useSelector(state => state.photos.photos);
 
@@ -61,7 +61,9 @@ const About = ({ currentUser}) => {
 
         </div>
         <div className="about__right-container">
-          <TipSection />
+          {isProfile ? "" :
+            <TipSection currentUser={currentUser} />
+          }
           <Feed />
         </div>
       </div>

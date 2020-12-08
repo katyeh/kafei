@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { giveTip } from "../../store/actions/tipActions";
 import { useParams } from 'react-router-dom';
 
-const TipSection = () => {
+const TipSection = ({ currentUser, isProfile }) => {
   let [coffee, setCoffee] = useState(1);
   let [total, setTotal] = useState(3);
   const [body, setBody] = useState("");

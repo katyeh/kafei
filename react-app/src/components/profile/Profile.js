@@ -13,9 +13,9 @@ import { getFollowers } from '../../store/actions/followActions';
 
 const Profile = ({ getOneUser, user }) => {
   const [isProfile, setProfile] = useState(false);
-  const [about, setAbout] = useState(true);
+  const [about, setAbout] = useState(false);
   const [gallery, setGallery] = useState(false);
-  const [posts, setPosts] = useState(false);
+  const [posts, setPosts] = useState(true);
   const currentUser = useSelector(state => state.currentUser)
   const followers = useSelector(state => state.followers)
   // console.log("FOLLOWERS", followers.length)
@@ -33,6 +33,10 @@ const Profile = ({ getOneUser, user }) => {
   useEffect(() => {
     getOneUser(userId);
   }, [userId]);
+
+  useEffect(() => {
+    profile()
+  })
 
   const profile = () => {
     if (user.id === userId) {
@@ -55,6 +59,9 @@ const Profile = ({ getOneUser, user }) => {
     setAbout(false);
     setGallery(false);
   }
+  console.log(user.id);
+  console.log(id)
+  console.log(isProfile);
 
   return (
     <div className="profile">
@@ -77,10 +84,12 @@ const Profile = ({ getOneUser, user }) => {
               : ""}
           </div>
           <div className="profile__btns">
-            <button className="support-btn">
-              <img className="profile__logo-img" src={logo} alt=""></img>
-              <div>Support</div>
-            </button>
+            { isProfile ? "" :
+              <button className="support-btn">
+                <img className="profile__logo-img" src={logo} alt=""></img>
+                <div>Support</div>
+              </button>
+            }
             {/* <FollowBtn /> */}
           </div>
         </div>
@@ -94,9 +103,9 @@ const Profile = ({ getOneUser, user }) => {
 
         <div className="profile__body">
           <div className="profile__grid-container">
-            { about ? <About currentUser={currentUser} /> : <span></span> }
+            { about ? <About currentUser={currentUser} isProfile={isProfile} /> : <span></span> }
             { gallery ? <Gallery user={user} /> : <span></span> }
-            { posts ? <Posts /> : <span></span> }
+            { posts ? <Posts currentUser={currentUser} isProfile={isProfile} /> : <span></span> }
           </div>
         </div>
       </div>

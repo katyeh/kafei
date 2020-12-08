@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import logo from "../../images/kafei-logo.png";
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import TipModal from './TipModal';
 import { useSelector, useDispatch } from 'react-redux';
