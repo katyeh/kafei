@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneUser } from '../../store/actions/currentUser';
-import { getAllUsers } from '../../store/actions/users';
-import { useDispatch } from 'react-redux';
 import coverimg from '../../images/cover.jpg';
 import kathleenimg from '../../images/kathleen.jpg';
 import logo from '../../images/logo-transparent.png';
@@ -11,16 +9,26 @@ import FollowBtn from '../FollowBtn';
 import About from './About';
 import Gallery from './Gallery';
 import Posts from './Posts';
+import { getFollowers } from '../../store/actions/followActions';
 
-const Profile = ({ users }) => {
+const Profile = ({ getOneUser, user }) => {
   const [isProfile, setProfile] = useState(false);
   const [about, setAbout] = useState(true);
   const [gallery, setGallery] = useState(false);
   const [posts, setPosts] = useState(false);
-
-  const user = useSelector(state => state.user)
+  const currentUser = useSelector(state => state.currentUser)
+  const followers = useSelector(state => state.followers)
+  // console.log("FOLLOWERS", followers.length)
+  // const user = useSelector(state => state.user)
   const { id } = useParams();
   const userId = Number.parseInt(id);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    (async () => {
+      await dispatch(getFollowers(userId));
+    })()
+  }, [userId]);
 
   useEffect(() => {
     getOneUser(userId);
@@ -60,18 +68,20 @@ const Profile = ({ users }) => {
             <div className="profile__img-div">
               <img src={kathleenimg} alt="" className="profile__user-img"></img>
             </div>
-            <div className="profile__info">
-              <h3>Buy a Coffee for</h3>
-              <h2>katyeh</h2>
-              <p>10 Followers</p>
-            </div>
+              {currentUser ?
+                <div className="profile__info">
+                  <h3>Buy a Coffee for</h3>
+                  <h2>{currentUser.username}</h2>
+                  <p>{followers.length} Followers</p>
+                </div>
+              : ""}
           </div>
           <div className="profile__btns">
             <button className="support-btn">
               <img className="profile__logo-img" src={logo} alt=""></img>
               <div>Support</div>
             </button>
-            <FollowBtn />
+            {/* <FollowBtn /> */}
           </div>
         </div>
         <div className="profile__tabs-container">
@@ -84,7 +94,7 @@ const Profile = ({ users }) => {
 
         <div className="profile__body">
           <div className="profile__grid-container">
-            { about ? <About /> : <span></span> }
+            { about ? <About currentUser={currentUser} /> : <span></span> }
             { gallery ? <Gallery user={user} /> : <span></span> }
             { posts ? <Posts /> : <span></span> }
           </div>
@@ -95,18 +105,17 @@ const Profile = ({ users }) => {
 };
 
 const ProfileContainer = () => {
-  const users = useSelector(state => state.users)
+
+  const currentUser = useSelector((state) => state.currentUser);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    (async () => {
-      await dispatch(getAllUsers())
-    })()
-  }, []);
-
   return (
-    <Profile users={users}/>
-  )
+    <Profile
+      user={currentUser}
+      getOneUser={(id) => dispatch(getOneUser(id))}
+      user={user}
+    />
+  );
 }
 
 export default ProfileContainer;

@@ -17,7 +17,7 @@ const Home = () => {
             <div className="home__tag tag6">#Lifestyle</div>
             <div className="home__tag tag7">#Photography</div>
           </div>
-          <div>
+          <div className="home__featured-section">
             <div>
               <h1 className="home__section-title">Featured Creators</h1>
             </div>

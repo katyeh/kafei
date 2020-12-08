@@ -12,7 +12,7 @@ class Follower(db.Model):
     follower = db.relationship('User', foreign_keys=[follower_id])
     following = db.relationship('User', foreign_keys=[followed_id])
 
-    user = db.relationship("User", cascade="all, delete", backref="follower", foreign_keys=[follower_id])
+    user = db.relationship("User", cascade="all, delete", backref="followers", foreign_keys=[follower_id])
     followed_users = db.relationship("User", cascade="all, delete", backref="followed_users", foreign_keys=[followed_id])
 
 

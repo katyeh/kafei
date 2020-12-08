@@ -3,6 +3,7 @@ import { FOLLOW_USER, GET_FOLLOWERS } from "../reducers/followReducer";
 export const getFollowers = (id) => {
   return async (dispatch) => {
     try {
+      // debugger
       const response = await fetch(`/api/users/${id}/followers`)
       const followers = await response.json();
       if (response.ok) {

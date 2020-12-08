@@ -11,6 +11,10 @@ html {
   font-size: 62.5%;
 }
 
+html, body {
+  min-height: 100vh;
+}
+
 body {
   font-size: 1.6rem;
   color: #000;

@@ -63,11 +63,10 @@ def users():
 
 
 @user_routes.route('/<int:id>')
-@login_required
+# @login_required
 def user(id):
     user = User.query.get(id)
     return jsonify(user=[user.to_dict()])
-
 
 @user_routes.route('/<int:id>', methods=["PUT"])
 def update_bio(id):

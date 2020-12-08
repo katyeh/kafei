@@ -7,10 +7,10 @@ const Gallery = ({ user }) => {
   const dispatch = useDispatch();
   const photos = useSelector(state => state.photos);
 
-  if (photos.photos) {
+  // if (photos.photos) {
 
-    console.log("PHOTOS:", photos.photos[0])
-  }
+  //   console.log("PHOTOS:", photos.photos[0])
+  // }
 
   useEffect(() => {
     (async () => {

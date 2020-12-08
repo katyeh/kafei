@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import img from '../../images/ka-fei-dark.png';
 import StartModal from './StartModal';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import EmailIcon from '@material-ui/icons/Email';
 import kathleenimg from '../../images/kathleen.jpg';
 import { getUsersSplash } from '../../store/actions/users';
 import { useHistory } from 'react-router-dom';
+import Footer from "../Footer";
 
 const Splash = ({ authenticated, setAuthenticated }) => {
   const [name, setName] = useState("");
@@ -87,32 +85,7 @@ const Splash = ({ authenticated, setAuthenticated }) => {
             </div>
           </div>
         </div>
-
-        <footer className="footer">
-          <div className="footer__name-div">
-            <h1 /* onClick={() => history.push("www.hellokat.io")} */ className="footer__name">Kathleen Yeh</h1>
-          </div>
-          <div className="social-links">
-            <ul className="social-list">
-              <li className="social-list__item">
-                <a className="social-list__link" href="https://github.com/katyeh">
-                  <GitHubIcon style={{ fontSize: 30 }}/>
-                </a>
-              </li>
-              <li className="social-list__item">
-                <a className="social-list__link" href="mailto:kathleenyeh1@gmail.com">
-                  <LinkedInIcon style={{ fontSize: 30 }}/>
-                </a>
-              </li>
-              <li className="social-list__item">
-                <a className="social-list__link" href="mailto:kathleenyeh1@gmail.com">
-                  <EmailIcon style={{ fontSize: 30 }}/>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </footer>
-
+        <Footer />
       </div>
     </div>
   )

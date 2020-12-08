@@ -5,6 +5,7 @@ import TipModal from './TipModal';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTips } from "../../store/actions/tipActions";
 
+
 const Feed = () => {
   const user = useSelector(state => state.user);
   const transactions = useSelector(state => state.tips);
@@ -16,9 +17,9 @@ const Feed = () => {
     })()
   }, []);
 
-  if (transactions[0]) {
-    console.log("TRANSACTIONS", Array.isArray(transactions))
-  }
+  // if (transactions[0]) {
+  //   console.log("TRANSACTIONS", Array.isArray(transactions))
+  // }
 
   return (
     <div className="about__container about__feed-container">
