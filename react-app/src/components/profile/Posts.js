@@ -48,7 +48,7 @@ const Posts = ({ currentUser, isProfile }) => {
           <p className="about__feed-msg">Lorem ipsum dolor sit amet consectetur, adipisicing elit. At nihil repellat laboriosam eligendi vel, vitae exercitationem, architecto dolor nobis officiis quidem suscipit, id sapiente? Nobis expedita rem quaerat. Atque, est!</p>
           <div className="posts__msg-btns">
             <div className="posts__likes-div">
-              <div class="posts__like-btn">
+              <div className="posts__like-btn">
                 <FavoriteBorderIcon style={{ fontSize: 25 }} />
               </div>
               <p>3</p>

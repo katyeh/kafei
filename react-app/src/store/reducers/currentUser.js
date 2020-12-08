@@ -1,8 +1,9 @@
 import { SET_CURRENT_USER } from '../actions/currentUser';
 
-const currentUserReducer = (state = null, action) => {
+const currentUserReducer = (state = {}, action) => {
   switch (action.type) {
     case SET_CURRENT_USER: {
+      debugger
       return action.current.user[0]
     }
 

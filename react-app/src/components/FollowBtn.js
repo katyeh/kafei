@@ -17,7 +17,7 @@ const FollowBtn = () => {
     (async () => {
       await dispatch(getFollowing(user.id));
     })()
-  }, [dispatch]);
+  }, [dispatch, user.id]);
 
   useEffect(() => {
     checkfollow();

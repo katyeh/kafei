@@ -10,6 +10,8 @@ import About from './About';
 import Gallery from './Gallery';
 import Posts from './Posts';
 import { getFollowers } from '../../store/actions/followActions';
+import { getPhotos } from '../../store/actions/photoActions';
+
 
 const Profile = ({ getOneUser, user }) => {
   const [isProfile, setProfile] = useState(false);
@@ -24,17 +26,33 @@ const Profile = ({ getOneUser, user }) => {
   const userId = Number.parseInt(id);
   const dispatch = useDispatch();
 
+  const photos = useSelector(state => state.photos);
+
+  // useEffect(() => {
+  //   debugger
+  //   (async () => {
+  //     await dispatch(getPhotos(currentUser.id))
+  //   })()
+  // }, [dispatch]);
+
   useEffect(() => {
+    // debugger
     (async () => {
       await dispatch(getFollowers(userId));
+      await dispatch(getPhotos(userId));
+      getOneUser(userId);
     })()
   }, [userId]);
 
-  useEffect(() => {
-    getOneUser(userId);
-  }, [userId]);
+  // useEffect(() => {
+  //   debugger
+  //   (async () => {
+    // getOneUser(userId);
+  //   })()
+  // }, [userId]);
 
   useEffect(() => {
+    debugger
     profile()
   })
 
@@ -62,7 +80,7 @@ const Profile = ({ getOneUser, user }) => {
   // console.log(user.id);
   // console.log(id)
   // console.log(isProfile);
-
+debugger
   return (
     <div className="profile">
       <div className="profile__main">
@@ -107,8 +125,8 @@ const Profile = ({ getOneUser, user }) => {
 
         <div className="profile__body">
           <div className="profile__grid-container">
-            { about ? <About currentUser={currentUser} isProfile={isProfile} /> : <span></span> }
-            { gallery ? <Gallery currentUser={currentUser} isProfile={isProfile} /> : <span></span> }
+            { about ? <About photos={photos} currentUser={currentUser} isProfile={isProfile} /> : <span></span> }
+            { gallery ? <Gallery photos={photos} currentUser={currentUser} isProfile={isProfile} /> : <span></span> }
             { posts ? <Posts currentUser={currentUser} isProfile={isProfile} /> : <span></span> }
           </div>
         </div>

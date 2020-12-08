@@ -14,7 +14,7 @@ const Feed = () => {
     (async () => {
       await dispatch(getTips(user.id))
     })()
-  }, []);
+  }, [dispatch, user.id]);
 
   // if (transactions[0]) {
   //   console.log("TRANSACTIONS", Array.isArray(transactions))
@@ -32,7 +32,7 @@ const Feed = () => {
           {/* {console.log("TRANSACTIONS", transactions)} */}
           {Array.isArray(transactions) && transactions.map(tip => {
             return (
-              <div className="about__feed-item">
+              <div key={tip.sender.id} className="about__feed-item">
                 <div className="about__feed-main">
                   <div className="about__feed-info">
                     <img className="about__feed-pic" src={tip.sender.profile_image_url}></img>

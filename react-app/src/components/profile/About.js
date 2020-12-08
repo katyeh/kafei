@@ -7,21 +7,21 @@ import { getPhotos } from '../../store/actions/photoActions';
 import { useDispatch, useSelector } from 'react-redux';
 
 
-const About = ({ currentUser, isProfile }) => {
-  const photos = useSelector(state => state.photos.photos);
+const About = ({ photos, currentUser, isProfile }) => {
+  // const photos = useSelector(state => state.photos.photos);
   const dispatch = useDispatch();
-  
-  useEffect(() => {
-    (async () => {
-      debugger
-      if (currentUser && currentUser.id) {
-        await dispatch(getPhotos(currentUser.id))
-      }
-    })()
-  }, [dispatch]);
 
-  console.log(photos)
+  // useEffect(() => {
+  //   debugger
+  //   (async () => {
+  //     if (currentUser && currentUser.id) {
+  //       await dispatch(getPhotos(currentUser.id))
+  //     }
+  //   })()
+  // }, [dispatch]);
+  // debugger
 
+  console.log("CURRENT", currentUser)
   return (
     <div className="about">
       <div className="profile__main-container">
@@ -53,9 +53,9 @@ const About = ({ currentUser, isProfile }) => {
               <h3>Gallery</h3>
             </div>
             <div className="about__gallery-content">
-            {photos && photos.slice(0,5).map(photo => {
+            {photos.photos && photos.photos.slice(0,5).map(photo => {
               return (
-                <img className="about__gallery-img" src={photo.pic_url}></img>
+                <img className="about__gallery-img" key={photo.id} src={photo.pic_url}></img>
               )
             })}
             </div>

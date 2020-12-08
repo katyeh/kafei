@@ -69,7 +69,7 @@ const Search = () => {
       </div>
       {display && (
         <div className="search__resultsContainer">
-          <div>RESULTS!!</div>
+          {/* <div>RESULTS!!</div> */}
           {options
             .map((value, i) => {
               return (

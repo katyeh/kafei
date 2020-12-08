@@ -55,13 +55,28 @@
     &__resultsContainer {
         display: flex;
         flex-direction: column;
-        padding: 0 5rem;
+        padding: 0 2rem;
         // align-items: center;
         width:70rem;
         background-color: #fff;
+        box-shadow: 5px 10px 18px rgba(149,185,193,.4);
+    }
+    &__result-image {
+        width: 5rem;
+        height: 5rem;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-right: 1rem;
+    }
+    &__result-info {
+        padding-right: 1rem;
+    }
+    &__result-name {
+        font-weight: 600;
     }
 }
 .option {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }

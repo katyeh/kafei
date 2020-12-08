@@ -51,7 +51,7 @@ const AddImageBtn = () => {
             onChange={updateImageUrl}
             className="hide"
           />
-          <label for="file_input" className="gallery__add-image-btn">
+          <label htmlFor="file_input" className="gallery__add-image-btn">
             <PhotoSizeSelectActualIcon
               style={{ fontSize: 30 }}
               component={svgProps => (

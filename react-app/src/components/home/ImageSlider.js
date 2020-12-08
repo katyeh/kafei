@@ -49,7 +49,7 @@ const ImageSlider = () => {
       <Slider {...settings}>
       {users.featured_creators && users.featured_creators.map(user => {
         return(
-          <div className="card-wrapper">
+          <div key={user.id} className="card-wrapper">
             <div className="card">
               <div className="card__header">
                 <div className="card__image">
