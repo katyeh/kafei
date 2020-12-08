@@ -32,12 +32,7 @@ const TipModal = () => {
     }
   };
 
-  const increment = () => {
-      setCoffee(coffee++);
-      // setTotal()
-  };
-
-  const onTip = async (e) => {
+  const onTipModal = async (e) => {
     e.preventDefault();
     if (user) {
       let tip = new FormData();
@@ -45,6 +40,7 @@ const TipModal = () => {
       tip.append('sender_id', user.id);
       tip.append('recipient_id', id);
       tip.append('body', body);
+      setIsOpen(false);
 
       tip = await dispatch(giveTip(tip, id));
     }
@@ -62,10 +58,10 @@ const TipModal = () => {
         overlayClassName="overlay"
         shouldCloseOnOverlayClick={true}
       >
-        <form onSubmit={onTip}>
+        <form onSubmit={onTipModal}>
           <div className="tipModal__label">
             <h3>Buy a Coffee for katyeh</h3>
-            <div onClick={() => setIsOpen(false)} class="tipModal__close">
+            <div onClick={() => setIsOpen(false)} className="tipModal__close">
               <CloseIcon style={{ fontSize: 30 }} />
             </div>
           </div>
@@ -75,14 +71,14 @@ const TipModal = () => {
               <p className="about__tip-amount">${total} each</p>
             </div>
             <div className="about__tip-content-right">
-              <button
+              <span
                 onClick={() => decrement()}
                 className="about__tip-subtract"
                 >
                 <RemoveIcon />
-              </button>
+              </span>
               <input value={coffee} type="number" className="about__tip-number"></input>
-              <button
+              <span
                 onClick={() => {
                   setCoffee(coffee + 1)
                   setTotal(total+3)
@@ -90,7 +86,7 @@ const TipModal = () => {
                 className="about__tip-add"
               >
                 <AddIcon />
-              </button>
+              </span>
             </div>
           </div>
           <div className="about__tip-input-div">
@@ -98,7 +94,7 @@ const TipModal = () => {
                 <span>$</span>
                 <input className="about__tip-total" placeholder={total} />
               </div>
-              <div class="about__tip-message-div">
+              <div className="about__tip-message-div">
                 <input onChange={updateBody} className="about__tip-message" placeholder="Your message"></input>
               </div>
             </div>

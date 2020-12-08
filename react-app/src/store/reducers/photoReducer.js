@@ -1,7 +1,7 @@
 export const UPLOAD_PHOTO = 'UPLOAD_PHOTO'
 export const GET_PHOTOS = 'GET_PHOTOS';
 
-const photoReducer = (state = {}, action) => {
+const photoReducer = (state = [], action) => {
   switch(action.type) {
     case UPLOAD_PHOTO:
       return {

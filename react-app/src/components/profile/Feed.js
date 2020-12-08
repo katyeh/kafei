@@ -7,7 +7,7 @@ import { getTips } from "../../store/actions/tipActions";
 
 const Feed = () => {
   const user = useSelector(state => state.user);
-  const tips = useSelector(state => state.tips);
+  const transactions = useSelector(state => state.tips);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,12 +16,8 @@ const Feed = () => {
     })()
   }, []);
 
-  if (tips) {
-    tips.map(tip => {
-      if (tip.comments[0]) {
-        console.log(tip.comments[0].body)
-      }
-    })
+  if (transactions[0]) {
+    console.log("TRANSACTIONS", Array.isArray(transactions))
   }
 
   return (
@@ -33,11 +29,11 @@ const Feed = () => {
       </div>
       <div className="about__content about__feed-content">
         <div className="about__feed-div">
-
-          {tips && tips.map(tip => {
+          {/* {console.log("TRANSACTIONS", transactions)} */}
+          {Array.isArray(transactions) && transactions.map(tip => {
             return (
               <div className="about__feed-item">
-                <div class="about__feed-main">
+                <div className="about__feed-main">
                   <div className="about__feed-info">
                     <img className="about__feed-pic" src={tip.sender.profile_image_url}></img>
                     <h4 className="about__feed-sendername about__feed-text">{tip.sender.name}</h4>

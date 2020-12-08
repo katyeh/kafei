@@ -184,36 +184,36 @@ def new_tip(id):
         form['csrf_token'].data = request.cookies['csrf_token']
 
         if form.validate_on_submit():
-
             amount = form.data['amount']
             sender_id = form.data['sender_id']
             recipient_id = id
-            # increase tips for recipient
-            creator = User.query.filter_by(id=id).first()
-            creator.tips = creator.tips + amount
-            # decrease wallet for sender
-            sender = User.query.filter_by(id=sender_id).first()
-            sender.wallet = sender.wallet - amount
-            #post a new transaction
-            new_transaction = Transaction(
-                amount=amount, sender_id=sender_id, recipient_id=id)
+            if sender_id != recipient_id:
+                # increase tips for recipient
+                creator = User.query.filter_by(id=id).first()
+                creator.tips = creator.tips + amount
+                # decrease wallet for sender
+                sender = User.query.filter_by(id=sender_id).first()
+                sender.wallet = sender.wallet - amount
+                #post a new transaction
+                new_transaction = Transaction(
+                    amount=amount, sender_id=sender_id, recipient_id=id)
 
-            db.session.add(new_transaction)
-            db.session.commit()
-            transaction = Transaction.query.get(new_transaction.id)
-
-            # post a new message
-            if (form.data['body']):
-                body = form.data['body']
-                transaction_id = new_transaction.id
-
-                new_comment = Comment(
-                    body=body, sender_id=sender_id, transaction_id=transaction_id
-                )
-
-                db.session.add(new_comment)
+                db.session.add(new_transaction)
                 db.session.commit()
-            return transaction.to_dict()
+                transaction = Transaction.query.get(new_transaction.id)
+
+                # post a new message
+                if (form.data['body']):
+                    body = form.data['body']
+                    transaction_id = new_transaction.id
+
+                    new_comment = Comment(
+                        body=body, sender_id=sender_id, transaction_id=transaction_id
+                    )
+
+                    db.session.add(new_comment)
+                    db.session.commit()
+                return transaction.to_dict()
     except Exception as error:
         print(error)
         return jsonify(error=repr(error))

@@ -19,7 +19,7 @@ const TipSection = () => {
   }
 
   const decrement = () => {
-    if (coffee == 0) {
+    if (coffee === 0) {
       setCoffee(0)
       setTotal(0)
     } else {
@@ -34,6 +34,7 @@ const TipSection = () => {
   };
 
   const onTip = async (e) => {
+    // debugger
     e.preventDefault();
     if (user) {
       let tip = new FormData();
@@ -58,14 +59,14 @@ const TipSection = () => {
             <p className="about__tip-amount">${total} each</p>
           </div>
           <div className="about__tip-content-right">
-            <button
+            <span
               onClick={() => decrement()}
               className="about__tip-subtract"
               >
               <RemoveIcon />
-            </button>
+            </span>
             <input value={coffee} type="number" className="about__tip-number"></input>
-            <button
+            <span
               onClick={() => {
                 setCoffee(coffee + 1)
                 setTotal(total+3)
@@ -73,7 +74,7 @@ const TipSection = () => {
               className="about__tip-add"
             >
               <AddIcon />
-            </button>
+            </span>
           </div>
         </div>
         <div className="about__tip-input-div">
@@ -81,7 +82,7 @@ const TipSection = () => {
             <span>$</span>
             <input className="about__tip-total" placeholder={total} />
           </div>
-          <div class="about__tip-message-div">
+          <div className="about__tip-message-div">
             <input onChange={updateBody} className="about__tip-message" placeholder="Your message"></input>
           </div>
         </div>

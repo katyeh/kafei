@@ -4,6 +4,7 @@ export const GET_TIPS = 'GET_TIPS';
 const tipReducer = (state = [], action) => {
   switch (action.type) {
     case GIVE_TIP:
+      // debugger
       return {
         ...state,
         id: action.id,
