@@ -11,12 +11,9 @@ export const makePost = (id, body) => {
     })
     if (res.ok) {
       const data = await res.json();
-
-      dispatch({ type: MAKE_POST, ...data });
-      return data;
+      console.log(data)
+      dispatch({ type: MAKE_POST, post: data });
     }
-
-      return await res.json();
     } catch(e) {
       console.log(e);
     }
@@ -40,13 +37,14 @@ export const getPosts = (id) => {
 export const deletePost = (id) => {
   return async (dispatch) => {
     try {
-      const res = await fetch(`posts/${id}`, {
-        method: 'DELETE'
+      const res = await fetch(`/api/posts/${id}`, {
+        method: 'DELETE',
+        headers: {'Accept':'application/json',
+        'Content-Type': 'application/json'
+      }
       });
       if (res.ok) {
-        const data = await res.json();
-
-        return dispatch({type: DELETE_POST, ...data})
+        return dispatch({ type: DELETE_POST, id: id })
       }
     } catch(e) {
       console.log(e)

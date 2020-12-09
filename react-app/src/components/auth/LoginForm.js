@@ -8,6 +8,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [password, setPassword] = useState("");
 
   const onLogin = async (e) => {
+    // debugger
     e.preventDefault();
     const user = await login(email, password);
     if (!user.errors) {

@@ -1,14 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import logo from "../../images/logo-transparent.png";
-import kathleen from "../../images/kathleen.jpg";
 import TipSection from './TipSection';
 import Feed from './Feed';
-import { getPhotos } from '../../store/actions/photoActions';
-import { useDispatch, useSelector } from 'react-redux';
-
 
 const About = ({ photos, currentUser, isProfile }) => {
-  const dispatch = useDispatch();
 
   return (
     <div className="about">
@@ -29,7 +24,7 @@ const About = ({ photos, currentUser, isProfile }) => {
                   <div className="about__bio-tag">Art</div>
                 </div>
                 <div className="about__bio-received">
-                  <img className="about__logo" src={logo}></img>
+                  <img className="about__logo" alt="" src={logo}></img>
                   <h3 className="about__received">x {currentUser.tips} Received</h3>
                 </div>
               </div>
@@ -43,7 +38,7 @@ const About = ({ photos, currentUser, isProfile }) => {
             <div className="about__gallery-content">
             {photos.photos && photos.photos.slice(0,5).map(photo => {
               return (
-                <img className="about__gallery-img" key={photo.id} src={photo.pic_url}></img>
+                <img className="about__gallery-img" alt="" key={photo.id} src={photo.pic_url}></img>
               )
             })}
             </div>

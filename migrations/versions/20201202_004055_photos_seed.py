@@ -94,6 +94,10 @@ def upgrade():
             'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/2/Untitled_Artwork.png'
         },
         {
+            'user_id': 2,
+            'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/1/ffa5a50d-3a13-430f-a538-8fd3a9c0ee08_IMG_4100.jpg'
+        },
+        {
             'user_id': 3,
             'pic_url': 'https://kafei.s3-us-west-1.amazonaws.com/photos/3/anna-pelzer-IGfIGP5ONV0-unsplash.jpg'
         },

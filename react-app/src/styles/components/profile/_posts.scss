@@ -38,7 +38,7 @@
         position: relative;
         background-color: #ffffff;
         width: 50rem;
-        // min-height: 20rem;
+        min-height: 14rem;
         box-shadow: 0 0 20px 0 rgba(50,56,66,0.2);
         border-radius: 1rem;
         padding: 2rem 2rem 3rem 2rem;
@@ -60,65 +60,30 @@
     }
     &__msg-btns {
         display: flex;
-        align-items: center;
         position: relative;
-        bottom: -1.5rem;
-        // justify-content: space-between;
-    }
-    &__likes-div {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding-top: 2rem;
-        p {
-            position:relative;
-            top: -.1rem;
-            padding-left: .8rem;
-            font-size: 1.8rem;
-            font-weight: 600;
-        }
+        top: 6rem;
     }
     &__like-btn {
+        display:flex;
         cursor: pointer;
     }
     &__more-btn {
-        position: relative;
-        top: 1rem;
         padding-left: 2rem;
         cursor: pointer;
     }
-    // &__dropdown-menu {
-    //     position: absolute;
-    //     border-radius: .8rem;
-    //     box-shadow: 0 6px 12px rgba(0,0,0,.175);
-    //     width: 14rem;
-    //     left: -2rem;
-    //     top: 27rem;
-    //     min-height: 4rem;
-    //     background-color: white;
-    //     display: flex;
-    //     align-items: center;
-    //     padding: .8rem;
-    //     cursor: pointer;
-    // }
-    // &__dropdown-menu:hover {
-    //     filter: brightness(75%)
-    // }
-    // &__delete {
-    //     display: flex;
-    //     align-items: center;
-    //     margin-top: -4rem;
-    //     background-color: white;
-    //     box-shadow: 0 6px 12px rgba(0,0,0,.175);
-    //     border-radius: .8rem;
-    //     width: 14rem;
-    //     min-height: 4rem;
-    //     cursor: pointer;
-    //     padding: .8rem;
-    //     position: absolute;
-    // }
-    // &__hide {
-    //     display: none;
-    //     opacity: 0;
-    // }
+    &__delete {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        border-radius: .8rem;
+        width: 14rem;
+        cursor: pointer;
+        padding: 1.4rem;
+        position: relative;
+        right: 12rem;
+    }
+    &__dlt {
+        padding: 1.5rem;
+    }
 }

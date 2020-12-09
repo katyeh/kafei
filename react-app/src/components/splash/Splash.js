@@ -2,22 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import img from '../../images/ka-fei-dark.png';
 import StartModal from './StartModal';
-import kathleenimg from '../../images/kathleen.jpg';
 import { getUsersSplash } from '../../store/actions/users';
-import { useHistory } from 'react-router-dom';
 import Footer from "../Footer";
 
 const Splash = ({ authenticated, setAuthenticated }) => {
   const [name, setName] = useState("");
   const users = useSelector(state => state.users);
   const dispatch = useDispatch();
-  const history = useHistory();
 
   useEffect(() => {
     (async () => {
       await dispatch(getUsersSplash())
     })()
-  }, []);
+  }, [dispatch]);
 
   const updateName = (e) => {
     setName(e.target.value);
@@ -51,11 +48,11 @@ const Splash = ({ authenticated, setAuthenticated }) => {
           <div className="featured__section">
           {users[0] && users.map(user => {
             return(
-              <div className="splash__featured-item">
+              <div key={user.id} className="splash__featured-item">
                 <div className="splash__featured-header"></div>
-                <a className="splash__img-container" href="#">
+                <div className="splash__img-container">
                   <img className="splash__featured-img" alt="" src={user.profile_image_url}></img>
-                </a>
+                </div>
                 <div className="splash__featured-info">
                   <h2 className="splash__featured-name">{user.name}</h2>
                   <p>{user.bio}...</p>

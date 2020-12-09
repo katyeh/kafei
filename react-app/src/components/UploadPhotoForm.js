@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { uploadPhoto } from "../store/actions/photoActions";
 
 const UploadPhotoForm = () => {
-  let newPhotoId;
   const dispatch = useDispatch();
 
   const [photoUrl, setPhotoUrl] = useState("");

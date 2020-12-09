@@ -17,6 +17,12 @@ const NavBar = ({ setAuthenticated }) => {
     setSidebar(!sidebar);
   }
 
+  const redirect = () => {
+    if (user.id) {
+      history.push(`/users/${user.id}`)
+    }
+  }
+
   return (
     <div >
       <div className="splashnav">
