@@ -47,6 +47,7 @@
   * GET /users/:id/transactions => gets all tips and corresponding comments for a single user
   * PUT /users/:id/tips => tip a user
   * POST /users/:id/tips => tip a user
+  * DELETE /transactions/:id => delete a transaction and associated comment
 
 
 * followers

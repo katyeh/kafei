@@ -1,4 +1,4 @@
-import { GIVE_TIP, GET_TIPS } from "../reducers/tipReducer";
+import { GIVE_TIP, GET_TIPS, DELETE_TIP } from "../reducers/tipReducer";
 
 export const giveTip = (formData, recipient_id) => {
   return async dispatch => {
@@ -30,3 +30,21 @@ export const getTips = (id) => {
     }
   }
 };
+
+export const deleteTip = (id) => {
+  return async (dispatch) => {
+    try {
+      const res = await fetch(`/api/transactions/${id}`, {
+        method: 'DELETE',
+        headers: {'Accept':'application/json',
+        'Content-Type': 'application/json'
+      }
+      });
+      if (res.ok) {
+        return dispatch({ type: DELETE_TIP, id: id})
+      }
+    } catch(e) {
+      console.log(e)
+    }
+  }
+}
