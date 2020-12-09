@@ -19,7 +19,7 @@ const ImageSlider = () => {
         await dispatch(getUsers(user.id));
       }
     })()
-  }, [dispatch]);
+  }, [dispatch, user.id]);
 
   let settings = {
     dots: true,

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getOneUser } from '../../store/actions/currentUser';
-import coverimg from '../../images/cover.jpg';
-import kathleenimg from '../../images/kathleen.jpg';
 import logo from '../../images/logo-transparent.png';
 import FollowBtn from '../FollowBtn';
 import About from './About';
@@ -15,14 +13,12 @@ import { getPhotos } from '../../store/actions/photoActions';
 
 const Profile = ({ getOneUser, user }) => {
   const [isProfile, setProfile] = useState(false);
-  const [about, setAbout] = useState(false);
+  const [about, setAbout] = useState(true);
   const [gallery, setGallery] = useState(false);
-  const [posts, setPosts] = useState(true);
+  const [posts, setPosts] = useState(false);
   let [headerClass, setHeaderClass] = useState("")
   const currentUser = useSelector(state => state.currentUser)
   const followers = useSelector(state => state.followers)
-  // console.log("FOLLOWERS", followers.length)
-  // const user = useSelector(state => state.user)
   const { id } = useParams();
   const userId = Number.parseInt(id);
   const dispatch = useDispatch();
@@ -34,12 +30,12 @@ const Profile = ({ getOneUser, user }) => {
       await dispatch(getFollowers(userId));
       await dispatch(getPhotos(userId));
       getOneUser(userId);
-      changeClass();
     })()
-  }, [userId]);
+  }, [userId, dispatch, currentUser.id]);
 
   useEffect(() => {
     profile()
+    changeClass();
   })
 
   const profile = () => {
@@ -65,7 +61,8 @@ const Profile = ({ getOneUser, user }) => {
   }
 
   const changeClass = () => {
-    if (isProfile) {
+    // debugger
+    if (!isProfile) {
       setHeaderClass("profile__header")
     } else {
       setHeaderClass("profile__user-header")
@@ -108,9 +105,9 @@ const Profile = ({ getOneUser, user }) => {
         </div>
         <div className="profile__tabs-container">
           <div className="profile__tabs">
-            <div onClick={() => showAbout()} className={`profile__tab ${about == true ? "selected" : ""}`}>About</div>
-            <div onClick={() => showGallery()} className={`profile__tab ${gallery == true ? "selected" : ""}`}>Gallery</div>
-            <div onClick={() => showPosts()} className={`profile__tab ${posts == true ? "selected" : ""}`}>Posts</div>
+            <div onClick={() => showAbout()} className={`profile__tab ${about === true ? "selected" : ""}`}>About</div>
+            <div onClick={() => showGallery()} className={`profile__tab ${gallery === true ? "selected" : ""}`}>Gallery</div>
+            <div onClick={() => showPosts()} className={`profile__tab ${posts === true ? "selected" : ""}`}>Posts</div>
           </div>
         </div>
 
@@ -128,12 +125,12 @@ const Profile = ({ getOneUser, user }) => {
 
 const ProfileContainer = () => {
 
-  const currentUser = useSelector((state) => state.currentUser);
+  // const currentUser = useSelector((state) => state.currentUser);
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   return (
     <Profile
-      user={currentUser}
+      // user={currentUser}
       getOneUser={(id) => dispatch(getOneUser(id))}
       user={user}
     />

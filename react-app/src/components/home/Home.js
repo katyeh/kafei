@@ -3,6 +3,7 @@ import Search from './Search';
 import Section from './ImageSlider';
 
 const Home = () => {
+
   return (
     <div className="home">
       <div className="home__contents">

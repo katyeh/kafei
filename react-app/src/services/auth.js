@@ -20,6 +20,7 @@ export const login = async (email, password) => {
   });
 
   const data = await response.json();
+  debugger
   if (response.ok) {
     localStorage.setItem("user_id", data.id)
   }
