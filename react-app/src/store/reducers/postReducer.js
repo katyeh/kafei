@@ -12,6 +12,7 @@ const postReducer = (state = [], action) => {
         user_id: action.user_id
       }
     case GET_POSTS:
+      debugger
       // return { ...state, posts: action.posts }
       return action.posts // For an array
     case DELETE_POST:

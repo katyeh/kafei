@@ -24,8 +24,10 @@ export const makePost = (id, body) => {
 }
 
 export const getPosts = (id) => {
+  debugger
   return async (dispatch) => {
     try {
+      debugger
       const res = await fetch(`/api/users/${id}/posts`)
       const posts = await res.json();
       if (res.ok) {

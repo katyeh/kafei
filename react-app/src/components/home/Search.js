@@ -77,9 +77,9 @@ const Search = () => {
                   className="option"
                   key={i}
                   tabIndex="0"
-                  onClick={() => history.push(`/users/${value.id}`)}
+
                 >
-                  <div className="search__result-info">
+                  <div onClick={() => history.push(`/users/${value.id}`)} className="search__result-info">
                     <img className="search__result-image" src={value.profile_image_url}></img>
                   </div>
                   <span className="search__result-name">{value.name}</span>

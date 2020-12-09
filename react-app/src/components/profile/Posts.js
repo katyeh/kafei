@@ -19,10 +19,14 @@ const Posts = ({ currentUser, isProfile }) => {
 
   useEffect(() => {
     (async () => {
-      await dispatch(getPosts(currentUser.id))
+      debugger
+      if (currentUser.id) {
+        await dispatch(getPosts(currentUser.id))
+        console.log(currentUser.id)
+        console.log(posts)
+      }
     })()
   }, [dispatch, currentUser.id])
-
 
   return (
     <div className="posts">
