@@ -158,22 +158,6 @@ def photos(id):
         return jsonify(error=repr(error))
 
 
-# @user_routes.route('/<int:id>/tips', methods=["PUT"])
-# def new_tip(id):
-#   try:
-#     creator = Creator.query.get(id)
-#     wallet = request.json['wallet']
-#     tips = request.json['tips']
-
-#     creator.wallet = wallet
-#     creator.tips = tips
-
-#     db.session.commit()
-#     return "Successfully tipped user with id of {id}."
-#   except:
-#     return jsonify(error = f"Error during transaction.")
-
-
 @user_routes.route('/<int:id>/tips', methods=["GET", "POST", "PUT"])
 def new_tip(id):
     try:
@@ -204,9 +188,10 @@ def new_tip(id):
                     body = form.data['body']
                     transaction_id = new_transaction.id
 
-                    new_comment = Comment(
-                        body=body, sender_id=sender_id, transaction_id=transaction_id
-                    )
+                    new_comment = Comment(body=body,
+                                          sender_id=sender_id,
+                                          transaction_id=transaction_id
+                                          )
 
                     db.session.add(new_comment)
                     db.session.commit()

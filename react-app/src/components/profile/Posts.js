@@ -13,7 +13,6 @@ const Posts = ({ currentUser, isProfile }) => {
 
   useEffect(() => {
     (async () => {
-      debugger
       if (currentUser.id) {
         await dispatch(getPosts(currentUser.id))
         console.log(currentUser.id)

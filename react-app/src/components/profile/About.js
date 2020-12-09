@@ -49,7 +49,7 @@ const About = ({ photos, currentUser, isProfile }) => {
           {isProfile ? "" :
             <TipSection currentUser={currentUser} />
           }
-          <Feed />
+          <Feed isProfile={isProfile} />
         </div>
       </div>
 

@@ -3,18 +3,13 @@ import { GIVE_TIP, GET_TIPS } from "../reducers/tipReducer";
 export const giveTip = (formData, recipient_id) => {
   return async dispatch => {
     try {
-      // debugger
       const res = await fetch(`/api/users/${recipient_id}/tips`, {
         method: 'POST',
         body: formData
       });
       if (res.ok) {
         const data = await res.json()
-
-        return dispatch({
-          type: GIVE_TIP,
-          ...data
-        });
+        return dispatch({ type: GIVE_TIP, tip: data });
       }
     } catch (e) {
       console.log(e);

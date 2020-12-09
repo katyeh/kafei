@@ -4,16 +4,11 @@ export const GET_TIPS = 'GET_TIPS';
 const tipReducer = (state = [], action) => {
   switch (action.type) {
     case GIVE_TIP:
-      // debugger
-      return {
-        ...state,
-        id: action.id,
-        amount: action.amount,
-        sender_id: action.sender_id,
-        recipient_id: action.recipient_id,
-        body: action.body,
+      return [
+        action.tip,
+        ...state
         // transaction_id: action.transaction_id
-      }
+      ]
     case GET_TIPS:
       return action.transactions
     default:

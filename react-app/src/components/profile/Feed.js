@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getTips } from "../../store/actions/tipActions";
 
 
-const Feed = () => {
+const Feed = ({ isProfile }) => {
   const user = useSelector(state => state.user);
   const transactions = useSelector(state => state.tips);
   const dispatch = useDispatch();
@@ -16,23 +16,19 @@ const Feed = () => {
     })()
   }, [dispatch, user.id]);
 
-  // if (transactions[0]) {
-  //   console.log("TRANSACTIONS", Array.isArray(transactions))
-  // }
-
   return (
     <div className="about__container about__feed-container">
       <div className="about__label about__feed-label">
         <h3 className="about__feed-labelname">Feed</h3>
-        {/* <h4 className="about__feed-contact">Leave a message</h4> */}
-        <TipModal />
+        {isProfile ? null :
+          <TipModal />
+        }
       </div>
       <div className="about__content about__feed-content">
         <div className="about__feed-div">
-          {/* {console.log("TRANSACTIONS", transactions)} */}
           {Array.isArray(transactions) && transactions.map(tip => {
             return (
-              <div key={tip.sender.id} className="about__feed-item">
+              <div key={tip.sender.id*10} className="about__feed-item">
                 <div className="about__feed-main">
                   <div className="about__feed-info">
                     <img className="about__feed-pic" alt="" src={tip.sender.profile_image_url}></img>
