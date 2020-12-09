@@ -1,4 +1,4 @@
-import React, {  useState, useEffect } from 'react';
+import React, {  useState } from 'react';
 import CloseIcon from '@material-ui/icons/Close';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';

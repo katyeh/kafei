@@ -1,5 +1,6 @@
 export const GIVE_TIP = 'GIVE_TIP';
 export const GET_TIPS = 'GET_TIPS';
+export const DELETE_TIP = 'DELETE_TIP';
 
 const tipReducer = (state = [], action) => {
   switch (action.type) {
@@ -11,6 +12,10 @@ const tipReducer = (state = [], action) => {
       ]
     case GET_TIPS:
       return action.transactions
+    case DELETE_TIP:
+      return state.filter((tip) => {
+        return tip.id !== action.id
+      });
     default:
       return state;
   }
