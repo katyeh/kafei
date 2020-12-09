@@ -10,8 +10,6 @@ import { useDispatch, useSelector } from 'react-redux';
 const About = ({ photos, currentUser, isProfile }) => {
   const dispatch = useDispatch();
 
-
-  console.log("CURRENT", currentUser)
   return (
     <div className="about">
       <div className="profile__main-container">

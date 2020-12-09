@@ -29,7 +29,7 @@ export const getPhotos = (id) => {
     try {
       const res = await fetch(`/api/users/${id}/photos`);
       const photos = await res.json();
-      debugger
+      // debugger
       if (res.ok) {
         return dispatch({type: GET_PHOTOS, ...photos});
       }

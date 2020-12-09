@@ -15,9 +15,9 @@ import { getPhotos } from '../../store/actions/photoActions';
 
 const Profile = ({ getOneUser, user }) => {
   const [isProfile, setProfile] = useState(false);
-  const [about, setAbout] = useState(true);
+  const [about, setAbout] = useState(false);
   const [gallery, setGallery] = useState(false);
-  const [posts, setPosts] = useState(false);
+  const [posts, setPosts] = useState(true);
   let [headerClass, setHeaderClass] = useState("")
   const currentUser = useSelector(state => state.currentUser)
   const followers = useSelector(state => state.followers)

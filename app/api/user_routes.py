@@ -134,7 +134,7 @@ def posts(id):
 @user_routes.route('/<int:id>/posts', methods=["POST"])
 def new_post(id):
     try:
-        data = json.loads[request.data]
+        data = json.loads(request.data)
         body = data['body']
         user_id = id
 
@@ -144,7 +144,7 @@ def new_post(id):
         db.session.commit()
 
         post = Post.query.get(new_post.id)
-        return post.to_dict()
+        return jsonify(post.to_dict())
     except Exception as error:
         return jsonify(error=repr(error))
 

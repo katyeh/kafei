@@ -34,4 +34,4 @@ export const getTips = (id) => {
       console.log(e);
     }
   }
-}
+};

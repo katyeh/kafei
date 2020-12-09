@@ -19,7 +19,7 @@ const TipModal = () => {
 
   const updateBody = (e) => {
     setBody(e.target.value)
-  }
+  };
 
   const decrement = () => {
     if (coffee === 0) {

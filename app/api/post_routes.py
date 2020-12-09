@@ -44,8 +44,8 @@ def delete_post(id):
         db.session.delete(post)
         db.session.commit()
         return jsonify(message='Post was successfully deleted')
-    except:
-        return jsonify(message='Error deleting the post.')
+    except Exception as error:
+        return jsonify(error=repr(error))
 
 @post_routes.route('/<int:post_id>/likes')
 def likes(post_id):

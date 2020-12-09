@@ -1,4 +1,4 @@
-export const UPLOAD_PHOTO = 'UPLOAD_PHOTO'
+export const UPLOAD_PHOTO = 'UPLOAD_PHOTO';
 export const GET_PHOTOS = 'GET_PHOTOS';
 
 const photoReducer = (state = [], action) => {
@@ -10,8 +10,7 @@ const photoReducer = (state = [], action) => {
         pic_url: action.pic_url,
         user_id: action.user_id,
       }
-      case GET_PHOTOS:
-        debugger
+    case GET_PHOTOS:
       return {photos: action.photos}
     default:
       return state;
