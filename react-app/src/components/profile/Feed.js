@@ -37,7 +37,7 @@ const Feed = ({ isProfile }) => {
                     <h4 className="about__feed-text">{user.name}</h4>
                   </div>
                   <div className="about__feed-more">
-                    <MoreHorizIcon style={{ fontSize: 30 }}/>
+                    <MoreHorizIcon style={{ fontSize: 30 }} />
                   </div>
                 </div>
                 {tip.comments[0] ?
