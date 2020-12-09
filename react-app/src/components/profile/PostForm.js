@@ -9,6 +9,7 @@ const PostForm = ({ setIsOpen }) => {
   const user = useSelector(state => state.user);
   const [body, setBody] = useState("")
   const dispatch = useDispatch();
+
   const onPost = async () => {
     await dispatch(makePost(user.id, body))
     setIsOpen(false);

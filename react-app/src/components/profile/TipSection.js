@@ -59,7 +59,7 @@ const TipSection = ({ currentUser, isProfile }) => {
               >
               <RemoveIcon />
             </span>
-            <input value={coffee} type="number" className="about__tip-number"></input>
+            <input value={coffee} type="number" className="about__tip-number" readOnly></input>
             <span
               onClick={() => {
                 setCoffee(coffee + 1)
