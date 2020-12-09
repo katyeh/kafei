@@ -33,10 +33,6 @@ const FollowBtn = () => {
     if (following[0]) {
       following.forEach(foll => {
         if (foll.user.id === id) {
-          // console.log("FOLLOWING ID", foll.user.id)
-          // console.log("YOUR ID", id)
-          // setFollowing(true);
-          // console.log("FOLLOW?", isfollowing)
         }
         else{
           setFollowing(false);
@@ -44,8 +40,6 @@ const FollowBtn = () => {
       })
     }
   }
-
-  // console.log(isfollowing)
 
   return (
     <div>

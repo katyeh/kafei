@@ -5,10 +5,8 @@ export const makePost = (id, body) => {
     try {
       const res = await fetch(`/api/users/${id}/posts`, {
       method: 'POST',
-      body: JSON.stringify({
-        body
-      })
-    })
+      body: JSON.stringify({ body })
+    });
     if (res.ok) {
       const data = await res.json();
       console.log(data)

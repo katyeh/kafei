@@ -36,7 +36,7 @@ const About = ({ photos, currentUser, isProfile }) => {
               <h3>Gallery</h3>
             </div>
             <div className="about__gallery-content">
-            {photos.photos && photos.photos.slice(0,5).map(photo => {
+            {photos && photos.slice(0,5).map(photo => {
               return (
                 <img className="about__gallery-img" alt="" key={photo.id} src={photo.pic_url}></img>
               )

@@ -83,7 +83,7 @@ const AddImageBtn = () => {
             </div>
 
             <div className="modal__preview-wrap">
-              <div class="modal__img-div">
+              <div className="modal__img-div">
                 <img
                   className="modal__preview-img"
                   src={imagePreview}

@@ -152,9 +152,7 @@ def new_post(id):
 @user_routes.route('/<int:id>/photos')
 def photos(id):
     try:
-        photos = Photo.query.filter(Photo.user_id == id).all()
-        print(f"!!!!!!!!!!!")
-        print(photos)
+        photos = Photo.query.filter(Photo.user_id == id).order_by(Photo.id.desc()).all()
         return jsonify(photos=[photo.to_dict() for photo in photos])
     except Exception as error:
         return jsonify(error=repr(error))

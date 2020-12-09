@@ -8,15 +8,9 @@ export const uploadPhoto = (formData, id, name) => {
         body: formData
       });
       if (res.ok) {
-        const data= await res.json();
-
-        dispatch({
-          type: UPLOAD_PHOTO,
-          ...data
-        })
-        return data;
+        const data = await res.json();
+        dispatch({ type: UPLOAD_PHOTO, photo: data })
       }
-      return await res.json();
     } catch (e) {
       console.log(e);
     }
@@ -29,12 +23,11 @@ export const getPhotos = (id) => {
     try {
       const res = await fetch(`/api/users/${id}/photos`);
       const photos = await res.json();
-      // debugger
       if (res.ok) {
-        return dispatch({type: GET_PHOTOS, ...photos});
+        return dispatch({ type: GET_PHOTOS, ...photos });
       }
     } catch(e) {
       console.log(e);
     }
   }
-}
+};
