@@ -5,18 +5,18 @@ export const DELETE_POST = 'DELETE_POSTS';
 const postReducer = (state = [], action) => {
   switch(action.type) {
     case MAKE_POST:
-      return {
-        ...state,
-        id: action.id,
-        body: action.body,
-        user_id: action.user_id
-      }
+      return [
+        action.post,
+        ...state
+      ]
     case GET_POSTS:
       debugger
       // return { ...state, posts: action.posts }
       return action.posts // For an array
     case DELETE_POST:
-      return action.posts
+      return state.filter((post) => {
+        return post.id !== action.id
+      });
     default:
       return state;
   }

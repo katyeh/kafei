@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 const Search = () => {
   const [display, setDisplay] = useState(true)
-  const [results, setResults] = useState("")
+  // const [results, setResults] = useState("")
   const [query, setQuery] = useState("")
   const [options, setOptions] = useState([]);
   const wrapperRef = useRef(null);
@@ -18,7 +18,7 @@ const Search = () => {
       const res = await searchresults.json();
       res.userresults.map(value => result.push(value))
       setOptions(result);
-      setResults(searchresults);
+      // setResults(searchresults);
     }
     // If searchbar is empty then hide options
     if (query === "") {
@@ -79,7 +79,7 @@ const Search = () => {
                   tabIndex="0"
 
                 >
-                  <div onClick={() => history.push(`/users/${value.id}`)} className="search__result-info">
+                  <div onClick={() => history.push(`/users/${value.id}`)} alt="" className="search__result-info">
                     <img className="search__result-image" src={value.profile_image_url}></img>
                   </div>
                   <span className="search__result-name">{value.name}</span>

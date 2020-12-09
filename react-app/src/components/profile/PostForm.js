@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import CloseIcon from '@material-ui/icons/Close';
 import logo from "../../images/kafei-logo.png";
 import { makePost } from "../../store/actions/postActions";
@@ -11,7 +11,6 @@ const PostForm = ({ setIsOpen }) => {
   const dispatch = useDispatch();
 
   const onPost = async () => {
-    console.log("NICE")
     await dispatch(makePost(user.id, body))
     setIsOpen(false);
   }

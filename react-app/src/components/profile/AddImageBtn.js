@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { uploadPhoto } from "../../store/actions/photoActions";
 import PhotoSizeSelectActualIcon from '@material-ui/icons/PhotoSizeSelectActualOutlined';
@@ -17,8 +17,6 @@ const AddImageBtn = () => {
     setImageUrl(e.target.files[0]);
     setIsOpen(true);
 
-    let file = e.target.files[0]
-    // console.log(typeof file)
     if (e.target.files && e.target.files[0]) {
       let reader = new FileReader();
       reader.onloadend = (e) => {
