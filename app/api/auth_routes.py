@@ -102,7 +102,7 @@ def sign_up():
             username=form.data['username'],
             email=form.data['email'],
             password=form.data['password'],
-            profileImage="https://kafei.s3-us-west-1.amazonaws.com/kafei-logo.png",
+            profile_image_url="https://kafei.s3-us-west-1.amazonaws.com/kafei-logo.png",
             cover_image_url="https://kafei.s3-us-west-1.amazonaws.com/coverImages/external-content.duckduckgo.jpg",
             tips=0,
         )
