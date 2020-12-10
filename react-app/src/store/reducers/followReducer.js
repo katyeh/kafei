@@ -9,7 +9,7 @@ const followerReducer = (state = [], action) => {
     case FOLLOW_USER:
       return {
         ...state,
-        follower: action.follower_id,
+        follower: action.follower
       }
     default:
       return state;

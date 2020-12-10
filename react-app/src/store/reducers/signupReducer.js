@@ -13,7 +13,9 @@ const userReducer = (state = {}, action) => {
         profileImageUrl: action.profile_image_url,
         coverImageUrl: action.cover_image_url,
         wallet: action.wallet,
-        tips: action.tips
+        tips: action.tips,
+        followers: action.followers,
+        following: action.following
       }
     default:
       return state;

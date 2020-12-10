@@ -3,7 +3,6 @@ import AddImageBtn from './AddImageBtn';
 // import { getPhotos } from '../../store/actions/photoActions';
 
 const Gallery = ({ photos, currentUser, isProfile }) => {
-console.log(photos)
   return (
     <div className="gallery">
       <div className="gallery__main-container">

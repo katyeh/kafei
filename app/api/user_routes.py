@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship, sessionmaker, joinedload
 from sqlalchemy import func, select, or_
 from app.forms import UploadPhotoForm
 from app.forms import TipForm
-from app.models import db, User, Post, Photo, Comment, Like, Transaction, Follower
+from app.models import db, User, Post, Photo, Comment, Like, Transaction
 import json
 
 import binascii
@@ -66,7 +66,7 @@ def users():
 # @login_required
 def user(id):
     user = User.query.get(id)
-    return jsonify(user=[user.to_dict()])
+    return jsonify(user=[user.to_dict_full()])
 
 @user_routes.route('/<int:id>', methods=["PUT"])
 def update_bio(id):
@@ -80,10 +80,10 @@ def update_bio(id):
         return jsonify(error=repr(error))
 
 
-@user_routes.route('/<int:id>/following')
-def following(id):
-    following = Follower.query.filter(Follower.follower_id == id).all()
-    return jsonify(following=[follower.following_to_dict() for follower in following])
+# @user_routes.route('/<int:id>/following')
+# def following(id):
+#     following = Follower.query.filter(Follower.follower_id == id).all()
+#     return jsonify(following=[follower.following_to_dict() for follower in following])
 
 
 @user_routes.route('/<int:id>/home')
@@ -99,7 +99,7 @@ def user_home(id):
     suggested_creators = [User.query.get(
         creator_id) for creator_id in creator_ids]
 
-    following = Follower.query.filter(Follower.follower_id == id).all()
+    # following = Follower.query.filter(Follower.follower_id == id).all()
 
     featured_creators = User.query.order_by(
         func.random()).filter(User.id != id).limit(6).all()
@@ -108,7 +108,7 @@ def user_home(id):
     try:
         return jsonify(users={
             "based_on_likes": [user.to_dict() for user in set(suggested_creators)],
-            "creators_you_follow": [follower.to_dict() for follower in set(following)],
+            # "creators_you_follow": [follower.to_dict() for follower in set(following)],
             "featured_creators": [user.to_dict() for user in featured_creators]
         })
     except Exception as error:
@@ -201,10 +201,10 @@ def new_tip(id):
         return jsonify(error=repr(error))
 
 
-@user_routes.route('/<int:id>/followers')
-def get_followers(id):
-    followers = Follower.query.filter(Follower.followed_id == id).all()
-    return jsonify(followers=[follower.to_dict() for follower in followers])
+# @user_routes.route('/<int:id>/followers')
+# def get_followers(id):
+#     followers = Follower.query.filter(Follower.followed_id == id).all()
+#     return jsonify(followers=[follower.to_dict() for follower in followers])
 
 
 # @user_routes.route('/<int:id>/following')
@@ -214,25 +214,24 @@ def get_followers(id):
 #     return jsonify(followed_creators = [followed_creator.to_dict() for followed_creator in followed_creators])
 
 
-@user_routes.route('/<int:id>/follow', methods=["POST"])
-def follow(id):
-    data = json.loads(request.data)
-    new_follower = Follower()
-    new_follower.follower_id = data["follower_id"]
-    new_follower.followed_id = id
-
-    db.session.add(new_follower)
-    db.session.commit()
-
-    follower = Follower.query.get(new_follower.id)
-
+@user_routes.route('/<int:user_id>/follow/<int:followed_id>', methods=["POST"])
+def follow(user_id, followed_id):
     try:
-        db.session.add(follower)
-        db.session.commit()
-        return jsonify(follower.to_dict()), 201
+        followed = User.query.get(followed_id)
+        follower = User.query.get(user_id)
+
+        if follower in followed.followers:
+            followed.followers.remove(follower)
+            db.session.commit()
+
+            return followed.to_dict_full()
+        else:
+            followed.followers.append(follower)
+            db.session.commit()
+
+            return followed.to_dict_full()
     except Exception as error:
-        print(error)
-        return jsonify(error=f"Error following user with the id of {id}."), 404
+        return jsonify(error=repr(error))
 
 
 @user_routes.route('/<int:id>/transactions')
@@ -242,13 +241,13 @@ def get_tips(id):
     return jsonify(transactions=[transaction.to_dict() for transaction in transactions])
 
 
-@user_routes.route('/<int:user_id>/followers/<int:follower_id>', methods=["DELETE"])
-def unfollow(user_id, follower_id):
-    follower_data = Follower.query.filter(
-        Follower.follower_id == follower_id, Follower.followed_id == user_id)
-    try:
-        db.session.delete(follower_data)
-        db.session.commit()
-        return jsonify(message=f"Unfollowed user with the id of {user_id}.")
-    except Exception as error:
-        return jsonify(error=repr(error))
+# @user_routes.route('/<int:user_id>/followers/<int:follower_id>', methods=["DELETE"])
+# def unfollow(user_id, follower_id):
+#     follower_data = Follower.query.filter(
+#         Follower.follower_id == follower_id, Follower.followed_id == user_id)
+#     try:
+#         db.session.delete(follower_data)
+#         db.session.commit()
+#         return jsonify(message=f"Unfollowed user with the id of {user_id}.")
+#     except Exception as error:
+#         return jsonify(error=repr(error))

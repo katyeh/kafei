@@ -30,7 +30,6 @@ export const loadUser = (id) => async (dispatch) => {
 
   if (res.ok) {
     const data = await res.json();
-    // console.log("DATA:", data)
     dispatch({
       type: LOAD_USER,
       ...data.user[0]
