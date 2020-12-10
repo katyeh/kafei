@@ -1,5 +1,5 @@
 from .db import db
-from sqlalchemy.types import Integer, Numeric
+from sqlalchemy.types import Integer, Numeric, String
 from sqlalchemy.schema import Column, ForeignKey
 from sqlalchemy.orm import relationship
 
@@ -9,8 +9,8 @@ class Location(db.Model):
 
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    lat = Column(Numeric, nullable=False)
-    lng = Column(Numeric, nullable=False)
+    lat = Column(String, nullable=False)
+    lng = Column(String, nullable=False)
 
     user = db.relationship("User", backref="locations", foreign_keys=[user_id])
 

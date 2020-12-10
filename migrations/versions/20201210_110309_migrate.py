@@ -1,7 +1,7 @@
 """migrate
 
 Revision ID: 1faf2180f016
-Revises: 
+Revises:
 Create Date: 2020-12-10 11:03:09.744281
 
 """
@@ -49,8 +49,8 @@ def upgrade():
     op.create_table('locations',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('lat', sa.Numeric(), nullable=False),
-    sa.Column('lng', sa.Numeric(), nullable=False),
+    sa.Column('lat', sa.String(), nullable=False),
+    sa.Column('lng', sa.String(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
