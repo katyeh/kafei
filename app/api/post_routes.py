@@ -2,6 +2,9 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import db, Post, Like, Comment
 from sqlalchemy.orm import relationship, sessionmaker, joinedload
+import json
+from sqlalchemy import and_
+
 
 post_routes = Blueprint('posts', __name__)
 
@@ -55,8 +58,9 @@ def likes(post_id):
 @post_routes.route('/<int:post_id>/likes', methods=["POST"])
 def new_like(post_id):
     try:
+        data = json.loads(request.data)
         post_id = post_id
-        user_id = request.json['user_id']
+        user_id = data['user_id']
 
         new_like = Like(post_id=post_id, user_id=user_id)
 
@@ -83,3 +87,13 @@ def new_post_comment(id):
         return comment.to_dict()
     except:
         return jsonify(error='Error posting comment.')
+
+@post_routes.route('/<int:post_id>/user/<int:user_id>', methods=["DELETE"])
+def delete_like(user_id, post_id):
+    try:
+        like = Like.query.filter(Like.user_id == user_id).filter(Like.post_id == post_id).first()
+        db.session.delete(like)
+        db.session.commit()
+        return like.to_dict()
+    except Exception as error:
+        return jsonify(error=repr(error))
