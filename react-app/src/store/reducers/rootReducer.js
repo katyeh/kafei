@@ -8,6 +8,7 @@ import following from './followingReducer';
 import photos from './photoReducer';
 import posts from './postReducer';
 import tips from './tipReducer';
+import likes from './likeReducer';
 
 const rootReducer = combineReducers({
   user,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   photos,
   posts,
   tips,
+  likes,
   users: userReducer,
   currentUser: currentUserReducer,
 });

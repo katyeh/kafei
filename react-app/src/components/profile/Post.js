@@ -1,9 +1,9 @@
 import React, {  useState } from 'react';
 import CloseIcon from '@material-ui/icons/Close';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { useDispatch } from 'react-redux';
 import { deletePost } from '../../store/actions/postActions';
+import LikePost from "./LikePost";
 
 const Post = ({ post, currentUser }) => {
   const dispatch = useDispatch();
@@ -26,10 +26,11 @@ const Post = ({ post, currentUser }) => {
         <div className="posts__msg-container">
           <p className="about__feed-msg">{post.body}</p>
           <div className="posts__msg-btns">
-            <div className="posts__like-btn">
+            <LikePost post={post}/>
+            {/* <div className="posts__like-btn">
               <FavoriteBorderIcon style={{ fontSize: 25 }} />
               <p>3</p>
-            </div>
+            </div> */}
             <div onClick={() => setHide(!hide)}
             className="posts__more-btn"
             >

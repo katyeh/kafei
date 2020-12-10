@@ -9,7 +9,7 @@ export const makePost = (id, body) => {
     });
     if (res.ok) {
       const data = await res.json();
-      console.log(data)
+      // console.log(data)
       dispatch({ type: MAKE_POST, post: data });
     }
     } catch(e) {
