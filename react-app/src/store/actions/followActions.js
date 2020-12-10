@@ -1,5 +1,4 @@
-import { FOLLOW_USER, GET_FOLLOWERS } from "../reducers/followReducer";
-
+import { FOLLOW_USER } from "../reducers/followReducer";
 
 export const follow = (user_id, followed_id) => {
   return async dispatch => {

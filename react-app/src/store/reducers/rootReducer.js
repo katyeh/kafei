@@ -3,7 +3,6 @@ import user from './signupReducer';
 import userReducer from './user';
 import currentUserReducer from './currentUser';
 import errors from './errorReducer';
-import followers from './followReducer';
 import photos from './photoReducer';
 import posts from './postReducer';
 import tips from './tipReducer';
@@ -11,7 +10,6 @@ import tips from './tipReducer';
 const rootReducer = combineReducers({
   user,
   errors,
-  followers,
   photos,
   posts,
   tips,
