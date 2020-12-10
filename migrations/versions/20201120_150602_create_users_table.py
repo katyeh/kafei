@@ -33,6 +33,13 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    op.create_table('locations',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('lat', sa.Numeric(), nullable=False),
+    sa.Column('lng', sa.Numeric(), nullable=False),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], )
+    )
     op.create_table('posts',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('body', sa.String(length=255), nullable=False),
@@ -113,5 +120,6 @@ def downgrade():
     op.drop_table('followers')
     op.drop_table('transactions')
     op.drop_table('posts')
+    op.drop_table('locations')
     op.drop_table('users')
     # ### end Alembic commands ###

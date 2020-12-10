@@ -70,5 +70,6 @@ def downgrade():
     op.drop_table('followers')
     op.drop_table('transactions')
     op.drop_table('posts')
+    op.drop_table('locations')
     op.drop_table('users')
     # ### end Alembic commands ###

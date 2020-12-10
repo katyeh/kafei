@@ -1,8 +1,8 @@
-"""likes seed
+"""locations seed
 
-Revision ID: bf064bd66572
-Revises: d36811e377e2
-Create Date: 2020-12-02 00:43:47.834419
+Revision ID: f450bb3a3292
+Revises: 0192e778c20a
+Create Date: 2020-12-09 23:23:13.882671
 
 """
 from alembic import op
@@ -11,45 +11,40 @@ from sqlalchemy.sql import table
 
 
 # revision identifiers, used by Alembic.
-revision = 'bf064bd66572'
-down_revision = 'd36811e377e2'
+revision = 'f450bb3a3292'
+down_revision = '0192e778c20a'
 branch_labels = None
 depends_on = None
 
 
 def upgrade():
-    like = table('likes',
-        sa.Column('id', sa.Integer()),
-        sa.Column('post_id', sa.Integer()),
-        sa.Column('photo_id', sa.Integer()),
+    location = table('locations',
+        sa.Column('id', sa.Integer(), autoincrement=True),
         sa.Column('user_id', sa.Integer()),
+        sa.Column('lat', sa.Numeric()),
+        sa.Column('lng', sa.Numeric())
     )
-
-    op.bulk_insert(like, [
+    op.bulk_insert(location, [
         {
-            'post_id': 1,
-            'user_id': 5
+            'user_id': 2,
+            'lat': 47.608013,
+            'lng': -122.335167
         },
         {
-            'post_id': 2,
-            'user_id': 10
+            'user_id': 3,
+            'lat': 40.730610,
+            'lng': -73.935242,
         },
         {
-            'post_id': 2,
-            'user_id': 7
+            'user_id': 4,
+            'lat': 37.773972,
+            'lng': -122.431297,
         },
         {
-            'post_id': 2,
-            'user_id': 1
-        },
-        {
-            'post_id': 2,
-            'user_id': 6
-        },
-        {
-            'post_id': 2,
-            'user_id': 3
-        },
+            'user_id': 5,
+            'lat': 48.1167,
+            'lng': -53.7333,
+        }
     ])
 
 
