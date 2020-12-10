@@ -74,5 +74,6 @@ class User(db.Model, UserMixin):
       "tips": self.tips,
       "wallet": self.wallet,
       "followers": [follower.to_dict() for follower in self.followers],
-      "following": [followed.to_dict() for followed in self.following]
+      "following": [followed.to_dict() for followed in self.following],
+      "location": [location.to_dict() for location in self.locations]
     }
