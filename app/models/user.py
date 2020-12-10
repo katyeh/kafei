@@ -3,6 +3,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy.orm import relationship
 
+followers = db.Table(
+  "followers",
+  db.Model.metadata,
+  db.Column('followed_id', db.Integer, db.ForeignKey(
+    "users.id"), primary_key=True), #followed
+  db.Column('follower_id', db.Integer, db.ForeignKey(
+    "users.id"), primary_key=True), #follower
+)
 
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
@@ -19,6 +27,13 @@ class User(db.Model, UserMixin):
   wallet = db.Column(db.Integer, nullable=False)
 
   # transactions = db.relationship("Transaction", cascade='all, delete', backref='user')
+
+  following = db.relationship(
+    'User', followers,
+    primaryjoin=id == followers.c.follower_id,
+    secondaryjoin=id == followers.c.followed_id,
+    backref="followers"
+  )
 
   @property
   def password(self):
@@ -45,4 +60,19 @@ class User(db.Model, UserMixin):
       "cover_image_url": self.cover_image_url,
       "tips": self.tips,
       "wallet": self.wallet
+    }
+
+  def to_dict_full(self):
+    return {
+      "id": self.id,
+      "name": self.name,
+      "username": self.username,
+      "email": self.email,
+      "bio": self.bio,
+      "profile_image_url": self.profile_image_url,
+      "cover_image_url": self.cover_image_url,
+      "tips": self.tips,
+      "wallet": self.wallet,
+      "followers": [follower.to_dict() for follower in self.followers],
+      "following": [followed.to_dict() for followed in self.following]
     }

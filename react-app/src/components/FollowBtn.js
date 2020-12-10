@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 import CheckIcon from '@material-ui/icons/Check';
-import { getFollowing } from "../store/actions/followingActions";
 import { follow } from "../store/actions/followActions";
 
 const FollowBtn = () => {
@@ -11,33 +10,25 @@ const FollowBtn = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
-  const following = useSelector(state => state.following);
+  const userId = parseInt(id)
 
   useEffect(() => {
-    (async () => {
-      await dispatch(getFollowing(user.id));
-    })()
-  }, [dispatch, user.id]);
-
-  useEffect(() => {
-    checkfollow();
-  })
+    checkfollow()
+  }, [user.following])
 
   const onFollow = async () => {
-    if (!isfollowing && id && user) {
-      await dispatch(follow(user.id, id));
-    };
+    await dispatch(follow(user.id, id));
+    setFollowing(!isfollowing)
   };
 
   let checkfollow = () => {
-    if (following[0]) {
-      following.forEach(foll => {
-        if (foll.user.id === id) {
-        }
-        else{
-          setFollowing(false);
-        }
-      })
+    if (user.following) {
+      const followList = user.following.filter(followingUser => {
+        return followingUser.id === userId
+      });
+      if (followList.length > 0) {
+        setFollowing(true)
+      }
     }
   }
 
@@ -45,7 +36,7 @@ const FollowBtn = () => {
     <div>
       {
       isfollowing ?
-      <button className="following__btn">
+      <button onClick={() => onFollow()} className="following__btn">
         <PersonOutlineIcon style={{ fontSize: 25 }} />
         <CheckIcon style={{ fontSize: 20 }} />
       </button>

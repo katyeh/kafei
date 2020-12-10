@@ -7,7 +7,6 @@ import FollowBtn from '../FollowBtn';
 import About from './About';
 import Gallery from './Gallery';
 import Posts from './Posts';
-import { getFollowers } from '../../store/actions/followActions';
 import { getPhotos } from '../../store/actions/photoActions';
 
 
@@ -18,7 +17,6 @@ const Profile = ({ getOneUser, user }) => {
   const [posts, setPosts] = useState(false);
   let [headerClass, setHeaderClass] = useState("")
   const currentUser = useSelector(state => state.currentUser)
-  const followers = useSelector(state => state.followers)
   const { id } = useParams();
   const userId = Number.parseInt(id);
   const dispatch = useDispatch();
@@ -27,7 +25,6 @@ const Profile = ({ getOneUser, user }) => {
 
   useEffect(() => {
     (async () => {
-      await dispatch(getFollowers(userId));
       await dispatch(getPhotos(userId));
       getOneUser(userId);
     })()
@@ -89,7 +86,7 @@ const Profile = ({ getOneUser, user }) => {
                 <div className="profile__info">
                   <h3>Buy a Coffee for</h3>
                   <h2>{currentUser.username}</h2>
-                  <p>{followers.length} Followers</p>
+                  <p>{user.followers.length} Followers</p>
                 </div>
               : ""}
           </div>

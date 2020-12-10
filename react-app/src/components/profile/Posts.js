@@ -15,8 +15,6 @@ const Posts = ({ currentUser, isProfile }) => {
     (async () => {
       if (currentUser.id) {
         await dispatch(getPosts(currentUser.id))
-        console.log(currentUser.id)
-        console.log(posts)
       }
     })()
   }, [])
