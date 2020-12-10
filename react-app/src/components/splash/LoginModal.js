@@ -42,6 +42,7 @@ const LoginModal = ({ authenticated, setAuthenticated }) => {
         className="login-modal"
         overlayClassName="overlay"
         shouldCloseOnOverlayClick={true}
+        closeTimeoutMS={500}
       >
         <div className="login-header">
           <h1>Login</h1>

@@ -9,6 +9,7 @@
     background-color: transparent;
     border-radius: 4rem;
     border: none;
+    outline: none;
     cursor: pointer;
 }
 
@@ -51,6 +52,7 @@
     cursor: pointer;
     font-size: 1.6rem;
     font-weight: 600;
+    outline: none;
 }
 
 .login-content {
@@ -91,3 +93,36 @@
     background-color: rgba(153, 153, 153, 0.8);
     z-index: 2;
   }
+
+// React modal transitions
+
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+
+}
+
+.ReactModal__Overlay--before-close{
+    opacity: 0;
+}
+
+// .ReactModal__Overlay {
+//     opacity: 0;
+//     transform: translateY(-100px);
+//     transition: all 500ms ease-in-out;
+//   }
+
+//   .ReactModal__Overlay--after-open {
+//     opacity: 1;
+//     transform: translateY(0px);
+//   }
+
+//   .ReactModal__Overlay--before-close {
+//     opacity: 0;
+//     transform: translateY(-100px);
+//   }

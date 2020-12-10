@@ -62,6 +62,7 @@
         display: flex;
         position: relative;
         top: 6rem;
+        padding-bottom: 4rem;
     }
     &__like-btn {
         display:flex;
@@ -72,6 +73,7 @@
         cursor: pointer;
     }
     &__delete {
+        position: absolute;
         display: flex;
         align-items: center;
         background-color: white;
@@ -80,8 +82,7 @@
         width: 14rem;
         cursor: pointer;
         padding: 1.4rem;
-        position: relative;
-        right: 12rem;
+        left: -7rem;
     }
     &__dlt {
         padding: 1.5rem;

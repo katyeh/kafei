@@ -56,7 +56,6 @@
         display: flex;
         flex-direction: column;
         padding: 0 2rem;
-        // align-items: center;
         width:70rem;
         background-color: #fff;
         box-shadow: 5px 10px 18px rgba(149,185,193,.4);
@@ -70,13 +69,18 @@
     }
     &__result-info {
         padding-right: 1rem;
+        outline: none;
+        cursor: pointer;
     }
     &__result-name {
         font-weight: 600;
+        outline: none;
     }
 }
 .option {
     display: flex;
     flex-direction: row;
     align-items: center;
+    outline: none;
+    cursor: pointer;
 }

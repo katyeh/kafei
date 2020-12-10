@@ -22,6 +22,7 @@
 }
 
 // Signup modal styles
+
 .signup-modal {
     display: grid;
     grid-template-rows: 10rem 10rem;
@@ -60,17 +61,7 @@
     cursor: pointer;
   }
 
-  // .login-btn {
-  //   padding: .8rem;
-  //   border-radius: 8px;
-  //   color: #fff;
-  //   background-color: $color-accent;
-  //   width: 10rem;
-  // }
-
   .login-content {
-    // padding-top: 3rem;
-    // height: 5rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
@@ -81,8 +72,6 @@
   align-items: center;
   position: relative;
   top: -6rem;
-  // width: 4.6rem;
-  // height: 4.6rem;
 
   input {
     border: 2px solid rgba(62,6358,.2);
@@ -97,4 +86,19 @@
     font-family: $font-main;
     font-size: 1.6rem;
   }
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+
+}
+
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+
+}
+
+.ReactModal__Overlay--before-close{
+  opacity: 0;
 }

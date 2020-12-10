@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 
 const Search = () => {
   const [display, setDisplay] = useState(true)
-  // const [results, setResults] = useState("")
   const [query, setQuery] = useState("")
   const [options, setOptions] = useState([]);
   const wrapperRef = useRef(null);
   const history = useHistory();
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     const result = [];
@@ -48,14 +48,18 @@ const Search = () => {
     setDisplay(true);
   };
 
+  const handleClick = (id) => {
+    setRedirect(true);
+  }
+
 
   return (
-    <div className="search">
+    <div ref={wrapperRef} className="search">
       <div className="search__header">
         <h1 className="search__title">Explore creators</h1>
         <h5 className="search__subtitle">Discover the best creatives from around the world and get inspired by the works and stories they share.</h5>
       </div>
-      <div ref={wrapperRef} className="search__container">
+      <div className="search__container">
         <SearchIcon style={{ fontSize: 30 }} />
         <input
           onClick={() => setDisplay(!display)}
@@ -69,21 +73,21 @@ const Search = () => {
       </div>
       {display && (
         <div className="search__resultsContainer">
-          {/* <div>RESULTS!!</div> */}
           {options
             .map((value, i) => {
               return (
                 <div
+                  onClick={() => history.push(`/users/${value.id}`)}
                   className="option"
                   key={i}
                   tabIndex="0"
-
                 >
-                  <div onClick={() => history.push(`/users/${value.id}`)} alt="" className="search__result-info">
-                    <img className="search__result-image" src={value.profile_image_url}></img>
+                  {redirect ? <Redirect to={`/users/${value.id}`} /> : null}
+                  <div className="search__result-info" onClick={() => handleClick()}>
+                    <img className="search__result-image" alt="" src={value.profile_image_url}></img>
+                    </div>
+                    <span className="search__result-name">{value.name}</span>
                   </div>
-                  <span className="search__result-name">{value.name}</span>
-                </div>
               )
             })
           }

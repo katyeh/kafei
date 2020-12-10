@@ -8,9 +8,12 @@ import About from './About';
 import Gallery from './Gallery';
 import Posts from './Posts';
 import { getPhotos } from '../../store/actions/photoActions';
+import Modal from 'react-modal';
+import TipModal from './TipModal';
 
 
 const Profile = ({ getOneUser, user }) => {
+  const [modalIsOpen, setIsOpen] = useState(false);
   const [isProfile, setProfile] = useState(false);
   const [about, setAbout] = useState(true);
   const [gallery, setGallery] = useState(false);
@@ -92,10 +95,20 @@ const Profile = ({ getOneUser, user }) => {
           </div>
           { isProfile ? "" :
             <div className="profile__btns">
-                <button className="support-btn">
+                <button onClick={() => setIsOpen(true)} className="support-btn">
                   <img className="profile__logo-img" src={logo} alt=""></img>
                   <div>Support</div>
                 </button>
+                <Modal
+                  isOpen={modalIsOpen}
+                  onRequestClose={() => setIsOpen(false)}
+                  contentLabel="Signup Modal"
+                  className="tipModal"
+                  overlayClassName="overlay"
+                  shouldCloseOnOverlayClick={true}
+                >
+                  <TipModal setIsOpen={setIsOpen} />
+                </Modal>
               <FollowBtn />
             </div>
           }

@@ -71,7 +71,6 @@
     &__startbtn {
         border: .2rem solid black;
         border-radius: 2rem;
-        // width: 40rem;
         background-color: $color-accent-dark;
         display: inline-block;
         height: 6rem;
@@ -80,6 +79,7 @@
         font-family: $font-main;
         font-size: 2.4rem;
         font-weight: 600;
+        outline: none;
     }
 
     &__signup {
