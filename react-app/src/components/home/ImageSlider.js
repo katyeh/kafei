@@ -7,11 +7,13 @@ import img from "../../images/kafei-logo.png"
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { getUsers } from "../../store/actions/users";
+import { useHistory } from 'react-router-dom';
 
 const ImageSlider = () => {
   const user = useSelector(state => state.user);
   const users = useSelector(state => state.users)
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     (async () => {
@@ -57,7 +59,7 @@ const ImageSlider = () => {
                 </div>
               </div>
               <div className="card__details">
-                <h2>{user.name}</h2>
+                <h2 className="card__name" onClick={() => history.push(`/users/${user.id}`)}>{user.name}</h2>
                 <h5>{user.username}</h5>
               </div>
             </div>
