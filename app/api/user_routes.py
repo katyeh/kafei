@@ -22,8 +22,6 @@ client = boto3.client('s3',
                       aws_secret_access_key=os.environ.get(
                           'AWS_SECRET_ACCESS_KEY')
                       )
-# print(f"ITS A SECRET!!!!!!!!!!!!")
-# print(os.environ.get("AWS_SECRET_ACCESS_KEY"))
 
 
 @user_routes.route('/<int:id>/photos', methods=["POST"])
@@ -79,12 +77,6 @@ def update_bio(id):
         return jsonify(user.to_dict())
     except Exception as error:
         return jsonify(error=repr(error))
-
-
-# @user_routes.route('/<int:id>/following')
-# def following(id):
-#     following = Follower.query.filter(Follower.follower_id == id).all()
-#     return jsonify(following=[follower.following_to_dict() for follower in following])
 
 
 @user_routes.route('/<int:id>/home')
@@ -202,19 +194,6 @@ def new_tip(id):
         return jsonify(error=repr(error))
 
 
-# @user_routes.route('/<int:id>/followers')
-# def get_followers(id):
-#     followers = Follower.query.filter(Follower.followed_id == id).all()
-#     return jsonify(followers=[follower.to_dict() for follower in followers])
-
-
-# @user_routes.route('/<int:id>/following')
-# def following(id):
-#     followed_ids = Follower.query.filter(Follower.follower_id == id).all()
-#     followed_creators = User.query.filter(Follower.followed_id == followed_ids).all()
-#     return jsonify(followed_creators = [followed_creator.to_dict() for followed_creator in followed_creators])
-
-
 @user_routes.route('/<int:user_id>/follow/<int:followed_id>', methods=["POST"])
 def follow(user_id, followed_id):
     try:
@@ -242,13 +221,17 @@ def get_tips(id):
     return jsonify(transactions=[transaction.to_dict() for transaction in transactions])
 
 
-# @user_routes.route('/<int:user_id>/followers/<int:follower_id>', methods=["DELETE"])
-# def unfollow(user_id, follower_id):
-#     follower_data = Follower.query.filter(
-#         Follower.follower_id == follower_id, Follower.followed_id == user_id)
-#     try:
-#         db.session.delete(follower_data)
-#         db.session.commit()
-#         return jsonify(message=f"Unfollowed user with the id of {user_id}.")
-#     except Exception as error:
-#         return jsonify(error=repr(error))
+@user_routes.route('/profile_pic/<id>', methods=["PUT"])
+def profile_pic(id):
+    """
+    Edits profile picture
+    """
+    try:
+        artist = Artist.query.get(id)
+        profile_image_url = request.json["profile_image_url"]
+        artist.profile_image_url = profile_image_url
+
+        db.session.commit()
+        return "Profile picture was successfully updated."
+    except Exception as error:
+        return jsonify(error=repr(error))
