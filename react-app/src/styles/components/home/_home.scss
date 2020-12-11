@@ -43,6 +43,10 @@
   &__section-title {
     padding-bottom: 2rem;
   }
+  &__section-featured {
+    position: relative;
+    right: -6rem;
+  }
   &__featured-section {
     padding-bottom: 5rem;
   }
@@ -71,4 +75,15 @@
 .tag7 {
   background-color: #FFDFDF;
   width: 18rem;
+}
+
+// .gm-style-iw-c {
+//   opacity: 0;
+// }
+.gm-style-iw-t::after {
+  opacity: 0;
+}
+
+.info-window {
+  cursor: pointer;
 }

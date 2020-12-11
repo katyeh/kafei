@@ -25,7 +25,7 @@ const LikePost = ({ post }) => {
     (async () => {
       await dispatch(getLikes(post.id))
     })()
-  }, [dispatch, post.id, likes.length]);
+  }, []);
 
   const onLike = async (post_id, user_id) => {
     await dispatch(addLikeToPost(post.id, user.id))

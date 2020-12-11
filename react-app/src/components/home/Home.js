@@ -1,6 +1,7 @@
 import React from 'react';
 import Search from './Search';
 import Section from './ImageSlider';
+import MapContainer from '../Map';
 
 const Home = () => {
 
@@ -20,9 +21,15 @@ const Home = () => {
           </div>
           <div className="home__featured-section">
             <div>
-              <h1 className="home__section-title">Featured Creators</h1>
+              <h1 className="home__section-title home__section-featured">Featured Creators</h1>
             </div>
             <Section />
+          </div>
+          <div className="home__map">
+            <div>
+              <h1 className="home__section-title">Kafei around the Globe</h1>
+            </div>
+            <MapContainer />
           </div>
         </div>
       </div>

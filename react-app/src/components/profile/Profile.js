@@ -106,6 +106,7 @@ const Profile = ({ getOneUser, user }) => {
                   className="tipModal"
                   overlayClassName="overlay"
                   shouldCloseOnOverlayClick={true}
+                  closeTimeoutMS={500}
                 >
                   <TipModal setIsOpen={setIsOpen} />
                 </Modal>

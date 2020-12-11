@@ -1,0 +1,11 @@
+.map {
+    width: 42vw;
+    height: 30vw;
+    margin: 0 auto;
+}
+
+.home {
+    &__map {
+        padding: 5rem 0;
+    }
+}
