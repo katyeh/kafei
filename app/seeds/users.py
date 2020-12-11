@@ -107,7 +107,7 @@ def seed_users():
             'name': 'Paige Corter',
             'username': 'paigeflows',
             'email': 'paige@corter.com',
-            'bio': 'My space for movement and creativity.'
+            'bio': 'My space for movement and creativity.',
             'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
             'profile_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/profileImages/paige.jpg',
             'cover_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/coverImages/paige.webp',
