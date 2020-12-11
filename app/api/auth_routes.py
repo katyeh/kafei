@@ -69,22 +69,6 @@ def logout():
     return {'message': 'User logged out'}
 
 
-@auth_routes.route('/profile_pic/<id>', methods=["PUT"])
-def profile_pic(id):
-    """
-    Edits profile picture
-    """
-    try:
-        artist = Artist.query.get(id)
-        profile_image_url = request.json["profile_image_url"]
-        artist.profile_image_url = profile_image_url
-
-        db.session.commit()
-        return "Profile picture was successfully updated."
-    except:
-        return "Error updating profile picture."
-
-
 @auth_routes.route('/signup', methods=['POST'])
 def sign_up():
     """
