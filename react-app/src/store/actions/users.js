@@ -8,7 +8,8 @@ export const getAllUsers = () => async (dispatch) => {
 
   if (res.ok) {
     const { users } = await res.json()
-    dispatch(loadUsers(users))
+    // dispatch(loadUsers(users))
+    dispatch({ type: LOAD_USERS, users })
   }
 };
 

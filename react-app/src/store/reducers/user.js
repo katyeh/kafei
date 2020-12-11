@@ -5,10 +5,10 @@ const userReducer = (state = [], action) => {
   Object.freeze(state);
 
   switch (action.type) {
-    case LOAD_USERS: {
-      const users = action.users.map((user) => ({ [user.id]: user }));
-      return merge([], state, ...users)
-    }
+    // case LOAD_USERS: {
+    //   const mapusers = action.users.map((user) => ({ [user.id]: user }));
+    //   return merge([], state, ...mapusers)
+    // }
     case LOAD_USERS_HOME:
       return {
         ...action.users

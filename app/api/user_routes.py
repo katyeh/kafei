@@ -59,6 +59,7 @@ def new_photo(id):
 # @login_required
 def users():
     users = User.query.all()
+    print({"users": [user.to_dict_full() for user in users]})
     return {"users": [user.to_dict_full() for user in users]}
 
 

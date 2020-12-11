@@ -8,7 +8,6 @@ import { useParams } from 'react-router-dom';
 import CloseIcon from '@material-ui/icons/Close';
 
 const TipModal = ({ setIsOpen }) => {
-  // const [modalIsOpen, setIsOpen] = useState(false);
   let [coffee, setCoffee] = useState(1);
   let [total, setTotal] = useState(3);
   const [body, setBody] = useState("");
@@ -45,17 +44,6 @@ const TipModal = ({ setIsOpen }) => {
   };
 
   return (
-    // <div className="tipModal-container">
-    //   <h4 onClick={() => setIsOpen(true)} className="about__feed-contact">Leave a message</h4>
-
-    //   <Modal
-    //     isOpen={modalIsOpen}
-    //     onRequestClose={() => setIsOpen(false)}
-    //     contentLabel="Signup Modal"
-    //     className="tipModal"
-    //     overlayClassName="overlay"
-    //     shouldCloseOnOverlayClick={true}
-    //   >
         <form onSubmit={onTipModal}>
           <div className="tipModal__label">
             <h3>Buy a Coffee for katyeh</h3>
@@ -101,8 +89,6 @@ const TipModal = ({ setIsOpen }) => {
               <p className="about__tip-policy">Kafei doesn't take a fee!</p>
             </div>
         </form>
-    //   </Modal>
-    // </div>
   )
 }
 

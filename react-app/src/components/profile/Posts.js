@@ -39,6 +39,7 @@ const Posts = ({ currentUser, isProfile }) => {
             className="posts-modal"
             overlayClassName="overlay"
             shouldCloseOnOverlayClick={true}
+            closeTimeoutMS={500}
           >
             <PostForm setIsOpen={setIsOpen} />
           </Modal>

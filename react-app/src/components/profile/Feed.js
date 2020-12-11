@@ -33,6 +33,7 @@ const Feed = ({ currentUser, isProfile }) => {
               className="tipModal"
               overlayClassName="overlay"
               shouldCloseOnOverlayClick={true}
+              closeTimeoutMS={500}
             >
             <TipModal setIsOpen={setIsOpen} />
             </Modal>

@@ -10,7 +10,7 @@ const { REACT_APP_GOOGLE_KEY } = process.env;
 const Map = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const dispatch = useDispatch();
-  const users = useSelector(state => state.users);
+  const mapusers = useSelector(state => state.mapusers);
   const history = useHistory();
 
   useEffect(() => {
@@ -25,8 +25,8 @@ const Map = () => {
       defaultCenter={{ lat: 47.606209, lng: -122.332069 }}
       defaultOptions={{ styles: mapStyles }}
     >
-      {users.map(user => {
-        if (user.location[0]) {
+      {mapusers.map(user => {
+        if (user && user.location[0]) {
           return(
             <Marker
               key={user.username}
@@ -36,7 +36,7 @@ const Map = () => {
               }}
               onClick={() => setSelectedUser(user)}
               icon={{
-                url: `${user.profile_image_url}`,
+                url: "https://kafei.s3-us-west-1.amazonaws.com/kafei-logo.png",
                 scaledSize: new window.google.maps.Size(25, 25)
               }}
             />
