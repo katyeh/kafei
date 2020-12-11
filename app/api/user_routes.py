@@ -227,7 +227,22 @@ def profile_pic(id):
     Edits profile picture
     """
     try:
-        artist = Artist.query.get(id)
+        form = UploadPhotoForm()
+
+        form['csrf_token'].data = request.cookies['csrf_token']
+
+        if form.validate_on_submit():
+            key_list = request.files.keys()
+
+            if request.files:
+                if "profile_image_url" in key_list:
+                    new_image_data = request.files["profile_image_url"]
+                    new_image_key = f"profileImages/{uuid.uuid4()}_{new_image_data.filename}"
+                    client.put_object(Body=new_image_data, Bucket="kafei", Key=new_image_key,
+                                      ContentType=new_image_data.mimetype, ACL="public-read")
+
+
+        user = User.query.get(id)
         profile_image_url = request.json["profile_image_url"]
         artist.profile_image_url = profile_image_url
 
