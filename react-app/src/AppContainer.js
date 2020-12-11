@@ -6,7 +6,7 @@ import { Switch } from 'react-router-dom';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UploadPhotoForm from "./components/UploadPhotoForm";
 import Footer from "./components/Footer";
-
+import Map from './components/Map';
 
 function AppContainer({authenticated, setAuthenticated}) {
   return (
@@ -36,7 +36,9 @@ function AppContainer({authenticated, setAuthenticated}) {
         <ProtectedRoute path="/uploadphoto" exact={true} authenticated={authenticated}>
           <UploadPhotoForm />
         </ProtectedRoute>
-
+        <ProtectedRoute path="/map" exact={true} authenticated={authenticated}>
+          <Map />
+        </ProtectedRoute>
       </Switch>
     </>
   )
