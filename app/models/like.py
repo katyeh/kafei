@@ -11,6 +11,7 @@ class Like(db.Model):
   user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
   __table_args__ = (UniqueConstraint('post_id', 'user_id', name='_post_user_uc'),)
 
+  post = db.relationship("Post", backref="likes", foreign_keys=[post_id])
 
   def to_dict(self):
     return {

@@ -9,7 +9,7 @@ class Post(db.Model):
   id = Column(Integer, primary_key=True)
   body = Column(String, nullable=False)
   user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-  likes = db.relationship('Like', cascade='all, delete', backref='post')
+
   comments = db.relationship('Comment', cascade='all, delete', backref='post')
 
   def to_dict(self):
@@ -17,4 +17,5 @@ class Post(db.Model):
       "id": self.id,
       "body": self.body,
       "user_id": self.user_id,
+      "likes": [like.to_dict() for like in self.likes]
     }
