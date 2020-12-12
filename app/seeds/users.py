@@ -10,7 +10,7 @@ def seed_users():
             'username': 'demouser',
             'email': 'demo@user.com',
             'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
-            'profile_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/profileImages/user-1.jpg',
+            'profile_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/profileImages/2b458b55-4fff-4f72-b3ad-f32af6a4447c_user-1.jpg',
             'cover_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/coverImages/patrick-hendry-HYLUskFJkpU-unsplash.jpg',
             'tips': 30,
             'wallet': 20
