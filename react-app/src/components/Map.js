@@ -4,6 +4,7 @@ import { getAllUsers } from '../store/actions/users';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from "react-google-maps";
 import mapStyles from "./mapStyles";
 import { useHistory } from 'react-router-dom';
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 
 const { REACT_APP_GOOGLE_KEY } = process.env;
 
@@ -12,6 +13,19 @@ const Map = () => {
   const dispatch = useDispatch();
   const mapusers = useSelector(state => state.mapusers);
   const history = useHistory();
+
+  const [ currentPosition, setCurrentPosition ] = useState({});
+  const success = position => {
+    const currentPosition = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    }
+    setCurrentPosition(currentPosition);
+  };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(success);
+  })
 
   useEffect(() => {
     (async () => {
@@ -22,9 +36,11 @@ const Map = () => {
   return (
     <GoogleMap
       defaultZoom={10}
-      defaultCenter={{ lat: 47.606209, lng: -122.332069 }}
+      // defaultCenter={{ lat: 47.606209, lng: -122.332069 }}
       defaultOptions={{ styles: mapStyles }}
+      center={currentPosition}
     >
+      <Marker position={currentPosition} icon={{}}/>
       {mapusers.map(user => {
         if (user && user.location[0]) {
           return(
@@ -43,6 +59,7 @@ const Map = () => {
           )
         }
       })}
+
 
       {selectedUser && (
         <InfoWindow
