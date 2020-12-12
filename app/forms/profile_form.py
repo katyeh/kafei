@@ -5,5 +5,5 @@ from app.models import User
 
 
 class UploadProfileForm(FlaskForm):
-    pic_url = FileField('pic_url', validators=[DataRequired()])
+    profile_image_url = FileField('profile_image_url', validators=[DataRequired()])
     user_id = IntegerField('user_id', validators=[DataRequired()])

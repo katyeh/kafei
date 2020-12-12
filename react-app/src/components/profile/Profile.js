@@ -10,6 +10,7 @@ import Posts from './Posts';
 import { getPhotos } from '../../store/actions/photoActions';
 import Modal from 'react-modal';
 import TipModal from './TipModal';
+import ProfileImage from './ProfileImage';
 
 
 const Profile = ({ getOneUser, user }) => {
@@ -31,7 +32,7 @@ const Profile = ({ getOneUser, user }) => {
       await dispatch(getPhotos(userId));
       getOneUser(userId);
     })()
-  }, [userId, dispatch, currentUser.id]);
+  }, [userId, dispatch, currentUser.id, user.profileImageUrl]);
 
   useEffect(() => {
     profile()
@@ -81,9 +82,10 @@ const Profile = ({ getOneUser, user }) => {
         <div className={headerClass}>
           <div className="profile__user">
           {currentUser ?
-            <div className="profile__img-div">
-              <img src={currentUser.profile_image_url} alt="" className="profile__user-img"></img>
-            </div>
+            <ProfileImage user={user} currentUser={currentUser} isProfile={isProfile} />
+            // <div className="profile__img-div">
+            //   <img src={currentUser.profile_image_url} alt="" className="profile__user-img"></img>
+            // </div>
           : ""}
               {currentUser ?
                 <div className="profile__info">

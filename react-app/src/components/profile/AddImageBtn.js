@@ -36,7 +36,7 @@ const AddImageBtn = () => {
       await dispatch(uploadPhoto(formData, user.id));
       setIsOpen(false);
     }
-}
+  }
 
   return (
     <form onSubmit={onUpload}>

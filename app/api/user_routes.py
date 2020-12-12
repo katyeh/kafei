@@ -3,8 +3,7 @@ from flask_login import login_required
 from flask_cors import cross_origin, CORS
 from sqlalchemy.orm import relationship, sessionmaker, joinedload
 from sqlalchemy import func, select, or_
-from app.forms import UploadPhotoForm
-from app.forms import TipForm
+from app.forms import UploadPhotoForm, TipForm, UploadProfileForm
 from app.models import db, User, Post, Photo, Comment, Like, Transaction
 import json
 
@@ -221,19 +220,19 @@ def get_tips(id):
     return jsonify(transactions=[transaction.to_dict() for transaction in transactions])
 
 
-@user_routes.route('/profile_pic/<id>', methods=["PUT"])
+@user_routes.route('/<int:id>/profile_image', methods=["PUT"])
 def profile_pic(id):
     """
     Edits profile picture
     """
     try:
-        form = UploadPhotoForm()
-
+        form = UploadProfileForm()
         form['csrf_token'].data = request.cookies['csrf_token']
 
         if form.validate_on_submit():
             key_list = request.files.keys()
-
+            print(f"!!!!!!!!!!!!!!")
+            print(key_list)
             if request.files:
                 if "profile_image_url" in key_list:
                     new_image_data = request.files["profile_image_url"]
@@ -241,12 +240,10 @@ def profile_pic(id):
                     client.put_object(Body=new_image_data, Bucket="kafei", Key=new_image_key,
                                       ContentType=new_image_data.mimetype, ACL="public-read")
 
+            user = User.query.get(id)
+            user.profile_image_url = f"https://kafei.s3-us-west-1.amazonaws.com/{new_image_key}"
 
-        user = User.query.get(id)
-        profile_image_url = request.json["profile_image_url"]
-        artist.profile_image_url = profile_image_url
-
-        db.session.commit()
-        return "Profile picture was successfully updated."
+            db.session.commit()
+            return jsonify(user.to_dict_full())
     except Exception as error:
         return jsonify(error=repr(error))
