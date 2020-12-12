@@ -11,7 +11,7 @@ class Photo(db.Model):
     pic_url = Column(String, nullable=False)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=True)
 
-    # likes = db.relationship('Like', cascade='all, delete', backref='photo')
+    likes = db.relationship('Like', cascade='all, delete', backref='photo')
 
     def to_dict(self):
         return {
