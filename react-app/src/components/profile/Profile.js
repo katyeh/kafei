@@ -81,12 +81,13 @@ const Profile = ({ getOneUser, user }) => {
 
         <div className={headerClass}>
           <div className="profile__user">
-          {currentUser ?
-            <ProfileImage user={user} currentUser={currentUser} isProfile={isProfile} />
-            // <div className="profile__img-div">
-            //   <img src={currentUser.profile_image_url} alt="" className="profile__user-img"></img>
-            // </div>
-          : ""}
+          {isProfile ?
+            <ProfileImage user={user} currentUser={currentUser} />
+          :
+            <div className="profile__img-div">
+              <img src={currentUser.profile_image_url} alt="" className="profile__user-img"></img>
+            </div>
+          }
               {currentUser ?
                 <div className="profile__info">
                   <h3>Buy a Coffee for</h3>

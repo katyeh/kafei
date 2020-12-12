@@ -1,0 +1,42 @@
+.profileimage {
+    &__update-btn {
+        position: relative;
+        top: -4rem;
+        right: -9rem;
+        cursor: pointer;
+    }
+    &__div {
+        background-color: rgb(235, 235, 235);
+        border-radius: 50%;
+        width: 4rem;
+        height: 4rem;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+// Modal Styles
+.profilemodal {
+    &__label {
+        font-size: 2.6rem;
+        font-weight: 700;
+    }
+    &__btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $color-accent-dark;
+        color: #fff;
+        outline: none;
+        border-radius: 1rem;
+        border:none;
+        cursor: pointer;
+        width: 100%;
+        font-weight: 600;
+        font-size: 1.6rem;
+        padding: 1.2rem 1.6rem;
+        margin: 4rem 0 2rem 0;
+    }
+}
