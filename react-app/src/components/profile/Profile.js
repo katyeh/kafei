@@ -11,6 +11,7 @@ import { getPhotos } from '../../store/actions/photoActions';
 import Modal from 'react-modal';
 import TipModal from './TipModal';
 import ProfileImage from './ProfileImage';
+import CoverImage from './CoverImage';
 
 
 const Profile = ({ getOneUser, user }) => {
@@ -74,9 +75,10 @@ const Profile = ({ getOneUser, user }) => {
     <div className="profile">
       <div className="profile__main">
         {currentUser ?
-        <div className="profile__cover">
+          <CoverImage user={user} currentUser={currentUser} />
+        /* <div className="profile__cover">
           <img src={currentUser.cover_image_url} alt="" className="profile__header-img"></img>
-        </div>
+        </div> */
         : ""}
 
         <div className={headerClass}>

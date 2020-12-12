@@ -3,7 +3,7 @@ from flask_login import login_required
 from flask_cors import cross_origin, CORS
 from sqlalchemy.orm import relationship, sessionmaker, joinedload
 from sqlalchemy import func, select, or_
-from app.forms import UploadPhotoForm, TipForm, UploadProfileForm
+from app.forms import UploadPhotoForm, TipForm, UploadProfileForm, UploadCoverForm
 from app.models import db, User, Post, Photo, Comment, Like, Transaction
 import json
 
@@ -231,8 +231,7 @@ def profile_pic(id):
 
         if form.validate_on_submit():
             key_list = request.files.keys()
-            print(f"!!!!!!!!!!!!!!")
-            print(key_list)
+
             if request.files:
                 if "profile_image_url" in key_list:
                     new_image_data = request.files["profile_image_url"]
@@ -246,4 +245,32 @@ def profile_pic(id):
             db.session.commit()
             return jsonify(user.to_dict_full())
     except Exception as error:
+        return jsonify(error=repr(error))
+
+
+@user_routes.route('/<int:id>/cover_image', methods=["PUT"])
+def cover_image(id):
+    """
+    Edits cover image
+    """
+    try:
+        form = UploadCoverForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+
+        if form.validate_on_submit():
+            key_list = request.files.keys()
+
+            if request.files:
+                if "cover_image_url" in key_list:
+                    new_image_data = request.files["cover_image_url"]
+                    new_image_key = f"coverImages/{uuid.uuid4()}_{new_image_data.filename}"
+                    client.put_object(Body=new_image_data, Bucket="kafei", Key=new_image_key,
+                                      ContentType=new_image_data.mimetype, ACL="public-read")
+
+            user = User.query.get(id)
+            user.cover_image_url = f"https://kafei.s3-us-west-1.amazonaws.com/{new_image_key}"
+
+            db.session.commit()
+            return jsonify(user.to_dict_full())
+    except Exception as Error:
         return jsonify(error=repr(error))

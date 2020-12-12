@@ -1,5 +1,6 @@
 import { SET_CURRENT_USER } from '../actions/currentUser';
 export const UPDATE_PROFILE_IMAGE = 'UPDATE_PROFILE_IMAGE';
+export const UPDATE_COVER_IMAGE = 'UPDATE_COVER_IMAGE';
 
 
 const currentUserReducer = (state = {}, action) => {
@@ -8,6 +9,10 @@ const currentUserReducer = (state = {}, action) => {
       return action.current.user[0]
     }
     case UPDATE_PROFILE_IMAGE:
+      return {
+        user: action.user
+      }
+    case UPDATE_COVER_IMAGE:
       return {
         user: action.user
       }

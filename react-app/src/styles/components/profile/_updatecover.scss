@@ -1,0 +1,26 @@
+.coverimage {
+    &__update-btn {
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+        top: -6rem;
+        left: 130rem;
+        background-color: #D8DADF;
+        width: 17rem;
+        border-radius: .8rem;
+        padding: .3rem .8rem;
+        cursor: pointer;
+        p {
+            font-weight: 600;
+            padding-left: .2rem;
+        }
+    }
+    &__update-btn:hover {
+        filter: brightness(75%);
+    }
+    &__div {
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+    }
+}
