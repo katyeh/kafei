@@ -16,7 +16,7 @@ const About = ({ photos, currentUser, isProfile }) => {
                   <h3>About</h3>
                 </div>
                 <div className="about__content about__bio-content">
-                  <p>{currentUser.bio}</p>
+                  <p className="about__bio">{currentUser.bio}</p>
                 </div>
                 <div className="about__bio-tags">
                   <div className="about__bio-tag">Art</div>

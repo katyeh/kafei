@@ -74,12 +74,13 @@ const Profile = ({ getOneUser, user }) => {
   return (
     <div className="profile">
       <div className="profile__main">
-        {currentUser ?
+        {isProfile ?
           <CoverImage user={user} currentUser={currentUser} />
-        /* <div className="profile__cover">
-          <img src={currentUser.cover_image_url} alt="" className="profile__header-img"></img>
-        </div> */
-        : ""}
+        :
+          <div className="profile__cover">
+            <img src={currentUser.cover_image_url} alt="" className="profile__header-img"></img>
+          </div>
+        }
 
         <div className={headerClass}>
           <div className="profile__user">

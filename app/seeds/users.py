@@ -3,14 +3,14 @@ from app.models import db, User
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
-
     users = [
         {
             'name': 'Demo User',
             'username': 'demouser',
             'email': 'demo@user.com',
+            'bio': 'Welcome! Feel free to check out my images and buy me a coffee if you enjoy my page!',
             'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
-            'profile_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/profileImages/2b458b55-4fff-4f72-b3ad-f32af6a4447c_user-1.jpg',
+            'profile_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/profileImages/57425cb5-12fc-4ede-90a6-d8207004c66e_user-1.jpg',
             'cover_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/coverImages/patrick-hendry-HYLUskFJkpU-unsplash.jpg',
             'tips': 30,
             'wallet': 20
@@ -129,6 +129,7 @@ def seed_users():
             'name': 'Jeffrey Kellner',
             'username': 'jkellner',
             'email': 'jeff@kellner.com',
+            'bio': '',
             'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
             'profile_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/profileImages/jeffrey.jpg',
             'cover_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/coverImages/jeffrey.jpg',
@@ -139,7 +140,7 @@ def seed_users():
             'name': 'Sara Strohl',
             'username': 'sarastrohl',
             'email': 'sara@strohl.com',
-            'bio': 'Thanks for visiting! I am an illustrator from New York and drawing has been my hobby since I was young. Drawing brings me joy in life and I wish to spread the happiness and positivity of my work through my work. If you like what I create consider buying me a coffee(kafei) here.',
+            'bio': 'Thanks for visiting! I am an illustrator from New York and drawing has been my hobby since I was young. Drawing brings me joy in life and I wish to spread positivity through my work. If you like what I create consider buying me a coffee(kafei)!',
             'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
             'profile_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/profileImages/sara.jpg',
             'cover_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/coverImages/sara.jpg',
@@ -150,6 +151,7 @@ def seed_users():
             'name': 'Nicholas Tillmon',
             'username': 'itsnicholas',
             'email': 'nic@tillmon.com',
+            'bio': '',
             'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
             'profile_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/profileImages/nicholas.jpg',
             'cover_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/coverImages/nicholas.jpg',
@@ -160,6 +162,7 @@ def seed_users():
             'name': 'Jerri Sigmund',
             'username': 'heyjerri',
             'email': 'jerri@sigmund.com',
+            'bio': '',
             'hashed_password': 'pbkdf2:sha256:150000$0Y70Jx11$5170eba1cde3b4481c1a289401d7273375faa4691e3ff10e8bd1ac4e9784a5c6',
             'profile_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/profileImages/jerri.jpg',
             'cover_image_url': 'https://kafei.s3-us-west-1.amazonaws.com/coverImages/jerri.jpg',
@@ -171,6 +174,7 @@ def seed_users():
     users_list = [User(name=item['name'],
                        username=item['username'],
                        email=item['email'],
+                       bio=item['bio'],
                        hashed_password=item['hashed_password'],
                        profile_image_url=item['profile_image_url'],
                        cover_image_url=item['cover_image_url'],
