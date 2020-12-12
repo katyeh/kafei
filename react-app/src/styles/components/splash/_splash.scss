@@ -1,6 +1,6 @@
 .splash {
     p {
-        padding: 2rem 0;
+        padding: 2rem;
     }
 
     &__main {
@@ -12,6 +12,8 @@
             justify-content: center;
             padding: 5rem;
         }
+
+
     }
 
     &__header {
@@ -130,6 +132,8 @@
         position: relative;
         top: -8rem;
         border: .8rem solid white;
+        object-fit: cover;
+        background-color: white;
     }
 
     &__featured-info {

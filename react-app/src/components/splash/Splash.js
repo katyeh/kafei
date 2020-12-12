@@ -4,6 +4,7 @@ import img from '../../images/ka-fei-dark.png';
 import StartModal from './StartModal';
 import { getUsersSplash } from '../../store/actions/users';
 import Footer from "../Footer";
+import { useRouteMatch } from 'react-router-dom';
 
 const Splash = ({ authenticated, setAuthenticated }) => {
   const [name, setName] = useState("");
@@ -55,7 +56,7 @@ const Splash = ({ authenticated, setAuthenticated }) => {
                 </div>
                 <div className="splash__featured-info">
                   <h2 className="splash__featured-name">{user.name}</h2>
-                  <p>{user.bio}...</p>
+                  <p>{user.bio.substring(0, 100)}...</p>
                 </div>
               </div>
             )
