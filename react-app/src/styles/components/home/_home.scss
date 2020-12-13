@@ -87,3 +87,32 @@
 .info-window {
   cursor: pointer;
 }
+
+// Dark mode
+
+.home.dark-mode {
+  background-color: #06090F;
+}
+
+.search__header.dark-mode, .home__section-title.dark-mode {
+  color: white;
+}
+
+.search__container.dark-mode {
+  background-color: rgb(13,17,23);
+}
+
+.card.dark-mode {
+  background-color: #101D2D;
+  color: #fff;
+}
+
+.splashnav.dark-mode {
+  background: #161B22;
+  color: white;
+}
+
+.search__resultsContainer.dark-mode {
+  background-color: 101D2D;
+  color: #fff;
+}

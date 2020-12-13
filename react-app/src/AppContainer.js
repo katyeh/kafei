@@ -7,11 +7,14 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UploadPhotoForm from "./components/UploadPhotoForm";
 import Footer from "./components/Footer";
 import Map from './components/Map';
+import ThemeMode from './components/ThemeChanger';
+
 
 function AppContainer({authenticated, setAuthenticated}) {
   return (
     <>
       <NavBar setAuthenticated={setAuthenticated} />
+        {/* <ThemeMode /> */}
       <Switch>
         <ProtectedRoute
           path="/"
