@@ -12,7 +12,7 @@ body.dark-mode {
     background-color: $bg-dark-mode;
     color: $white-text;
   }
-  .card {
+  .card, .search__resultsContainer {
     background-color: $grey-dark-mode;
     // box-shadow: none;
   }
