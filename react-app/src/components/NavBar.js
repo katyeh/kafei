@@ -7,6 +7,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
 import SideMenu from './SideMenu';
 import { useSelector } from 'react-redux';
+import ThemeMode from './ThemeChanger';
 
 const NavBar = ({ setAuthenticated }) => {
   const [sidebar, setSidebar] = useState(false)
@@ -36,7 +37,9 @@ const NavBar = ({ setAuthenticated }) => {
           </li>
           <li>
             <NavLink to="/" exact={true} activeClassName="active">
-              <HomeIcon style={{ fontSize: 30 }} />
+              <div className="homenav__homeicon">
+                <HomeIcon style={{ fontSize: 30 }} />
+              </div>
             </NavLink>
           </li>
           <li>
@@ -45,7 +48,8 @@ const NavBar = ({ setAuthenticated }) => {
           {/* <li>
             <LogoutButton setAuthenticated={setAuthenticated} />
           </li> */}
-            </ul>
+        <ThemeMode />
+        </ul>
       </div>
       <div>
         { sidebar ? <SideMenu sidebar={sidebar} setSidebar={setSidebar} setAuthenticated={setAuthenticated} /> : null }

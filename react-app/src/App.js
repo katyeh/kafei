@@ -6,6 +6,7 @@ import { loadUser } from "./store/actions/signupActions";
 import SplashNav from "./components/splash/SplashNav";
 import Splash from "./components/splash/Splash";
 import AppContainer from './AppContainer';
+// import ThemeMode from './components/ThemeChanger';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -42,6 +43,7 @@ function App() {
           </div>
         </Route>
         <Route path="/">
+          {/* <ThemeMode/> */}
           <AppContainer
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
