@@ -56,6 +56,12 @@ body.dark-mode {
   .posts__msg-container {
     background-color: $grey-dark-mode;
   }
+  .about__feed-msg-container {
+    background-color: $bg-dark-mode;
+  }
+  .about__feed-msg-container:after {
+    border-bottom: 12px solid $bg-dark-mode;
+  }
   .posts__msg-container:after {
     content: none;
   }
