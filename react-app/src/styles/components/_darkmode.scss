@@ -27,6 +27,9 @@ body.dark-mode {
   .sidemenu {
       box-shadow: -10px 0px 10px 1px #6d6c6c;
   }
+  .tips__delete, .posts__delete {
+    color: black;
+  }
   .home__tag {
       color: #101D2D;
   }
@@ -40,6 +43,9 @@ body.dark-mode {
   .search__btn {
       background: #000;
       color: #fff;
+  }
+  .info-window-name {
+    color: black;
   }
   .profile__tabs-container {
       border: none;

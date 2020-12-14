@@ -44,11 +44,11 @@ const CoverImage = ({ user, currentUser }) => {
             <input
               type="file"
               name="cover_image_url"
-              id="file_input"
+              id="cover_input"
               onChange={updateImageUrl}
               className="hide"
             />
-            <label htmlFor="file_input" className="coverimage__update-btn">
+            <label htmlFor="cover_input" className="coverimage__update-btn">
               <div className="coverimage__div">
                 <PhotoCameraIcon
                   style={{ fontSize: 30 }}

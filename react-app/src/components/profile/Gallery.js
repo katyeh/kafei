@@ -6,7 +6,9 @@ const Gallery = ({ photos, currentUser, isProfile }) => {
   return (
     <div className="gallery">
       <div className="gallery__main-container">
+        {isProfile ?
         <AddImageBtn />
+        : null }
         <div className="gallery__latest">
           <h3 className="gallery__label">Latest</h3>
           <div className="gallery__grid-container">

@@ -43,6 +43,8 @@
         transform: translate(-50%,-50%);
         border-radius: 2rem;
         padding: 2rem;
+        display: flex;
+        flex-direction: column;
       }
 
       &__header {

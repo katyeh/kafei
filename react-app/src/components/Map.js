@@ -70,7 +70,7 @@ const Map = () => {
           onCloseClick={() => setSelectedUser(null)}
         >
           <div className="info-window" onClick={() => history.push(`/users/${selectedUser.id}`)}>
-            <h2>{selectedUser.username}</h2>
+            <h2 className="info-window-name">{selectedUser.username}</h2>
           </div>
         </InfoWindow>
       )}

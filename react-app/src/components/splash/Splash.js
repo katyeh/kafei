@@ -4,7 +4,7 @@ import img from '../../images/ka-fei-dark.png';
 import StartModal from './StartModal';
 import { getUsersSplash } from '../../store/actions/users';
 import Footer from "../Footer";
-import { useRouteMatch } from 'react-router-dom';
+import splashimg from "../../images/kafei-splash.png";
 
 const Splash = ({ authenticated, setAuthenticated }) => {
   const [name, setName] = useState("");
@@ -40,7 +40,7 @@ const Splash = ({ authenticated, setAuthenticated }) => {
           <p>Get paid from people who love what you do. No pressure to stick to a schedule.</p>
           <div className="splash__signup">
             <input onChange={updateName} value={name} placeholder="yourname"></input>
-            <StartModal name={name} authenticated={authenticated} setAuthenticated={setAuthenticated}/>
+            <StartModal name={name} setName={setName} authenticated={authenticated} setAuthenticated={setAuthenticated}/>
           </div>
         </div>
 
@@ -70,7 +70,9 @@ const Splash = ({ authenticated, setAuthenticated }) => {
         </div>
 
         <div className="splash__tag-section">
-          <div>Image here</div>
+          <div>
+            <img src={splashimg}></img>
+          </div>
           <div className="tag__container">
             <h1>All Kinds of Creators Use Kafei</h1>
             <p>Join hundreds of creators funding their passions on Kafei!</p>
