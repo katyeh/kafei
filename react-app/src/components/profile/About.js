@@ -2,6 +2,7 @@ import React from 'react';
 import logo from "../../images/logo-transparent.png";
 import TipSection from './TipSection';
 import Feed from './Feed';
+import Bio from './Bio';
 
 const About = ({ photos, currentUser, isProfile }) => {
 
@@ -12,12 +13,13 @@ const About = ({ photos, currentUser, isProfile }) => {
 
             {currentUser ?
               <div className="about__container about__bio-container">
-                <div className="about__label">
+                {/* <div className="about__label">
                   <h3>About</h3>
                 </div>
-                <div className="about__content about__bio-content">
-                  <p className="about__bio">{currentUser.bio}</p>
-                </div>
+                <div className="about__content about__bio-content"> */}
+                  <Bio currentUser={currentUser} isProfile={isProfile} />
+ {/*                  <p className="about__bio">{currentUser.bio}</p>
+                </div> */}
                 <div className="about__bio-tags">
                   <div className="about__bio-tag">Art</div>
                   <div className="about__bio-tag">Photography</div>

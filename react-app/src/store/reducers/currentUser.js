@@ -1,7 +1,7 @@
 import { SET_CURRENT_USER } from '../actions/currentUser';
 export const UPDATE_PROFILE_IMAGE = 'UPDATE_PROFILE_IMAGE';
 export const UPDATE_COVER_IMAGE = 'UPDATE_COVER_IMAGE';
-
+export const UPDATE_BIO = 'UPDATE_BIO';
 
 const currentUserReducer = (state = {}, action) => {
   switch (action.type) {
@@ -13,6 +13,10 @@ const currentUserReducer = (state = {}, action) => {
         user: action.user
       }
     case UPDATE_COVER_IMAGE:
+      return {
+        user: action.user
+      }
+    case UPDATE_BIO:
       return {
         user: action.user
       }

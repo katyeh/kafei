@@ -15,6 +15,10 @@
         // width: 40rem;
         height: 50rem;
     }
+    &__bio-label {
+        display: flex;
+        justify-content: space-between
+    }
     &__right-container {
         // border: 1px solid black;
         min-width: 28rem;
@@ -72,4 +76,33 @@
         max-width: 100%;
         cursor: pointer;
     }
+}
+
+// Bio Modal styles
+
+.bio-edit {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: .8rem;
+    cursor: pointer;
+}
+
+.bio__modal-btn {
+    position: relative;
+    bottom: -5rem;
+    float: right;
+    height: 5rem;
+    background-color: $color-accent-medium;
+    color: $color-accent-dark;
+    border: none;
+    border-radius: 2rem;
+    width: 46%;
+    padding: 1.5rem 1rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }

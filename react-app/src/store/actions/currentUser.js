@@ -1,4 +1,4 @@
-import { UPDATE_PROFILE_IMAGE, UPDATE_COVER_IMAGE } from '../reducers/currentUser';
+import { UPDATE_PROFILE_IMAGE, UPDATE_COVER_IMAGE, UPDATE_BIO } from '../reducers/currentUser';
 
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 
@@ -45,3 +45,22 @@ export const updateCoverImage = (formData, id) => {
     }
   }
 }
+
+export const updateBio = (bio, id) => {
+  return async dispatch => {
+    try {
+      debugger
+      const res = await fetch(`/api/users/${id}/bio`, {
+        method: 'PUT',
+        bio: bio
+      });
+      if (res.ok) {
+        debugger
+        const user = await res.json()
+        dispatch({ type: UPDATE_BIO, user: user })
+      }
+    } catch(e) {
+      console.log(e);
+    }
+  }
+};

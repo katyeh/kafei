@@ -141,6 +141,19 @@ def new_post(id):
         return jsonify(error=repr(error))
 
 
+@user_routes.route('/<int:id>/bio', methods=["PUT"])
+def bio(id):
+    try:
+        user = User.query.get(id)
+        data = json.loads(request.data)
+        user.bio = data['bio']
+
+        db.session.commit()
+        return jsonify(user.to_dict_full())
+    except Exception as error:
+        return jsonify(error=repr(error))
+
+
 @user_routes.route('/<int:id>/photos')
 def photos(id):
     try:
