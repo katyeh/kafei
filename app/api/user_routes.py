@@ -37,7 +37,8 @@ def new_photo(id):
             if request.files:
                 if "pic_url" in key_list:
                     new_image_data = request.files["pic_url"]
-                    new_image_key = f"photos/{id}/{uuid.uuid4()}_{new_image_data.filename}"
+                    new_image_key = f"photos/{uuid.uuid4()}_{new_image_data.filename}"
+                    # new_image_key = f"photos/{id}/{uuid.uuid4()}_{new_image_data.filename}"
                     client.put_object(Body=new_image_data, Bucket="kafei", Key=new_image_key,
                                       ContentType=new_image_data.mimetype, ACL="public-read")
 
