@@ -13,23 +13,23 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    (async() => {
-      const user = await authenticate();
-      if (!user.errors) {
-        setAuthenticated(true);
-      }
-      const userId = localStorage.getItem("user_id");
-      (async () => {
-        await dispatch(loadUser(userId));
-        setLoaded(true);
-      })()
-    })();
-  }, [dispatch]);
+  // useEffect(() => {
+  //   (async() => {
+  //     const user = await authenticate();
+  //     if (!user.errors) {
+  //       setAuthenticated(true);
+  //     }
+  //     const userId = localStorage.getItem("user_id");
+  //     (async () => {
+  //       await dispatch(loadUser(userId));
+  //       setLoaded(true);
+  //     })()
+  //   })();
+  // }, [dispatch]);
 
-  if (!loaded) {
-    return null;
-  }
+  // if (!loaded) {
+  //   return null;
+  // }
 
   return (
     <BrowserRouter>
