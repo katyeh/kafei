@@ -45,16 +45,11 @@ function App() {
           </div>
         </Route>
         <Route path="/">
-          {/* <ThemeMode/> */}
           <ProtectedRoute
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
             component={AppContainer}
           >
-            {/* <AppContainer
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-            /> */}
           </ProtectedRoute>
         </Route>
       </Switch>

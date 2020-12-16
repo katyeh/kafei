@@ -31,7 +31,7 @@ const Map = () => {
     (async () => {
       await dispatch(getAllUsers())
     })()
-  }, [])
+  }, [dispatch])
 
   return (
     <GoogleMap

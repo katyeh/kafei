@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import Home from '../home/Home';
+import { Redirect } from 'react-router-dom';
 
 const ProtectedRoute = props => {
   debugger

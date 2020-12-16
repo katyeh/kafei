@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import WbSunnyIcon from '@material-ui/icons/WbSunny';
-import Brightness2Icon from '@material-ui/icons/Brightness2';
 import Toggle from "react-toggle";
 
 const ThemeChanger = () => {
@@ -31,9 +29,6 @@ const ThemeChanger = () => {
       icons={false}
       arial-label="Dark mode"
     />
-    // <div>
-    //   <button onClick={handleChange}>{themeState ? 'Light Mode' : 'Dark Mode'}</button>
-    // </div>
   )
 }
 

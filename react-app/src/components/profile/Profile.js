@@ -34,7 +34,7 @@ const Profile = ({ getOneUser, user, id }) => {
       await dispatch(getPhotos(userId));
       getOneUser(userId);
     })()
-  }, [userId, dispatch, currentUser.id, user.profileImageUrl]);
+  }, [userId, dispatch, currentUser.id, user.profileImageUrl, getOneUser]);
 
   useEffect(() => {
     profile()

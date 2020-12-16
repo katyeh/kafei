@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import { getLikes, addLikeToPost } from "../../store/actions/likeActions";
+import { addLikeToPost } from "../../store/actions/likeActions";
 import { useDispatch, useSelector } from 'react-redux';
 import DislikePost from './DislikePost';
 
@@ -14,18 +14,16 @@ const LikePost = ({ post }) => {
         setHeart(true)
       }
     })
-  }, [post.likes.length, heart])
+  }, [post.likes.length, heart, post.likes, user.id])
 
   console.log(heart, post.likes)
 
   const dispatch = useDispatch();
 
   const onLike = () => {
-    // debugger
     dispatch(addLikeToPost(post.id, user.id))
     setHeart(true)
   };
-  // debugger
   return (
     <div>
       <div className="posts__like-btn">

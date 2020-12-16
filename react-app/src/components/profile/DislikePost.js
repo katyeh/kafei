@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { deleteLike } from '../../store/actions/likeActions';
 import { useDispatch } from 'react-redux';

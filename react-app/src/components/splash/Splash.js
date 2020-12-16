@@ -4,7 +4,6 @@ import img from '../../images/ka-fei-dark.png';
 import StartModal from './StartModal';
 import { getUsersSplash } from '../../store/actions/users';
 import Footer from "../Footer";
-import { useRouteMatch } from 'react-router-dom';
 
 const Splash = ({ authenticated, setAuthenticated }) => {
   const [name, setName] = useState("");

@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import EditIcon from '@material-ui/icons/Edit';
-import { updateBio } from "../../store/actions/currentUser";
-import { useDispatch, useSelector } from 'react-redux';
-import Edit from '@material-ui/icons/Edit';
+import { useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import CloseIcon from '@material-ui/icons/Close';
 
