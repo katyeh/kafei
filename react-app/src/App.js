@@ -6,7 +6,7 @@ import { loadUser } from "./store/actions/signupActions";
 import SplashNav from "./components/splash/SplashNav";
 import Splash from "./components/splash/Splash";
 import AppContainer from './AppContainer';
-// import ThemeMode from './components/ThemeChanger';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -44,10 +44,16 @@ function App() {
         </Route>
         <Route path="/">
           {/* <ThemeMode/> */}
-          <AppContainer
+          <ProtectedRoute
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
-          />
+            component={AppContainer}
+          >
+            {/* <AppContainer
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            /> */}
+          </ProtectedRoute>
         </Route>
       </Switch>
     </BrowserRouter>

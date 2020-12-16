@@ -17,7 +17,7 @@ const Posts = ({ currentUser, isProfile }) => {
         await dispatch(getPosts(currentUser.id))
       }
     })()
-  }, [])
+  }, [currentUser.id, dispatch])
 
   return (
     <div className="posts">

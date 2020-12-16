@@ -4,7 +4,7 @@ import { getAllUsers } from '../store/actions/users';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from "react-google-maps";
 import mapStyles from "./mapStyles";
 import { useHistory } from 'react-router-dom';
-import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+// import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 
 const { REACT_APP_GOOGLE_KEY } = process.env;
 
@@ -40,7 +40,7 @@ const Map = () => {
       defaultOptions={{ styles: mapStyles }}
       center={currentPosition}
     >
-      <Marker position={currentPosition} icon={{}}/>
+      <Marker position={currentPosition}/>
       {mapusers.map(user => {
         if (user && user.location[0]) {
           return(
@@ -52,8 +52,10 @@ const Map = () => {
               }}
               onClick={() => setSelectedUser(user)}
               icon={{
-                url: "https://kafei.s3-us-west-1.amazonaws.com/kafei-logo.png",
-                scaledSize: new window.google.maps.Size(25, 25)
+                url: "/kafei-logo.png",
+                scaledSize: new window.google.maps.Size(25, 25),
+                origin: new window.google.maps.Point(0, 0),
+                anchor: new window.google.maps.Point(12.5, 12.5)
               }}
             />
           )

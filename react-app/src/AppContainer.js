@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Home from "./components/home/Home";
 import ProfileContainer from './components/profile/Profile';
 import NavBar from './components/NavBar';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UploadPhotoForm from "./components/UploadPhotoForm";
 import Footer from "./components/Footer";
@@ -12,24 +12,25 @@ import { useDispatch } from "react-redux";
 import { authenticate } from "./services/auth";
 import { loadUser } from "./store/actions/signupActions";
 
-
 function AppContainer({authenticated, setAuthenticated}) {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
-
+debugger
   useEffect(() => {
     (async() => {
-      const user = await authenticate();
-      if (!user.errors) {
-        setAuthenticated(true);
-      }
       const userId = localStorage.getItem("user_id");
-      (async () => {
-        await dispatch(loadUser(userId));
-        setLoaded(true);
-      })()
+      if (userId) {
+        const user = await authenticate();
+        if (!user.errors) {
+          setAuthenticated(true);
+        }
+        (async () => {
+          await dispatch(loadUser(userId));
+          setLoaded(true);
+        })()
+      }
     })();
-  }, [dispatch]);
+  }, [dispatch, setAuthenticated]);
 
   if (!loaded) {
     return null;
@@ -40,40 +41,38 @@ function AppContainer({authenticated, setAuthenticated}) {
       <NavBar setAuthenticated={setAuthenticated} />
         {/* <ThemeMode /> */}
       <Switch>
-        <ProtectedRoute
+        <Route
           path="/"
           exact={true}
-          authenticated={authenticated}
-          setAuthenticated={setAuthenticated}
-          component={Home}
         >
-          {/* <Home
+          <Home
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
-          /> */}
+          />
           {/* <Footer /> */}
-        </ProtectedRoute>
-        <ProtectedRoute
-          path="/users/:id"
+        </Route>
+        <Route
           exact={true}
-          authenticated={authenticated}
-          component={ProfileContainer}
+          path="/users/:id"
         >
-          {/* <ProfileContainer /> */}
-          {/* <Footer /> */}
-        </ProtectedRoute>
+          {/* <ProtectedRoute
+            authenticated={authenticated}
+            component={ProfileContainer}
+          > */}
+            <ProfileContainer authenticated={authenticated} />
+            {/* <Footer /> */}
+          {/* </ProtectedRoute> */}
+        </Route>
 
-        <ProtectedRoute
+        <Route
           path="/uploadphoto"
           exact={true}
-          authenticated={authenticated}
-          component={UploadPhotoForm}
         >
-          {/* <UploadPhotoForm /> */}
-        </ProtectedRoute>
-        <ProtectedRoute path="/map" exact={true} authenticated={authenticated} component={Map}>
-          {/* <Map /> */}
-        </ProtectedRoute>
+          <UploadPhotoForm authenticated={authenticated} />
+        </Route>
+        <Route path="/map" exact={true} >
+          <Map authenticated={authenticated} />
+        </Route>
       </Switch>
       <Footer />
     </>

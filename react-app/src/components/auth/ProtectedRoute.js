@@ -3,14 +3,13 @@ import { Route, Redirect } from 'react-router-dom';
 import Home from '../home/Home';
 
 const ProtectedRoute = props => {
+  debugger
 
   if (!props.authenticated) {
     return <Redirect to="/splash"/>
   } else {
-    if (props.component === Home) {
-      return <Home setAuthenticated={props.setAuthenticated} authenticated={props.authenticated} />
-    }
-    return props.component
+    const Component = props.component
+    return < Component authenticated={props.authenticated} setAuthenticated={props.setAuthenticated} />
   }
 
   // return (

@@ -12,10 +12,6 @@ const FollowBtn = () => {
   const user = useSelector(state => state.user);
   const userId = parseInt(id)
 
-  useEffect(() => {
-    checkfollow()
-  }, [user.following])
-
   const onFollow = async () => {
     await dispatch(follow(user.id, id));
     setFollowing(!isfollowing)
@@ -31,6 +27,10 @@ const FollowBtn = () => {
       }
     }
   }
+
+  useEffect(() => {
+    checkfollow()
+  }, [user.following, checkfollow])
 
   return (
     <div>
