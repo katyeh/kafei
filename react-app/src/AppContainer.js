@@ -15,26 +15,6 @@ import { loadUser } from "./store/actions/signupActions";
 function AppContainer({authenticated, setAuthenticated}) {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
-debugger
-  useEffect(() => {
-    (async() => {
-      const userId = localStorage.getItem("user_id");
-      if (userId) {
-        const user = await authenticate();
-        if (!user.errors) {
-          setAuthenticated(true);
-        }
-        (async () => {
-          await dispatch(loadUser(userId));
-          setLoaded(true);
-        })()
-      }
-    })();
-  }, [dispatch, setAuthenticated]);
-
-  if (!loaded) {
-    return null;
-  }
 
   return (
     <>

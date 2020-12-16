@@ -12,8 +12,6 @@ const LikePost = ({ post }) => {
     post.likes.forEach(like => {
       if (like.user_id === user.id) {
         setHeart(true)
-      } else {
-        setHeart(false)
       }
     })
   }, [post.likes.length, heart])
@@ -23,11 +21,11 @@ const LikePost = ({ post }) => {
   const dispatch = useDispatch();
 
   const onLike = () => {
-    debugger
+    // debugger
     dispatch(addLikeToPost(post.id, user.id))
     setHeart(true)
   };
-  debugger
+  // debugger
   return (
     <div>
       <div className="posts__like-btn">
