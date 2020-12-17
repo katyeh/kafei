@@ -90,6 +90,7 @@ def sign_up():
             profile_image_url="https://kafei.s3-us-west-1.amazonaws.com/kafei-logo.png",
             cover_image_url="https://kafei.s3-us-west-1.amazonaws.com/coverImages/external-content.duckduckgo.jpg",
             tips=0,
+            wallet=20,
         )
         db.session.add(user)
         db.session.commit()
