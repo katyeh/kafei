@@ -45,11 +45,11 @@ const AddImageBtn = () => {
           <input
             type="file"
             name="pic_url"
-            id="file_input"
+            id="image_input"
             onChange={updateImageUrl}
             className="hide"
           />
-          <label htmlFor="file_input" className="gallery__add-image-btn">
+          <label htmlFor="image_input" className="gallery__add-image-btn">
             <PhotoSizeSelectActualIcon
               style={{ fontSize: 30 }}
               component={svgProps => (
@@ -88,7 +88,7 @@ const AddImageBtn = () => {
                   className="modal__preview-img"
                   src={imagePreview}
                   id="imagePreview"
-                  alt="Preview"
+                  alt="Preview Image"
                 />
               </div>
             </div>

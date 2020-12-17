@@ -14,7 +14,7 @@ import ProfileImage from './ProfileImage';
 import CoverImage from './CoverImage';
 
 
-const Profile = ({ getOneUser, user, id }) => {
+const Profile = ({ getOneUser, user }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [isProfile, setProfile] = useState(false);
   const [about, setAbout] = useState(true);
@@ -22,19 +22,18 @@ const Profile = ({ getOneUser, user, id }) => {
   const [posts, setPosts] = useState(false);
   let [headerClass, setHeaderClass] = useState("")
   const currentUser = useSelector(state => state.currentUser)
+  const { id } = useParams();
   const userId = Number.parseInt(id);
   const dispatch = useDispatch();
 
   const photos = useSelector(state => state.photos);
-  console.log('ID', id)
-  console.log('UserId', userId)
-  // console.log("user:", user, "\nuser.id:", user.id, "\nuserId:", userId)
+
   useEffect(() => {
     (async () => {
       await dispatch(getPhotos(userId));
       getOneUser(userId);
     })()
-  }, [userId, dispatch, currentUser.id, user.profileImageUrl, getOneUser]);
+  }, [userId, dispatch, currentUser.id, user.profileImageUrl]);
 
   useEffect(() => {
     profile()
@@ -141,19 +140,16 @@ const Profile = ({ getOneUser, user, id }) => {
   );
 };
 
-const ProfileContainer = (props) => {
+const ProfileContainer = () => {
 
   // const currentUser = useSelector((state) => state.currentUser);
   const user = useSelector((state) => state.user);
-  const { id } = useParams();
   const dispatch = useDispatch();
-  console.log('This is the ID', id)
   return (
     <Profile
       // user={currentUser}
       getOneUser={(id) => dispatch(getOneUser(id))}
       user={user}
-      id={id}
     />
   );
 }

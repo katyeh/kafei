@@ -77,7 +77,7 @@ const ProfileImage = ({ user, currentUser }) => {
                   className="modal__preview-img"
                   src={imagePreview}
                   id="imagePreview"
-                  alt="Preview"
+                  alt="Preview Image"
                 />
               </div>
             </div>
