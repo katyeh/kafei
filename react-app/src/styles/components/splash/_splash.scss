@@ -82,6 +82,7 @@
         font-size: 2.4rem;
         font-weight: 600;
         outline: none;
+        cursor: pointer;
     }
 
     &__signup {
@@ -211,4 +212,8 @@
     .tag__item:hover {
         background-color: darkgray;
     }
+}
+
+.yourname {
+    outline: none;
 }

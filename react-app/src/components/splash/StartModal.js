@@ -6,11 +6,11 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
-const StartModal = ({authenticated, setAuthenticated}) => {
+const StartModal = ({name, setName, authenticated, setAuthenticated}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [name, setName] = useState("");
+  // const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
