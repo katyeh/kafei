@@ -7,7 +7,7 @@ const DislikePost = ({ setHeart, post, user }) => {
   const dispatch = useDispatch();
 
   const onDislike = async (post_id, user_id) => {
-    debugger
+    // debugger
     await dispatch(deleteLike(post.id, user.id));
     setHeart(false)
   };

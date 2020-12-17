@@ -52,7 +52,7 @@ def new_photo(id):
         return jsonify(error=repr(error))
 
 
-@user_routes.route('/')
+@user_routes.route('')
 # @login_required
 def users():
     users = User.query.all()

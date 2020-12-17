@@ -12,8 +12,9 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-
+// debugger
   useEffect(() => {
+    // debugger
     (async() => {
       const userId = localStorage.getItem("user_id");
       if (userId) {
@@ -22,14 +23,18 @@ function App() {
           setAuthenticated(true);
         }
         (async () => {
+          // debugger
           await dispatch(loadUser(userId));
           setLoaded(true);
         })()
+      } else {
+        setLoaded(true);
       }
     })();
   }, [dispatch, setAuthenticated]);
 
   if (!loaded) {
+    // debugger
     return null;
   }
 

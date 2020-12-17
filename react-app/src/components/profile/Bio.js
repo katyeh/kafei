@@ -11,7 +11,7 @@ const Bio = ({ currentUser, isProfile }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const onUpdate = async () => {
-    debugger
+    // debugger
     await dispatch(updateBio(bio, currentUser.id))
     setIsOpen(false);
   }

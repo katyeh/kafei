@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import Map from './components/Map';
 
 function AppContainer({authenticated, setAuthenticated}) {
-
+// debugger
   return (
     <>
       <NavBar setAuthenticated={setAuthenticated} />

@@ -2,13 +2,13 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 const ProtectedRoute = props => {
-  debugger
+  // debugger
 
   if (!props.authenticated) {
     return <Redirect to="/splash"/>
   } else {
     const Component = props.component
-    return < Component authenticated={props.authenticated} setAuthenticated={props.setAuthenticated} />
+    return <Component authenticated={props.authenticated} setAuthenticated={props.setAuthenticated} />
   }
 
   // return (
