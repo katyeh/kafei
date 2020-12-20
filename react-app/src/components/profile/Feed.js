@@ -44,7 +44,7 @@ const Feed = ({ currentUser, isProfile }) => {
         <div className="about__feed-div">
           {Array.isArray(transactions) && transactions.map(tip => {
             return (
-              <Transaction key={tip.id*10} tip={tip} user={user} isProfile={isProfile} />
+              <Transaction key={tip.id*10} tip={tip} user={user} isProfile={isProfile} currentUser={currentUser} />
             )
           })}
         </div>

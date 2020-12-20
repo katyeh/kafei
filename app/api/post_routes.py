@@ -39,6 +39,7 @@ def update_post(id):
     except:
         return jsonify(error='Post update unsuccessful.')
 
+
 @post_routes.route('/<int:id>', methods=["DELETE"])
 def delete_post(id):
     try:
@@ -49,6 +50,7 @@ def delete_post(id):
         return jsonify(message='Post was successfully deleted')
     except Exception as error:
         return jsonify(error=repr(error))
+
 
 @post_routes.route('/<int:post_id>/likes')
 def likes(post_id):

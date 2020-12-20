@@ -91,11 +91,11 @@ const Profile = ({ getOneUser, user }) => {
               <img src={currentUser.profile_image_url} alt="" className="profile__user-img"></img>
             </div>
           }
-              {currentUser ?
+              {currentUser && currentUser.followers ?
                 <div className="profile__info">
                   <h3>Buy a Coffee for</h3>
                   <h2>{currentUser.username}</h2>
-                  <p>{user.followers.length} Followers</p>
+                  <p>{currentUser.followers.length} Followers</p>
                 </div>
               : ""}
           </div>

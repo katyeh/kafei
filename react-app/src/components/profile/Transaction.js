@@ -4,7 +4,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { deleteTip } from '../../store/actions/tipActions';
 import { useDispatch } from 'react-redux';
 
-const Transaction = ({ tip, user, isProfile }) => {
+const Transaction = ({ tip, user, isProfile, currentUser }) => {
   const dispatch = useDispatch();
   let [hide, setHide] = useState(true);
 
@@ -20,7 +20,7 @@ const Transaction = ({ tip, user, isProfile }) => {
             <img className="about__feed-pic" alt="" src={tip.sender.profile_image_url}></img>
             <h4 className="about__feed-sendername about__feed-text">{tip.sender.name}</h4>
             <p className="about__feed-txt">bought a Coffee for</p>
-            <h4 className="about__feed-text">{user.name}</h4>
+            <h4 className="about__feed-text">{currentUser.name}</h4>
           </div>
           {isProfile ?
             <div onClick={() => setHide(!hide)} className="about__feed-more">
