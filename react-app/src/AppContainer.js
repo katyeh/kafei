@@ -6,6 +6,7 @@ import { Switch, Route } from 'react-router-dom';
 import UploadPhotoForm from "./components/UploadPhotoForm";
 import Footer from "./components/Footer";
 import Map from './components/Map';
+import Chat from './components/Chat';
 
 function AppContainer({authenticated, setAuthenticated}) {
 // debugger
@@ -34,6 +35,12 @@ function AppContainer({authenticated, setAuthenticated}) {
           exact={true}
         >
           <UploadPhotoForm authenticated={authenticated} />
+        </Route>
+        <Route
+          path="/chat"
+          exact={true}
+        >
+          <Chat />
         </Route>
         <Route path="/map" exact={true} >
           <Map authenticated={authenticated} />
