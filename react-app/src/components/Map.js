@@ -52,7 +52,7 @@ const Map = () => {
               }}
               onClick={() => setSelectedUser(user)}
               icon={{
-                url: "/kafei-logo.png",
+                url: "https://kafei.s3-us-west-1.amazonaws.com/kafei-logo.png",
                 scaledSize: new window.google.maps.Size(25, 25),
                 origin: new window.google.maps.Point(0, 0),
                 anchor: new window.google.maps.Point(12.5, 12.5)
