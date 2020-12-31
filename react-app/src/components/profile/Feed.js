@@ -13,9 +13,11 @@ const Feed = ({ currentUser, isProfile }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => {
-      await dispatch(getTips(currentUser.id))
-    })()
+    if (currentUser.id) {
+      (async () => {
+        await dispatch(getTips(currentUser.id))
+      })()
+    }
   }, [dispatch, currentUser.id]);
 
   return (

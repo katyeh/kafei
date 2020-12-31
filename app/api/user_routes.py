@@ -3,7 +3,7 @@ from flask_login import login_required
 from flask_cors import cross_origin, CORS
 from sqlalchemy.orm import relationship, sessionmaker, joinedload
 from sqlalchemy import func, select, or_
-from app.forms import UploadPhotoForm, TipForm, UploadProfileForm, UploadCoverForm
+from app.forms import UploadPhotoForm, TipForm, UploadProfileForm, UploadCoverForm, UploadBioForm
 from app.models import db, User, Post, Photo, Comment, Like, Transaction
 import json
 
@@ -144,9 +144,14 @@ def new_post(id):
 @user_routes.route('/<int:id>/bio', methods=["PUT"])
 def bio(id):
     try:
+        form = UploadBioForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+
+        if form.validate_on_submit():
+            bio = form.data['bio']
+
         user = User.query.get(id)
-        data = json.loads(request.data)
-        user.bio = data['bio']
+        user.bio = bio
 
         db.session.commit()
         return jsonify(user.to_dict_full())

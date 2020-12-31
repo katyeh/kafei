@@ -5,3 +5,4 @@ from .tip_form import TipForm
 from .post_form import PostForm
 from .profile_form import UploadProfileForm
 from .cover_form import UploadCoverForm
+from .bio_form import UploadBioForm

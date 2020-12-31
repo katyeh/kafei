@@ -46,16 +46,14 @@ export const updateCoverImage = (formData, id) => {
   }
 }
 
-export const updateBio = (bio, id) => {
+export const updateBio = (formData, id) => {
   return async dispatch => {
     try {
-      // debugger
       const res = await fetch(`/api/users/${id}/bio`, {
         method: 'PUT',
-        bio: bio
+        body: formData
       });
       if (res.ok) {
-        // debugger
         const user = await res.json()
         dispatch({ type: UPDATE_BIO, user: user })
       }

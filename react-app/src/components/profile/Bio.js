@@ -3,6 +3,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import { useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import CloseIcon from '@material-ui/icons/Close';
+import { updateBio } from "../../store/actions/currentUser";
 
 
 const Bio = ({ currentUser, isProfile }) => {
@@ -10,13 +11,16 @@ const Bio = ({ currentUser, isProfile }) => {
   const [bio, setBio] = useState("")
   const [modalIsOpen, setIsOpen] = useState(false);
 
-  const onUpdate = async () => {
-    // debugger
-    await dispatch(updateBio(bio, currentUser.id))
+  const onUpdate = async (e) => {
+    e.preventDefault();
+    let formData = new FormData();
+    formData.append('bio', bio)
+    formData.append('user_id', currentUser.id)
+    await dispatch(updateBio(formData, currentUser.id))
     setIsOpen(false);
   }
 
-  const updateBio = (e) => {
+  const updateBioInput = (e) => {
     setBio(e.target.value)
     console.log(bio)
   };
@@ -26,7 +30,7 @@ const Bio = ({ currentUser, isProfile }) => {
       <div className="about__label about__bio-label">
         <h3>About</h3>
         <div onClick={() => setIsOpen(true)} className="bio-edit">
-          <EditIcon style={{ fonSize: 20 }} />
+          <EditIcon style={{ fontSize: 20 }} />
         </div>
       </div>
       <div className="about__content about__bio-content">
@@ -41,19 +45,28 @@ const Bio = ({ currentUser, isProfile }) => {
         shouldCloseOnOverlayClick={true}
         closeTimeoutMS={500}
       >
-        <div className="login-header">
-          <h1>Edit Bio</h1>
-          <div className="modal__close">
-            <CloseIcon
-              style={{ fontSize: 30 }}
-              onClick={() => setIsOpen(false)}
+        <form onSubmit={onUpdate}>
+          <div className="login-header">
+            <h1>Edit Bio</h1>
+            <div className="modal__close">
+              <CloseIcon
+                style={{ fontSize: 30 }}
+                onClick={() => setIsOpen(false)}
+              />
+            </div>
+          </div>
+          <div className="bio__content">
+            <textarea
+              className="bio__field"
+              type="text"
+              name="bio"
+              onChange={updateBioInput}
+              value={bio}
+              placeholder="Describe yourself..."
             />
           </div>
-        </div>
-        <div className="bio-content">
-          <input type="text" name="bio" onChange={updateBio} value={bio} placeholder="Describe yourself..." /* className="postform__message" */></input>
-        </div>
-        <button onClick={() => onUpdate()} className="bio__modal-btn">Add</button>
+          <button className="bio__modal-btn" type="submit">Save</button>
+        </form>
       </Modal>
     </div>
   )

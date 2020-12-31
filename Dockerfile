@@ -6,6 +6,7 @@ COPY react-app/. .
 # You have to set this because it should be set during build time.
 ENV REACT_APP_BASE_URL="https://ka-fei.herokuapp.com/"
 
+
 # Build our React App
 RUN npm install
 RUN npm run build
