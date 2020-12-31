@@ -45,7 +45,8 @@ const NavBar = ({ setAuthenticated }) => {
         </ul>
       </div>
       <div>
-        { sidebar ? <SideMenu sidebar={sidebar} setSidebar={setSidebar} setAuthenticated={setAuthenticated} /> : null }
+         <SideMenu sidebar={sidebar} setSidebar={setSidebar} setAuthenticated={setAuthenticated} />
+        {/* { sidebar ? <SideMenu sidebar={sidebar} setSidebar={setSidebar} setAuthenticated={setAuthenticated} /> : null } */}
       </div>
     </div>
 

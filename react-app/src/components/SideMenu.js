@@ -11,7 +11,7 @@ const SideMenu = ({ sidebar, setSidebar, setAuthenticated }) => {
   const user = useSelector(state => state.user);
 
   return (
-    <div className="sidemenu">
+    <div className={sidebar ? "sidemenu active" : "sidemenu"} >
       <div className="sidemenu__close">
         <CloseIcon onClick={()=> setSidebar(false)} style={{ fontSize: 30 }}/>
       </div>

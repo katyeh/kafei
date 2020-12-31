@@ -4,7 +4,7 @@
     width: 35rem;
     z-index: 1;
     top: 0;
-    right: 0;
+    right: -100%;
     background-color: #fff;
     padding-top: 2rem;
     padding-left: 5rem;
@@ -12,6 +12,7 @@
     overflow-x: hidden;
     overflow-y: hidden;
     box-shadow: -10px 0px 10px 1px #c4c3c3;
+    transition: 0.7s;
 
     &__close {
         float: right;
@@ -88,6 +89,11 @@
     }
 }
 
+.sidemenu.active {
+    right: 0;
+    transition: 350ms;
+}
+
 .logout-btn {
-    
+
 }
