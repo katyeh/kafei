@@ -37,6 +37,9 @@ const TipSection = ({ currentUser, isProfile }) => {
       tip.append('recipient_id', id);
       tip.append('body', body);
 
+      setBody("")
+      setTotal(3)
+      setCoffee(3)
       tip = await dispatch(giveTip(tip, id));
     }
   };
@@ -77,7 +80,7 @@ const TipSection = ({ currentUser, isProfile }) => {
             <input className="about__tip-total" placeholder={total} />
           </div>
           <div className="about__tip-message-div">
-            <input onChange={updateBody} className="about__tip-message" placeholder="Your message"></input>
+            <input value={body} onChange={updateBody} className="about__tip-message" placeholder="Your message"></input>
           </div>
         </div>
         <div className="about__tip-donate-container">

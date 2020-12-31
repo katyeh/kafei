@@ -29,9 +29,11 @@ const Bio = ({ currentUser, isProfile }) => {
     <div className="bio">
       <div className="about__label about__bio-label">
         <h3>About</h3>
+        {isProfile ?
         <div onClick={() => setIsOpen(true)} className="bio-edit">
           <EditIcon style={{ fontSize: 20 }} />
         </div>
+        : null }
       </div>
       <div className="about__content about__bio-content">
         <p className="about__bio">{currentUser.bio}</p>

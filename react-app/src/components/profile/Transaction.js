@@ -3,10 +3,12 @@ import CloseIcon from '@material-ui/icons/Close';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { deleteTip } from '../../store/actions/tipActions';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const Transaction = ({ tip, user, isProfile, currentUser }) => {
   const dispatch = useDispatch();
   let [hide, setHide] = useState(true);
+  const history = useHistory();
 
   const onDelete = async (id) => {
     await dispatch(deleteTip(id));
@@ -18,7 +20,7 @@ const Transaction = ({ tip, user, isProfile, currentUser }) => {
         <div className="about__feed-main">
           <div className="about__feed-info">
             <img className="about__feed-pic" alt="" src={tip.sender.profile_image_url}></img>
-            <h4 className="about__feed-sendername about__feed-text">{tip.sender.name}</h4>
+            <h4 className="about__feed-sendername about__feed-text" onClick={() => history.push(`/users/${tip.sender.id}`)}>{tip.sender.name}</h4>
             <p className="about__feed-txt">bought a Coffee for</p>
             <h4 className="about__feed-text">{currentUser.name}</h4>
           </div>

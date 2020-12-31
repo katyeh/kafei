@@ -31,16 +31,18 @@ const SideMenu = ({ sidebar, setSidebar, setAuthenticated }) => {
             <div className="sidemenu__stats-label">Coffees</div>
             <div className="sidemenu__stat">{user.tips}</div>
           </div>
-          <div className="sidemenu__stats-container">
-            <div className="sidemenu__stats-label">Followers</div>
             {user.followers &&
-            <div className="sidemenu__stat">{user.followers.length}</div>
+            <div>
+                <div className="sidemenu__stats-container">
+                  <div className="sidemenu__stats-label">Followers</div>
+                  <div className="sidemenu__stat">{user.followers.length}</div>
+                </div>
+                <div className="sidemenu__stats-container sidemenu__stats-container-bottom">
+                  <div className="sidemenu__stats-label">Following</div>
+                  <div className="sidemenu__stat">{user.following.length}</div>
+                </div>
+            </div>
             }
-          </div>
-          <div className="sidemenu__stats-container sidemenu__stats-container-bottom">
-            <div className="sidemenu__stats-label">Following</div>
-            <div className="sidemenu__stat">{user.following.length}</div>
-          </div>
         </div>
         <div className="sidemenu__links">
           <ul>
