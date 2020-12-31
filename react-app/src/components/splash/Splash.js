@@ -39,7 +39,7 @@ const Splash = ({ authenticated, setAuthenticated }) => {
           <h6>Make an Income Doing What You Love</h6>
           <p>Get paid from people who love what you do. No pressure to stick to a schedule.</p>
           <div className="splash__signup">
-            <input onChange={updateName} value={name} placeholder="yourname"></input>
+            <input onChange={updateName} value={name} className="yourname" placeholder="yourname"></input>
             <StartModal name={name} setName={setName} authenticated={authenticated} setAuthenticated={setAuthenticated}/>
           </div>
         </div>
@@ -56,7 +56,9 @@ const Splash = ({ authenticated, setAuthenticated }) => {
                 </div>
                 <div className="splash__featured-info">
                   <h2 className="splash__featured-name">{user.name}</h2>
+                  {user.bio.length > 0 ?
                   <p>{user.bio.substring(0, 100)}...</p>
+                  : null }
                 </div>
               </div>
             )

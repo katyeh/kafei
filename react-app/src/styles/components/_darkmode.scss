@@ -16,10 +16,10 @@ body.dark-mode {
     background-color: $grey-dark-mode;
     // box-shadow: none;
   }
-  .splashnav, .sidemenu {
+  .splashnav, .sidemenu, .splash__featured-container {
     background-color: $bg-dark-mode2;
   }
-  .homenav__btn, .gallery__add-image-btn, .posts__btn, .about__tip-donate, .about__tip-subtract, .about__tip-add {
+  .homenav__btn, .login__btn, .gallery__add-image-btn, .posts__btn, .about__tip-donate, .about__tip-subtract, .about__tip-add {
       background-color: $purple-dark-mode;
       color: $white-text;
       border: none;
@@ -33,7 +33,7 @@ body.dark-mode {
   .home__tag {
       color: #101D2D;
   }
-  .logo2, .homenav__homeicon, .social-list {
+  .logo2, .splash__header-img, .homenav__homeicon, .social-list {
     -webkit-filter: invert(1);
     filter: invert(1);
   }

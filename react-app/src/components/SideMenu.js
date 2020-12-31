@@ -33,7 +33,9 @@ const SideMenu = ({ sidebar, setSidebar, setAuthenticated }) => {
           </div>
           <div className="sidemenu__stats-container">
             <div className="sidemenu__stats-label">Followers</div>
+            {user.followers &&
             <div className="sidemenu__stat">{user.followers.length}</div>
+            }
           </div>
           <div className="sidemenu__stats-container sidemenu__stats-container-bottom">
             <div className="sidemenu__stats-label">Following</div>
