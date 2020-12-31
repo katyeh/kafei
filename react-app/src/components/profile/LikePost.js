@@ -7,6 +7,7 @@ import DislikePost from './DislikePost';
 const LikePost = ({ post }) => {
   const user = useSelector(state => state.user);
   const [heart, setHeart] = useState(false)
+  const [like, setLike] = useState(post.likes.length)
 
   useEffect(() => {
     post.likes.forEach(like => {
@@ -16,25 +17,24 @@ const LikePost = ({ post }) => {
     })
   }, [post.likes.length, heart, post.likes, user.id])
 
-  console.log(heart, post.likes)
-
   const dispatch = useDispatch();
 
   const onLike = () => {
     dispatch(addLikeToPost(post.id, user.id))
     setHeart(true)
+    setLike(like + 1);
   };
   return (
     <div>
       <div className="posts__like-btn">
         { heart ?
-          <DislikePost setHeart={setHeart} post={post} user={user}/>
+          <DislikePost like={like} setLike={setLike} setHeart={setHeart} post={post} user={user}/>
           :
           <div onClick={() => onLike()}>
             <FavoriteBorderIcon style={{ fontSize: 25 }} />
           </div>
         }
-        <p>{post.likes.length}</p>
+        <p>{like}</p>
       </div>
     </div>
   )

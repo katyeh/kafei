@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { deletePost } from '../../store/actions/postActions';
 import LikePost from "./LikePost";
 
-const Post = ({ post, currentUser }) => {
+const Post = ({ isProfile, post, currentUser }) => {
   const dispatch = useDispatch();
   let [hide, setHide] = useState(true);
 
@@ -31,6 +31,7 @@ const Post = ({ post, currentUser }) => {
               <FavoriteBorderIcon style={{ fontSize: 25 }} />
               <p>3</p>
             </div> */}
+            { isProfile ?
             <div onClick={() => setHide(!hide)}
             className="posts__more-btn"
             >
@@ -44,6 +45,7 @@ const Post = ({ post, currentUser }) => {
                 }
               </div>
             </div>
+            : null }
           </div>
         </div>
       </div>

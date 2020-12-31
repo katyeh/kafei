@@ -47,7 +47,7 @@ const Posts = ({ currentUser, isProfile }) => {
         : "" }
         {posts && posts[0] && posts.length !== 0 ? posts.map(post => {
           return(
-            <Post key={post.id} post={post} currentUser={currentUser} />
+            <Post key={post.id} isProfile={isProfile} post={post} currentUser={currentUser} />
           )
         })
         : "No posts yet! Check back later."}
