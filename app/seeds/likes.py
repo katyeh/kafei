@@ -17,15 +17,15 @@ def seed_likes():
             'user_id': 7
         },
         {
-            'post_id': 2,
+            'post_id': 3,
             'user_id': 1
         },
         {
-            'post_id': 2,
+            'post_id': 3,
             'user_id': 6
         },
         {
-            'post_id': 2,
+            'post_id': 3,
             'user_id': 3
         },
     ]

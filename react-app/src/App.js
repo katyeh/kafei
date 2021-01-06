@@ -14,7 +14,6 @@ function App() {
   const dispatch = useDispatch();
 // debugger
   useEffect(() => {
-    // debugger
     (async() => {
       const userId = localStorage.getItem("user_id");
       if (userId) {
@@ -23,7 +22,6 @@ function App() {
           setAuthenticated(true);
         }
         (async () => {
-          // debugger
           await dispatch(loadUser(userId));
           setLoaded(true);
         })()
@@ -34,7 +32,6 @@ function App() {
   }, [dispatch, setAuthenticated]);
 
   if (!loaded) {
-    // debugger
     return null;
   }
 
@@ -45,7 +42,7 @@ function App() {
           <div className="splash__container">
             <SplashNav authenticated={authenticated} setAuthenticated={setAuthenticated} />
             <div className="splash__main">
-              <Splash>Splash</Splash>
+              <Splash authenticated={authenticated} setAuthenticated={setAuthenticated} />
             </div>
           </div>
         </Route>

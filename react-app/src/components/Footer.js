@@ -7,17 +7,19 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__name-div">
-        <h1 /* onClick={() => history.push("www.hellokat.io")} */ className="footer__name">Kathleen Yeh</h1>
+        <a href="https://www.hellokat.io">
+          <h1 className="footer__name">Kathleen Yeh</h1>
+        </a>
       </div>
       <div className="social-links">
         <ul className="social-list">
           <li className="social-list__item">
-            <a className="social-list__link" href="https://github.com/katyeh">
+            <a className="social-list__link" href="https://www.github.com/katyeh">
               <GitHubIcon style={{ fontSize: 30 }}/>
             </a>
           </li>
           <li className="social-list__item">
-            <a className="social-list__link" href="mailto:kathleenyeh1@gmail.com">
+            <a className="social-list__link" href="https://www.linkedin.com/in/katyeh/">
               <LinkedInIcon style={{ fontSize: 30 }}/>
             </a>
           </li>

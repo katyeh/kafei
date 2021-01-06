@@ -12,6 +12,10 @@ def seed_posts():
             'body': 'Thanks for all the support. New content coming soon, so keep your eyes peeled!',
             'user_id': 3
         },
+        {
+            'body': 'Hi, I\'m Kat. Thanks for visiting my page. Keep an eye out for more posts!',
+            'user_id': 2
+        }
     ]
 
     posts_list = [Post(body=item['body'],

@@ -30,7 +30,7 @@ const SignupModal = ({authenticated, setAuthenticated}) => {
       user = await dispatch(signupUser(user));
       if (user && !user.errors) {
         setAuthenticated(true);
-        history.push("/home")
+        history.push("/")
       }
     }
   };

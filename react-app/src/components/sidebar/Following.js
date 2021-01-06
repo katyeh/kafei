@@ -17,7 +17,7 @@ const Following = ({ user, showMenu }) => {
         {user.following.map((following) => {
           return (
             <li className="sidemenu__follower" onClick={() => history.push(`/users/${following.id}`)}>
-              <img className="sidemenu__follower-pic" src={following.profile_image_url} ></img>
+              <img alt="" className="sidemenu__follower-pic" src={following.profile_image_url} ></img>
               <h3 className="sidemenu__follower-name">{following.name}</h3>
             </li>
           )

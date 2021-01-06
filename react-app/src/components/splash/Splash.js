@@ -56,7 +56,7 @@ const Splash = ({ authenticated, setAuthenticated }) => {
                 </div>
                 <div className="splash__featured-info">
                   <h2 className="splash__featured-name">{user.name}</h2>
-                  {user.bio.length > 0 ?
+                  {user.bio && user.bio.length > 0 ?
                   <p>{user.bio.substring(0, 100)}...</p>
                   : null }
                 </div>
@@ -73,7 +73,7 @@ const Splash = ({ authenticated, setAuthenticated }) => {
 
         <div className="splash__tag-section">
           <div>
-            <img src={splashimg}></img>
+            <img alt="" src={splashimg}></img>
           </div>
           <div className="tag__container">
             <h1>All Kinds of Creators Use Kafei</h1>
@@ -93,12 +93,5 @@ const Splash = ({ authenticated, setAuthenticated }) => {
   )
 };
 
-const SplashContainer = () => {
-  return (
-    <div>
-      <Splash />
-    </div>
-  )
-}
 
-export default SplashContainer;
+export default Splash;
