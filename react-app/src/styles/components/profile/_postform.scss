@@ -28,6 +28,9 @@
         border-radius: 50%;
         height: 5rem;
     }
+    &__message {
+        resize: none;
+    }
     &__message-div {
         display: flex;
         align-items: flex-start;
