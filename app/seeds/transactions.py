@@ -20,6 +20,16 @@ def seed_transactions():
             'recipient_id': 1
         },
         {
+            'amount': 2,
+            'sender_id': 12,
+            'recipient_id': 1
+        },
+        {
+            'amount': 3,
+            'sender_id': 9,
+            'recipient_id': 1
+        },
+        {
             'amount': 4,
             'sender_id': 8,
             'recipient_id': 6
@@ -30,9 +40,49 @@ def seed_transactions():
             'recipient_id': 2
         },
         {
+            'amount': 1,
+            'sender_id': 13,
+            'recipient_id': 12
+        },
+        {
+            'amount': 3,
+            'sender_id': 9,
+            'recipient_id': 12
+        },
+        {
+            'amount': 4,
+            'sender_id': 4,
+            'recipient_id': 12
+        },
+        {
+            'amount': 3,
+            'sender_id': 3,
+            'recipient_id': 4
+        },
+        {
+            'amount': 3,
+            'sender_id': 5,
+            'recipient_id': 4
+        },
+        {
             'amount': 2,
-            'sender_id': 12,
-            'recipient_id': 1
+            'sender_id': 2,
+            'recipient_id': 4
+        },
+        {
+            'amount': 3,
+            'sender_id': 9,
+            'recipient_id': 15
+        },
+        {
+            'amount': 4,
+            'sender_id': 3,
+            'recipient_id': 15
+        },
+        {
+            'amount': 5,
+            'sender_id': 5,
+            'recipient_id': 15
         },
     ]
 

@@ -4,11 +4,11 @@ from app.models import db, Location
 def seed_locations():
 
     locations = [
-        {
-            'user_id': 1,
-            'lat': '45.608013',
-            'lng': '-112.335167'
-        },
+        # {
+        #     'user_id': 1,
+        #     'lat': '45.608013',
+        #     'lng': '-112.335167'
+        # },
         {
             'user_id': 2,
             'lat': '47.608013',

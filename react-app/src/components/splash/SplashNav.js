@@ -3,6 +3,7 @@ import LoginModal from './LoginModal';
 import SignupModal from './SignupModal';
 import logo1 from "../../images/kafei-logo.png"
 import logo2 from "../../images/kafei-dark.png"
+import Demo from './Demo';
 
 const SplashNav = ({ authenticated, setAuthenticated }) => {
   return(
@@ -12,6 +13,10 @@ const SplashNav = ({ authenticated, setAuthenticated }) => {
         <img className="logo2" alt="" src={logo2}></img>
       </div>
       <div className="splashnav__buttons">
+        <Demo
+          authenticated={authenticated}
+          setAuthenticated={setAuthenticated}
+        />
         <LoginModal
           authenticated={authenticated}
           setAuthenticated={setAuthenticated}

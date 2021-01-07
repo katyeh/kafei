@@ -7,8 +7,8 @@ Modal.setAppElement('#root');
 
 const LoginModal = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
-  const [email, setEmail] = useState("demo@user.com");
-  const [password, setPassword] = useState("password");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
 
   let history = useHistory();
