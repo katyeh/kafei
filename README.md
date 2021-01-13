@@ -4,7 +4,7 @@ Kafei is a friendly online platform that encourages users to network and support
 
 Check out the app: [Live Demo](https://ka-fei.herokuapp.com/)
 
-![Kafei main image](/kafei.gif) / ![](kafei.gif)
+![Kafei main image](kafei.gif) 
 
 ### Technologies Used
 
